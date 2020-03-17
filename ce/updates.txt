@@ -1,3 +1,12 @@
+Post Submission A1 Updates
+    - update index.html
+    - upload and add RMIT logo.
+    - add my name.
+    - upload and add avatar.png
+    - fill in the form
+    - delete the deprecated code.
+    - add footer.
+
 Post Submission A2 Updates 
 
 
