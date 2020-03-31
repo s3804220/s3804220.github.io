@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap 4 Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Jumbotron -->
+        <div class="jumbotron">
+            <h1>This is my homepage</h1>
+            <p>This page is powered by Bootstrap 4</p>
+        </div>
+
+        <!-- Carousel -->
+        <div id="demo" class="carousel slide" data-ride="carousel">
+
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+                <li data-target="#demo" data-slide-to="0" class="active"></li>
+                <li data-target="#demo" data-slide-to="1"></li>
+                <li data-target="#demo" data-slide-to="2"></li>
+            </ul>
+
+            <!-- The slideshow -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://www.w3schools.com/bootstrap4/la.jpg" alt="Los Angeles" width="1200px"
+                        height="400px">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://www.w3schools.com/bootstrap4/chicago.jpg" alt="Chicago" width="1200px"
+                        height="400px">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://www.w3schools.com/bootstrap4/ny.jpg" alt="New York" width="1200px" height="400px">
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#demo" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+
+        </div>
+
+        <div class="row">
+            <!--First column-->
+            <div class="col-md-3">
+                <ul class="list-group">
+                    <li class="list-group-item active">Home</li>
+                    <li class="list-group-item">Mesage</li>
+                    <li class="list-group-item">Photo</li>
+                </ul>
+            </div>
+
+            <!--Second column-->
+            <div class="col-md-6">
+                <table class="table table-hover table-bordered table-striped">
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                    </tr>
+                    <tr>
+                        <td>Vo An Huy</td>
+                        <td>s3804220@rmit.edu.vn</td>
+                    </tr>
+                    <tr>
+                        <td>Donald Trump</td>
+                        <td>123@gmail.com</td>
+                    </tr>
+                </table>
+                <div class="row">
+                    <div class="col">
+                        <div class="card" style="width:250px">
+                            <img class="card-img-top"
+                                src="https://i-vnexpress.vnecdn.net/2020/03/31/83926991-326713118217677-42122-3498-4546-1585632981.jpg"
+                                alt="Card image">
+                            <div class="card-body">
+                                <h4 class="card-title">Nguyen Xuan Phuc</h4>
+                                <p class="card-text">Vietnam's Prime Minister.</p>
+                                <a href="https://vnexpress.net/thoi-su/viet-nam-cach-ly-toan-xa-hoi-trong-15-ngay-4077462.html"
+                                    target="_blank" style="text-decoration: line-through;"
+                                    class="stretched-link">Detail</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card" style="width:250px">
+                            <img class="card-img-top"
+                                src="https://i-vnexpress.vnecdn.net/2020/03/31/83926991-326713118217677-42122-3498-4546-1585632981.jpg"
+                                alt="Card image">
+                            <div class="card-body">
+                                <h4 class="card-title">Nguyen Xuan Phuc</h4>
+                                <p class="card-text">Vietnam's Prime Minister.</p>
+                                <a href="https://vnexpress.net/thoi-su/viet-nam-cach-ly-toan-xa-hoi-trong-15-ngay-4077462.html"
+                                    target="_blank" style="text-decoration: line-through;"
+                                    class="stretched-link">Detail</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--Third column-->
+            <div class="col-md-3">
+                <div class="card" style="width:250px">
+                    <img class="card-img-top"
+                        src="https://i-vnexpress.vnecdn.net/2020/03/31/83926991-326713118217677-42122-3498-4546-1585632981.jpg"
+                        alt="Card image">
+                    <div class="card-body">
+                        <h4 class="card-title">Nguyen Xuan Phuc</h4>
+                        <p class="card-text">Vietnam's Prime Minister.</p>
+                        <a href="https://vnexpress.net/thoi-su/viet-nam-cach-ly-toan-xa-hoi-trong-15-ngay-4077462.html"
+                            target="_blank" style="text-decoration: line-through;" class="stretched-link">Detail</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4" style="background-color: green;">Column 1</div>
+            <div class="col-sm-8" style="background-color: yellow;">Column 2</div>
+        </div>
+
+        <div class="row">
+            <div class="col-4" style="background-color: green;">Column 1</div>
+            <div class="col-4" style="background-color: yellow;">Column 2</div>
+            <div class="col-4" style="background-color: red;">Column 3</div>
+        </div>
+
+
+    </div>
+</body>
+
+</html>
