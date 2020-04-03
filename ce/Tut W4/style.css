@@ -1,0 +1,44 @@
+body{
+    background-color:hsla(120, 60%, 70%, 0.3);;
+    font-family: verdana;
+}
+
+a{
+    background-color: black;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px;
+}
+
+nav a:link{
+    color: yellow;
+}
+
+nav a:visited{
+    color: white;
+}
+
+nav a:hover{
+   color: yellow;
+}
+
+nav A:active{
+    color: black;
+    background-color: yellow;
+}
+
+h1{
+    color: purple;
+    text-align: center;
+}
+
+p{
+    font-size: 20px;
+}
+
+table, td, th{
+    border: 1px solid;
+}
+#members{
+    color: #DE6868;
+}
