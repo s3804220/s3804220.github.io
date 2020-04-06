@@ -1,6 +1,6 @@
 /* Insert your styles here */
 body, html{
-    background-color: grey !important;
+    background-color: #007c89 !important;
 }
 .container{
     font-family: 'Montserrat', sans-serif;
@@ -35,6 +35,7 @@ body, html{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.7);
 
     text-align: center;
     color: white;
