@@ -1,6 +1,10 @@
 /* Insert your styles here */
+body, html{
+    background-color: grey !important;
+}
 .container{
     font-family: 'Montserrat', sans-serif;
+    background-color:white;
 }
 #logo{
 
@@ -35,4 +39,7 @@
     text-align: center;
     color: white;
     padding: 30px;
+}
+p{
+  
 }
