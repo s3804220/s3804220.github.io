@@ -23,3 +23,16 @@
 .nav-link:hover{
     color: white;
 }
+#about-us-header{
+     /* Creative Commons image sourced from https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500 and used for educational purposes only */
+    background-image: url("https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500");
+    height: 200px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    text-align: center;
+    color: white;
+    padding: 30px;
+}
