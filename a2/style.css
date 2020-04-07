@@ -1,10 +1,15 @@
 /* Insert your styles here */
-body, html{
-    background-color: #007c89 !important;
+body{
+    /* Creative Commons image sourced from https://www.pexels.com/photo/architecture-room-indoors-auditorium-109669/ and used for educational purposes only */
+    background-image: url(media/website-background.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
 }
 .container{
     font-family: 'Montserrat', sans-serif;
-    background-color:white;
+    background-color:black;
+    color: white;
 }
 #logo{
 
@@ -29,10 +34,10 @@ body, html{
 }
 #about-us-header{
      /* Creative Commons image sourced from https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500 and used for educational purposes only */
-    background-image: url("https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500");
-    height: 200px;
+    background-image: url(media/about-us-header-img.jpg);
+    height: 175px;
     background-attachment: fixed;
-    background-position: center;
+    background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
     box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.7);
