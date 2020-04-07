@@ -33,7 +33,7 @@ body{
     color: white;
 }
 #about-us-header{
-     /* Creative Commons image sourced from https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500 and used for educational purposes only */
+     /* Creative Commons image sourced from https://www.pexels.com/photo/people-sitting-on-gang-chairs-2774556/ and used for educational purposes only */
     background-image: url(media/about-us-header-img.jpg);
     height: 175px;
     background-attachment: fixed;
