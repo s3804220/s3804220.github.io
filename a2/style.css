@@ -74,6 +74,11 @@ body{
     color: white;
     padding: 60px;
 }
+.seat-img{
+    height: 150px;
+    width: 250px;
+    align-items: center;
+}
 #showing-header {
     font-family: Showtime;
     text-align: center;
