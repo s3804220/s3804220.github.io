@@ -30,6 +30,7 @@ body{
     color: white;
     margin-bottom: 0px;
 }
+
 .nav-link:hover{
     color: white;
 }
@@ -46,7 +47,4 @@ body{
     text-align: center;
     color: white;
     padding: 30px;
-}
-p{
-  
 }
