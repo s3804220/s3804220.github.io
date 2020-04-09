@@ -2,14 +2,15 @@
 body{
     /* Creative Commons image sourced from https://www.pexels.com/photo/architecture-room-indoors-auditorium-109669/ and used for educational purposes only */
     background-image: url(media/website-background.jpg);
+    /* background-image: url(https://images.pexels.com/photos/2923675/pexels-photo-2923675.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500); */
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
 }
 .container{
     font-family: 'Montserrat', sans-serif;
-    background-color:black;
-    color: white;
+    background-color:black; 
+    color: white; 
 }
 #logo{
 
