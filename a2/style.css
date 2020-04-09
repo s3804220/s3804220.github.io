@@ -2,15 +2,14 @@
 body{
     /* Creative Commons image sourced from https://www.pexels.com/photo/architecture-room-indoors-auditorium-109669/ and used for educational purposes only */
     background-image: url(media/website-background.jpg);
-    /* background-image: url(https://images.pexels.com/photos/2923675/pexels-photo-2923675.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500); */
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
 }
 .container{
     font-family: 'Montserrat', sans-serif;
-    background-color:black; 
-    color: white; 
+    background-color:#606060;
+    color: white;
 }
 #logo{
 
@@ -30,14 +29,41 @@ body{
     color: white;
     margin-bottom: 0px;
 }
+@font-face {
+    font-family: Showtime;
+    src: url(font/Showtime.ttf);
+}
+.head-strip {
+    background: url(media/filmstrip.jpg);
+    background-repeat: repeat-x;
+    background-size: contain;
+    height: 30px;
+    opacity: 0.8;
+}
+.navbar {
+    background-color: #202020;
+}
+.btn-primary {
+    font-family: "Roboto Slab";
+    color: #fff;
+    background-color: transparent;
+    border-color: transparent;
+    margin: 10px;
+}
+.btn-primary:hover {
+    font-family: "Roboto Slab";
+    font-weight: bold;
+    color: #000000;
+    border: 2px;
+    border-style: dashed;
+    border-color: black;
+    background-color: #757575;
 
-.nav-link:hover{
-    color: white;
 }
 #about-us-header{
      /* Creative Commons image sourced from https://www.pexels.com/photo/people-sitting-on-gang-chairs-2774556/ and used for educational purposes only */
     background-image: url(media/about-us-header-img.jpg);
-    height: 175px;
+    
     background-attachment: fixed;
     background-position: bottom;
     background-repeat: no-repeat;
@@ -46,5 +72,83 @@ body{
 
     text-align: center;
     color: white;
+    padding: 60px;
+}
+#showing-header {
+    font-family: Showtime;
+    text-align: center;
+    color: #ff7591;
     padding: 30px;
+}
+#movie-icon {
+    vertical-align: bottom;
+}
+@media screen and (min-width: 901px) {
+    #showing-header {
+        font-size: 70px;
+    }
+    #movie-icon {
+        height: 80px;
+    }
+    #TopBtn {
+        width: 70px;
+    }
+}
+@media screen and (max-width: 900px) and (min-width: 601px) {
+    #showing-header {
+        font-size: 50px;
+    }
+    #movie-icon {
+        height: 50px;
+    }
+    #TopBtn {
+        width: 60px;
+    }
+}
+@media screen and (max-width: 600px) {
+    #showing-header {
+        font-size: 40px;
+    }
+    #movie-icon {
+        height: 40px;
+    }
+    #TopBtn {
+        width: 50px;
+    }
+}
+#About-us, #now-showing {
+    background-color: #202020;
+    padding: 30px;
+}
+#break {
+    background: url(media/camera-film-re.png);
+    background-repeat: repeat-x;
+    background-size: contain;
+    height: 30px;
+}
+.card {
+    border-style: groove;
+    border-width: 5px;
+    border-color: #202020;
+    padding: 5px;
+}
+.card-title, .card-text {
+    font-family: "Roboto Slab";
+    color: black;
+    text-align: center;
+}
+.card-title {
+    font-weight: bold;
+}
+.movie-rating {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+}
+#TopBtn {
+    position: fixed;
+    bottom: 0px;
+    float: right;
+    right: 0px;
+    left: 90%;
 }

@@ -9,18 +9,19 @@
   <!-- Keep wireframe.css for debugging, add your css to style.css -->
   <link id='wireframecss' type="text/css" rel="stylesheet" href="../wireframe.css" disabled>
 
-  <!-- Link to style.css -->
-  <link id='stylecss' type="text/css" rel="stylesheet" href="style.css">
-
   <!-- Add bootstrap-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
+  <!-- Link to style.css -->
+  <link id='stylecss' type="text/css" rel="stylesheet" href="style.css">
+
   <!-- Link to web font-->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;1,400;1,600&display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
 
   <!-- Link to web icon-->
   <!-- Creative Commons image sourced from https://www.freelogodesign.org/preview?lang=en&name=&logo=3cb08b7e-706d-4539-a663-82c8ea221204 and used for educational purposes only -->
@@ -38,28 +39,18 @@
         <img src="media/logo.png" alt="company-logo" id="logo">
       </div>
     </header>
-
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark navbar-fixed-top">
+    <div class="head-strip"></div>
+    <nav class="navbar sticky-top navbar-expand-sm shadow">
       <div>
-        <ul class="navbar nav">
-          <li class="nav-item">
-            <a class="nav-link" href="#About-us">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">Prices</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">Now Showing</a>
-          </li>
-        </ul>
+        <a class="btn btn-primary btn-lg" href="#About-us" role="button">ABOUT US</a>
+        <a class="btn btn-primary btn-lg" href="#" role="button">PRICES</a>
+        <a class="btn btn-primary btn-lg" href="#now-showing" role="button">NOW SHOWING</a>
       </div>
     </nav>
-
-    <br>
+    <div class="head-strip"></div>
     <main>
       <article id='About-us'>
         <h1 id="about-us-header">About Us</h1>
-
         <p>Cinemax is a movie theatre that was established to serve local movie enthuasiasts. </p>
         <p>Eventhough Cinemax was founded a long time ago, our facilites has recently been renovated to make the
           experience of movie going even more enjoyable.</p>
@@ -112,7 +103,104 @@
         <!-- Creative Commons image sourced from https://pixabay.com/en/maintenance-under-construction-2422173/ and used for educational purposes only -->
         <img src='../../media/website-under-construction.png' alt='Website Under Construction' />
       </article>
+      <div id="break">
+      </div>
+      <section id="now-showing">
+        <h1 id="showing-header"><img src="media/movie.png" id="movie-icon">(_NOW_SHOWING_)</h1>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo aut nulla, cumque repellendus aperiam non
+          saepe doloribus quod id quis provident enim sed perferendis eligendi illum voluptate cupiditate,
+          exercitationem corrupti est iure nobis repudiandae hic sapiente aliquid. Perspiciatis temporibus illum sed
+          sequi? Quia, ad? Voluptatum qui doloremque quis cum et, cumque voluptatem nobis magnam recusandae. Tenetur
+          quis sint quas animi provident vero, porro sed doloribus. Voluptatem soluta nihil impedit unde? Eligendi non
+          possimus maxime itaque, voluptatum quae nesciunt expedita reprehenderit earum numquam aperiam facere ad
+          obcaecati. Accusamus, veritatis dignissimos. Hic maxime ratione porro! Ex repellendus totam, placeat similique
+          voluptate quod facilis culpa id et minima consequatur veniam excepturi ea. Ratione porro ipsa minima non
+          magnam vero hic iure molestiae illum aliquam repellat perferendis ex maiores est beatae delectus in commodi
+          quae, cupiditate optio sunt soluta consequatur error sed. Voluptatem delectus rem praesentium iste, natus
+          eaque expedita assumenda modi atque? Doloremque!</p>
+        <div class="row row-cols-1 row-cols-md-2">
+          <div class="col">
+            <div class="card h-100">
+              <div class="row no-gutters">
+                <div class="col-md-6">
+                  <img src="media/avengers.jpg" class="card-img" alt="Avengers Endgame Poster">
+                </div>
+                <div class="col-md-6">
+                  <div class="card-body">
+                    <h5 class="card-title">Avengers: Endgame</h5>
+                    <p class="card-text">Day - Hour</p>
+                    <p class="card-text">Day - Hour</p>
+                    <p class="card-text">Day - Hour</p>
+                    <p class="card-text">Day - Hour</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <img src="media/PG-13.svg" alt="Rated PG-13" width="40%" class="movie-rating">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <div class="row no-gutters">
+                <div class="col-md-6">
+                  <img src="media/topend-wedding.jpg" class="card-img" alt="Top End Wedding Poster">
+                </div>
+                <div class="col-md-6">
+                  <div class="card-body">
+                    <h5 class="card-title">Top End Wedding</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                      additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <img src="" alt="Rated" width="20%" class="movie-rating">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row row-cols-1 row-cols-md-2">
+          <div class="col">
+            <div class="card h-100">
+              <div class="row no-gutters">
+                <div class="col-md-6">
+                  <img src="media/dumbo.jpg" class="card-img" alt="Dumbo Poster">
+                </div>
+                <div class="col-md-6">
+                  <div class="card-body">
+                    <h5 class="card-title">Dumbo</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                      additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <img src="media/G.svg" alt="Rated G" width="20%" class="movie-rating">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <div class="row no-gutters">
+                <div class="col-md-6">
+                  <img src="media/happy-prince.jpg" class="card-img" alt="The Happy Prince Poster">
+                </div>
+                <div class="col-md-6">
+                  <div class="card-body">
+                    <h5 class="card-title">The Happy Prince</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                      additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <img src="media/R.svg" alt="Rated R" width="20%" class="movie-rating">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </section>
     </main>
+    <a href="#top"><img id="TopBtn" src="media/top.png" alt="Back to Top"></a>
 
     <footer>
       <div>&copy;
