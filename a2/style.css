@@ -86,7 +86,8 @@ html{
     font-weight: bolder;
 }
 .dolby-sys-img{
-    width: 250px;
+    background-color: black;
+    width: 300px;
     height: 200px;
 }
 #showing-header, #pricing-header, #synopsis-header {
