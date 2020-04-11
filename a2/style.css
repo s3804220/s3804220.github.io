@@ -85,6 +85,10 @@ html{
     padding: 60px;
     font-weight: bolder;
 }
+.dolby-sys-img{
+    width: 250px;
+    height: 200px;
+}
 #showing-header, #pricing-header, #synopsis-header {
     font-family: MovieTime;
     text-align: center;
