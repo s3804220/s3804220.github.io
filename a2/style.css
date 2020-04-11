@@ -1,13 +1,13 @@
 /* Insert your styles here */
 body{
     /* Creative Commons image sourced from https://www.pexels.com/photo/architecture-room-indoors-auditorium-109669/ and used for educational purposes only */
-    background-image: url(media/website-background.jpg);
+    background-image: url(media/cinema-background.jpg);
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
 }
 .container{
-    font-family: 'Montserrat', sans-serif;
+    font-family: Montserrat, sans-serif;
     background-color:#606060;
     color: white;
 }
@@ -29,10 +29,6 @@ body{
     color: white;
     margin-bottom: 0px;
 }
-@font-face {
-    font-family: Showtime;
-    src: url(font/Showtime.ttf);
-}
 .head-strip {
     background: url(media/filmstrip.jpg);
     background-repeat: repeat-x;
@@ -43,22 +39,36 @@ body{
 .navbar {
     background-color: #202020;
 }
-.btn-primary {
+html{
+    scroll-behavior: smooth;
+}
+.btn.btn-primary {
     font-family: "Roboto Slab";
     color: #fff;
     background-color: transparent;
     border-color: transparent;
     margin: 10px;
 }
-.btn-primary:hover {
+.btn.btn-primary:hover {
     font-family: "Roboto Slab";
     font-weight: bold;
-    color: #000000;
+    color: rgb(151, 3, 3);
     border: 2px;
     border-style: dashed;
     border-color: black;
-    background-color: #757575;
+    background-color: #E0E0E0;
 
+}
+.btn.btn-primary:active, .btn.btn-primary:focus, .btn.btn-primary:active:focus {
+    font-family: "Roboto Slab";
+    background: #757575;
+    background-color: #757575;
+    color: #1b1b1b;
+    border: transparent;
+}
+@font-face {
+    font-family: MovieTime;
+    src: url(font/Movie\ Times.ttf);
 }
 #about-us-header{
      /* Creative Commons image sourced from https://www.pexels.com/photo/people-sitting-on-gang-chairs-2774556/ and used for educational purposes only */
@@ -73,37 +83,39 @@ body{
     text-align: center;
     color: white;
     padding: 60px;
+    font-weight: bolder;
 }
-.seat-img{
-    height: 150px;
-    width: 250px;
-    align-items: center;
-}
-#showing-header {
-    font-family: Showtime;
+#showing-header, #pricing-header, #synopsis-header {
+    font-family: MovieTime;
     text-align: center;
-    color: #ff7591;
+    color: rgb(151, 3, 3);
     padding: 30px;
+    background-image: url(media/cinema-sign.png);
+    background-size: auto 100%;
+    opacity: 0.9;
 }
-#movie-icon {
-    vertical-align: bottom;
+#movie-icon, #tickets-icon {
+    vertical-align: baseline;
+}
+#tickets-icon {
+    rotate: -30deg;
 }
 @media screen and (min-width: 901px) {
-    #showing-header {
+    #showing-header, #pricing-header, #synopsis-header {
         font-size: 70px;
     }
-    #movie-icon {
-        height: 80px;
+    #movie-icon, #tickets-icon {
+        height: 60px;
     }
     #TopBtn {
         width: 70px;
     }
 }
 @media screen and (max-width: 900px) and (min-width: 601px) {
-    #showing-header {
-        font-size: 50px;
+    #showing-header, #pricing-header, #synopsis-header {
+        font-size: 60px;
     }
-    #movie-icon {
+    #movie-icon, #tickets-icon {
         height: 50px;
     }
     #TopBtn {
@@ -111,17 +123,17 @@ body{
     }
 }
 @media screen and (max-width: 600px) {
-    #showing-header {
+    #showing-header, #pricing-header, #synopsis-header {
         font-size: 40px;
     }
-    #movie-icon {
+    #movie-icon, #tickets-icon {
         height: 40px;
     }
     #TopBtn {
         width: 50px;
     }
 }
-#About-us, #now-showing {
+#About-us, #now-showing, #pricing, #synopsis-area {
     background-color: #202020;
     padding: 30px;
 }
@@ -130,12 +142,14 @@ body{
     background-repeat: repeat-x;
     background-size: contain;
     height: 30px;
+    opacity: 0.8;
 }
 .card {
     border-style: groove;
-    border-width: 5px;
-    border-color: #202020;
+    border-width: 10px;
+    border-color: #837e7e;
     padding: 5px;
+    background-color: #E0E0E0;
 }
 .card-title, .card-text {
     font-family: "Roboto Slab";
@@ -150,10 +164,38 @@ body{
     right: 0px;
     bottom: 0px;
 }
+.row.no-gutters {
+    display: flex;
+}
 #TopBtn {
     position: fixed;
     bottom: 0px;
     float: right;
     right: 0px;
     left: 90%;
+}
+#price-table {
+    border: 5px groove rgb(241, 222, 114);
+    font-family: Montserrat;
+}
+#price-head tr > th{
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    border-collapse: collapse;
+    color: honeydew;
+    border: 5px groove rgb(241, 222, 114);
+
+}
+#price-body tr > th, #price-body tr > td {
+    border-collapse: collapse;
+    color: #1b1b1b;
+    text-align: center;
+    background-color: #E0E0E0;
+    border: 2px groove;
+}
+.badge.badge-success {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 120%;
+    padding: 5px;
 }

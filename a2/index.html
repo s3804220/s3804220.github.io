@@ -4,24 +4,31 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Assignment 2</title>
+  <title>Assignment 2 - Cinemax</title>
 
   <!-- Keep wireframe.css for debugging, add your css to style.css -->
   <link id='wireframecss' type="text/css" rel="stylesheet" href="../wireframe.css" disabled>
 
   <!-- Add bootstrap-->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
 
   <!-- Link to style.css -->
   <link id='stylecss' type="text/css" rel="stylesheet" href="style.css">
 
   <!-- Link to web font-->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;1,400;1,600&display=swap"
-    rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter">
 
   <!-- Link to web icon-->
   <!-- Creative Commons image sourced from https://www.freelogodesign.org/preview?lang=en&name=&logo=3cb08b7e-706d-4539-a663-82c8ea221204 and used for educational purposes only -->
@@ -30,9 +37,9 @@
   <script src='../wireframe.js'></script>
 </head>
 
-<body>
+<body data-spy="scroll" data-target="#navigation" data-method="auto">
   <div class="container">
-    <header>
+    <header id="top">
       <div class="jumbotron">
         <p id="company-name">CINEMAX</p>
         <!-- Creative Commons image sourced from https://www.freelogodesign.org/preview?lang=en&name=&logo=3cb08b7e-706d-4539-a663-82c8ea221204 and used for educational purposes only -->
@@ -40,22 +47,28 @@
       </div>
     </header>
     <div class="head-strip"></div>
-    <nav class="navbar sticky-top navbar-expand-sm shadow">
-      <div>
-        <a class="btn btn-primary btn-lg" href="#About-us" role="button">ABOUT US</a>
-        <a class="btn btn-primary btn-lg" href="#" role="button">PRICES</a>
-        <a class="btn btn-primary btn-lg" href="#now-showing" role="button">NOW SHOWING</a>
-      </div>
+
+    <nav id="navigation" class="navbar sticky-top navbar-expand-sm shadow">
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a id="buttontest" class="nav-link btn btn-primary btn-lg" href="#About-us" role="button">ABOUT US</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-primary btn-lg" href="#pricing" role="button">PRICES</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-primary btn-lg" href="#now-showing" role="button">NOW SHOWING</a>
+        </li>
+      </ul>
     </nav>
     <div class="head-strip"></div>
     <main>
       <article id='About-us'>
-        <h1 id="about-us-header">About Us</h1>
+        <h1 id="about-us-header">ABOUT US</h1>
         <p>Cinemax is a movie theatre that was established to serve local movie enthuasiasts. </p>
         <p>Eventhough Cinemax was founded a long time ago, our facilites has recently been renovated to make the
           experience of movie going even more enjoyable.</p>
         <br>
-        <hr style="border: white solid 1px;">
 
         <h3>More comfortable seats</h3>
 
@@ -72,7 +85,8 @@
           <div class="col-md-8 seat-info">
             <h5>Standard Seating</h5>
             <p>Our new standard seats will now come with cupholders so you will never have to worry out spilling your
-              drinks ever again. Our new standard seats will now come with more padding than ever before. Not only that, the seat
+              drinks ever again. Our new standard seats will now come with more padding than ever before. Not only that,
+              the seat
               cover is made with high quality faux leather to bring you an enjoyable movie
               exprience.</p>
           </div>
@@ -114,22 +128,103 @@
       </article>
       <div id="break">
       </div>
-      <section id="now-showing">
-        <h1 id="showing-header"><img src="media/movie.png" id="movie-icon">(_NOW_SHOWING_)</h1>
+      <section id="pricing">
+        <h1 id="pricing-header"><img src="media/tickets.png" id="tickets-icon">TICKET PRICES</h1>
+        <br>
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo aut nulla, cumque repellendus aperiam non
           saepe doloribus quod id quis provident enim sed perferendis eligendi illum voluptate cupiditate,
           exercitationem corrupti est iure nobis repudiandae hic sapiente aliquid. Perspiciatis temporibus illum sed
           sequi? Quia, ad? Voluptatum qui doloremque quis cum et, cumque voluptatem nobis magnam recusandae. Tenetur
           quis sint quas animi provident vero, porro sed doloribus. Voluptatem soluta nihil impedit unde? Eligendi non
           possimus maxime itaque, voluptatum quae nesciunt expedita reprehenderit earum numquam aperiam facere ad
-          obcaecati. Accusamus, veritatis dignissimos. Hic maxime ratione porro! Ex repellendus totam, placeat similique
+          obcaecati. Accusamus, veritatis dignissimos. Hic maxime ratione porro! Ex repellendus totam, placeat
+          similique
+          voluptate quod facilis culpa id et minima consequatur veniam excepturi ea. Ratione porro ipsa minima non
+          magnam vero hic iure molestiae illum aliquam repellat perferendis ex maiores est beatae delectus in commodi
+          quae, cupiditate optio sunt soluta consequatur error sed. Voluptatem delectus rem praesentium iste, natus
+          eaque expedita assumenda modi atque? Doloremque!</p>
+          <br>
+        <div class="table-responsive">
+          <table class="table" id="price-table">
+            <thead id="price-head">
+              <tr>
+                <th scope="col">Seat Type</th>
+                <th scope="col">
+                  <p id="Sale-col"><span class="badge badge-success">ALL DAY</span> Monday & Friday <br>
+                    <hr style="border: white solid 1px;"> 12PM <span class="badge badge-success">EVERY</span> weekday
+                  </p>
+                </th>
+                <th scope="col">All other times</th>
+              </tr>
+            </thead>
+            <tbody id="price-body">
+              <tr>
+                <th scope="row">Standard Adult</th>
+                <td>14.00</td>
+                <td>19.80</td>
+              </tr>
+              <tr>
+                <th scope="row">Standard Concession</th>
+                <td>12.50</td>
+                <td>17.50</td>
+              </tr>
+              <tr>
+                <th scope="row">Standard Child</th>
+                <td>11.00</td>
+                <td>15.30</td>
+              </tr>
+              <tr>
+                <th scope="row">First Class Adult</th>
+                <td>24.00</td>
+                <td>30.00</td>
+              </tr>
+              <tr>
+                <th scope="row">First Class Concession</th>
+                <td>22.50</td>
+                <td>27.00</td>
+              </tr>
+              <tr>
+                <th scope="row">First Class Child</th>
+                <td>21.00</td>
+                <td>24.00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <br>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo aut nulla, cumque repellendus aperiam non
+          saepe doloribus quod id quis provident enim sed perferendis eligendi illum voluptate cupiditate,
+          exercitationem corrupti est iure nobis repudiandae hic sapiente aliquid. Perspiciatis temporibus illum sed
+          sequi? Quia, ad? Voluptatum qui doloremque quis cum et, cumque voluptatem nobis magnam recusandae. Tenetur
+          quis sint quas animi provident vero, porro sed doloribus. Voluptatem soluta nihil impedit unde? Eligendi non
+          possimus maxime itaque, voluptatum quae nesciunt expedita reprehenderit earum numquam aperiam facere ad
+          obcaecati. Accusamus, veritatis dignissimos. Hic maxime ratione porro! Ex repellendus totam, placeat
+          similique
+          voluptate quod facilis culpa id et minima consequatur veniam excepturi ea. Ratione porro ipsa minima non
+          magnam vero hic iure molestiae illum aliquam repellat perferendis ex maiores est beatae delectus in commodi
+          quae, cupiditate optio sunt soluta consequatur error sed. Voluptatem delectus rem praesentium iste, natus
+          eaque expedita assumenda modi atque? Doloremque!</p>
+      </section>
+      <div id="break">
+      </div>
+      <section id="now-showing">
+        <h1 id="showing-header"><img src="media/movie.png" id="movie-icon">NOW SHOWING</h1>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo aut nulla, cumque repellendus aperiam non
+          saepe doloribus quod id quis provident enim sed perferendis eligendi illum voluptate cupiditate,
+          exercitationem corrupti est iure nobis repudiandae hic sapiente aliquid. Perspiciatis temporibus illum sed
+          sequi? Quia, ad? Voluptatum qui doloremque quis cum et, cumque voluptatem nobis magnam recusandae. Tenetur
+          quis sint quas animi provident vero, porro sed doloribus. Voluptatem soluta nihil impedit unde? Eligendi non
+          possimus maxime itaque, voluptatum quae nesciunt expedita reprehenderit earum numquam aperiam facere ad
+          obcaecati. Accusamus, veritatis dignissimos. Hic maxime ratione porro! Ex repellendus totam, placeat
+          similique
           voluptate quod facilis culpa id et minima consequatur veniam excepturi ea. Ratione porro ipsa minima non
           magnam vero hic iure molestiae illum aliquam repellat perferendis ex maiores est beatae delectus in commodi
           quae, cupiditate optio sunt soluta consequatur error sed. Voluptatem delectus rem praesentium iste, natus
           eaque expedita assumenda modi atque? Doloremque!</p>
         <div class="row row-cols-1 row-cols-md-2">
-          <div class="col">
-            <div class="card h-100">
+          <div class="col d-flex">
+            <div class="card mb-4 flex-fill">
               <div class="row no-gutters">
                 <div class="col-md-6">
                   <img src="media/avengers.jpg" class="card-img" alt="Avengers Endgame Poster">
@@ -148,8 +243,8 @@
               </div>
             </div>
           </div>
-          <div class="col">
-            <div class="card h-100">
+          <div class="col d-flex">
+            <div class="card mb-4 flex-fill">
               <div class="row no-gutters">
                 <div class="col-md-6">
                   <img src="media/topend-wedding.jpg" class="card-img" alt="Top End Wedding Poster">
@@ -160,7 +255,7 @@
                     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
                       additional content. This content is a little bit longer.</p>
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    <img src="" alt="Rated" width="20%" class="movie-rating">
+                    <img src="media/Mature.png" alt="Rated" width="20%" class="movie-rating">
                   </div>
                 </div>
               </div>
@@ -168,8 +263,8 @@
           </div>
         </div>
         <div class="row row-cols-1 row-cols-md-2">
-          <div class="col">
-            <div class="card h-100">
+          <div class="col d-flex">
+            <div class="card mb-4 flex-fill">
               <div class="row no-gutters">
                 <div class="col-md-6">
                   <img src="media/dumbo.jpg" class="card-img" alt="Dumbo Poster">
@@ -186,8 +281,8 @@
               </div>
             </div>
           </div>
-          <div class="col">
-            <div class="card h-100">
+          <div class="col d-flex">
+            <div class="card mb-4 flex-fill">
               <div class="row no-gutters">
                 <div class="col-md-6">
                   <img src="media/happy-prince.jpg" class="card-img" alt="The Happy Prince Poster">
@@ -206,9 +301,32 @@
           </div>
         </div>
 
-
       </section>
+      <div id="break">
+      </div>
+      <section id="synopsis-area">
+        <h1 id="synopsis-header">MOVIE SYNOPSIS</h1>
+        <div class="row">
+          <div class="col-6 border">
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo aut nulla, cumque repellendus aperiam non
+              saepe doloribus quod id quis provident enim sed perferendis eligendi illum voluptate cupiditate,
+              exercitationem corrupti est iure nobis repudiandae hic sapiente aliquid. Perspiciatis temporibus illum sed
+              sequi? Quia, ad? Voluptatum qui doloremque quis cum et, cumque voluptatem nobis magnam recusandae. Tenetur
+              quis sint quas animi provident vero, porro sed doloribus. Voluptatem soluta nihil impedit unde? Eligendi non
+              possimus maxime itaque, voluptatum quae nesciunt expedita reprehenderit earum numquam aperiam facere ad
+              obcaecati. Accusamus, veritatis dignissimos. Hic maxime ratione porro! Ex repellendus totam, placeat
+              similique
+              voluptate quod facilis culpa id et minima consequatur veniam excepturi ea. Ratione porro ipsa minima non
+              magnam vero hic iure molestiae illum aliquam repellat perferendis ex maiores est beatae delectus in commodi
+              quae, cupiditate optio sunt soluta consequatur error sed. Voluptatem delectus rem praesentium iste, natus
+              eaque expedita assumenda modi atque? Doloremque!</p>
+          </div>
+          <div class="col-6"></div>
+        </div>
+      </section>
+
     </main>
+
     <a href="#top"><img id="TopBtn" src="media/top.png" alt="Back to Top"></a>
 
     <footer>
@@ -222,7 +340,6 @@
       <div><button id='toggleWireframeCSS' onclick='toggleWireframe()'>Toggle Wireframe CSS</button></div>
     </footer>
   </div>
-
 </body>
 
 </html>
