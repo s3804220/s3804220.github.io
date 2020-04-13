@@ -1,33 +1,35 @@
 /* Insert your styles here */
+html{
+    scroll-behavior: smooth;
+}
 body{
     /* Creative Commons image sourced from https://www.pexels.com/photo/architecture-room-indoors-auditorium-109669/ and used for educational purposes only */
-    background-image: url(media/cinema-background.jpg);
+    background-image: url(media/cinema-BG.jpg);
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
 }
 .container{
     font-family: Montserrat, sans-serif;
-    background-color:#606060;
-    color: white;
-}
-#logo{
-
-    height: 150px;
-    width: 150px;
+    background-color: #3C6478;
+    color: #fff;
 }
 .jumbotron{
     /* Creative Commons image sourced from https://www.pexels.com/photo/architecture-building-business-cinema-436413/ and used for educational purposes only */
-    background-image: url(media/jumbotron-background.jpg);
+    background-image: url(media/dolby-bg.png);
     background-size: cover;
     background-position: 0 50%;
     box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.7);
     text-align: center;
 }
-#company-name{
-    font-size: 60px;
+#company {
     color: white;
-    margin-bottom: 0px;
+    text-align: center;
+    font-size: 30px;
+}
+#company-name {
+    font-weight: bold;
+    font-family: Audiowide;
 }
 .head-strip {
     background: url(media/filmstrip.jpg);
@@ -37,10 +39,7 @@ body{
     opacity: 0.8;
 }
 .navbar {
-    background-color: #202020;
-}
-html{
-    scroll-behavior: smooth;
+    background-color: #093145;
 }
 .btn.btn-primary {
     font-family: "Roboto Slab";
@@ -67,8 +66,8 @@ html{
     border: transparent;
 }
 @font-face {
-    font-family: MovieTime;
-    src: url(font/Movie\ Times.ttf);
+    font-family: BudmoJiggler;
+    src: url(font/budmo\ jiggler.ttf);
 }
 #about-us-header{
      /* Creative Commons image sourced from https://www.pexels.com/photo/people-sitting-on-gang-chairs-2774556/ and used for educational purposes only */
@@ -80,22 +79,22 @@ html{
     background-size: 2500px;
     box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.7);
 
+    font-family: "Bungee Inline";
     text-align: center;
     color: white;
     padding: 60px;
-    font-weight: bolder;
 }
-.dolby-sys-img{
+.dolby-sys-img {
     background-color: black;
     width: 300px;
     height: 200px;
 }
 #showing-header, #pricing-header, #synopsis-header {
-    font-family: MovieTime;
+    font-family: BudmoJiggler;
     text-align: center;
     color: rgb(151, 3, 3);
     padding: 30px;
-    background-image: url(media/cinema-sign.png);
+    background-image: url(media/cinema-banner.png);
     background-size: auto 100%;
     opacity: 0.9;
 }
@@ -110,7 +109,7 @@ html{
         font-size: 70px;
     }
     #movie-icon, #tickets-icon {
-        height: 60px;
+        height: 50px;
     }
     #TopBtn {
         width: 70px;
@@ -121,7 +120,7 @@ html{
         font-size: 60px;
     }
     #movie-icon, #tickets-icon {
-        height: 50px;
+        height: 40px;
     }
     #TopBtn {
         width: 60px;
@@ -132,14 +131,14 @@ html{
         font-size: 40px;
     }
     #movie-icon, #tickets-icon {
-        height: 40px;
+        height: 30px;
     }
     #TopBtn {
         width: 50px;
     }
 }
 #About-us, #now-showing, #pricing, #synopsis-area {
-    background-color: #202020;
+    background-color: #093145;
     padding: 30px;
 }
 #break {
@@ -169,6 +168,12 @@ html{
     right: 0px;
     bottom: 0px;
 }
+.movie-rating-synopsis {
+    position: absolute;
+    background-color: #E0E0E0;
+    right: 0px;
+    top: 0px;
+}
 .row.no-gutters {
     display: flex;
 }
@@ -180,16 +185,16 @@ html{
     left: 90%;
 }
 #price-table {
-    border: 5px groove rgb(241, 222, 114);
+    border: 5px groove #43ABC9;
     font-family: Montserrat;
 }
 #price-head tr > th{
     text-align: center;
     display: table-cell;
     vertical-align: middle;
-    border-collapse: collapse;
     color: honeydew;
-    border: 5px groove rgb(241, 222, 114);
+    background-color: #0D3D56;
+    border: 5px groove #43ABC9;
 
 }
 #price-body tr > th, #price-body tr > td {
@@ -199,8 +204,63 @@ html{
     background-color: #E0E0E0;
     border: 2px groove;
 }
+@keyframes myani {
+    0% {border: 5px dashed #43ABC9; background-color: rgba(0, 0, 0, 0.2);}
+    100% {border: 5px dotted #43ABC9; background-color: rgba(0, 0, 0, 0.5);}
+    
+}
+#Sale-col {
+    animation: myani 3s infinite;
+}
 .badge.badge-success {
     font-family: 'Times New Roman', Times, serif;
     font-size: 120%;
     padding: 5px;
+}
+#special-offer {
+    text-align: center;
+    display: inline-block;
+    border: double;
+    padding: 10px;
+    vertical-align: middle;
+    font-weight: bold;
+    color: honeydew;
+    background-color: #0D3D56;
+    border: 4px groove #43ABC9;
+    animation: myani 3s infinite;
+}
+@media screen and (max-width: 800px) {
+    .carousel-indicators, .carousel-indicators li {
+        display: none;
+    }
+}
+.carousel-indicators li {
+    width: 10px;
+    height: 10px;
+    background-color: lightblue;
+    border-radius: 100%;
+}
+.trailer-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px; height: 0; overflow: hidden;
+}
+     
+.trailer-container iframe,
+.trailer-container object,
+.trailer-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.synopsis {
+    padding: 5px;
+    text-align: justify;
+    background-color: #E0E0E0;
+    color: black;
+}
+.synopsis-title {
+    font-weight: bold;
 }
