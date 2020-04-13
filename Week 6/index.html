@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="tool.js"></script>
+    <title>Week 6 </title>
+</head>
+<body>
+    <h1>What's the Date?</h1>
+    <input onkeypress= 'getCurrentDate()' type="text" id='date-text' value='Click the button'>
+    <input onclick= 'getCurrentDate()' type="button" id='date-button' value='Display Date'>
+    <p id='copyright'>&copy Copyright Date Awareness Inc 1990 - </p>
+    <script>
+        var currentDate = new Date();
+        document.getElementById('copyright').innerHTML += currentDate.getFullYear();
+    </script>    
+    <h6>Ask us about the benefits of dynamic dating</h6>
+</body>
+</html>
