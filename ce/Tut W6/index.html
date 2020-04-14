@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tutorial Week 6</title>
-    <script>
-        function hello(){
-            document.getElementById("demo").innerHTML += " and you";
-        }
-    </script>
-</head>
-<body>
-    <p id="demo" onclick="hello()"> Hello to you</p>
-</body>
-</html>
+<html><head>
+
+  </head>
+  <body>
+    <div id="b" onclick="alertB()">I am the div with id=b</div>
+  
+  <script>
+    function alertB() {
+      var a = document.getElementById('b');
+      alert(a.innerHTML);
+    }
+  </script>
+      <script>alertB();</script>
+</body></html>

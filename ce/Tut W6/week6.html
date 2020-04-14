@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<input type="text" id="text">
+<input type="button" value="Alert me" onclick="hello()">
+<p id="wow" onclick="upper()">Click me</p>
+<script>
+    function hello(){
+        var x = document.getElementById('text').value
+        if (x == ''){
+            alert('Type something first.')
+        }
+        else{
+            alert(x.toUpperCase());
+        }
+    }
+    function upper(){
+        var y = document.getElementById("wow").innerHTML;
+        document.getElementById("wow").innerHTML = y.toUpperCase();
+    }
+</script>
+</body>
+</html>
