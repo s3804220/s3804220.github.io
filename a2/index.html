@@ -22,6 +22,7 @@
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
 
+
   <!-- Link to style.css -->
   <link id='stylecss' type="text/css" rel="stylesheet" href="style.css">
 
@@ -92,18 +93,23 @@
           </a>
         </div>
         <br>
-        <h1 id="about-us-header">ABOUT US</h1>
-        <br>
-
-        <p>Cinemax is a movie theatre that was established to serve local movie enthuasiasts. Eventhough Cinemax was
-          founded a long time ago, our facilites has recently been renovated to make the experience of movie going even
-          more enjoyable. This is an homage to all the that this local communnity has supported us, so we also wanted to
-          give back to this lovely town.</p>
+        <div id="intro">
+          <h1 id="about-us-header">ABOUT US</h1>
+          <br>
+          <p style="text-align: justify;">Cinemax is a movie theatre that was established to serve local movie
+            enthuasiasts. Even though Cinemax was
+            founded a long time ago, our facilites has recently been renovated to make the experience of movie going
+            even
+            more enjoyable. This is an homage to all the that this local communnity has supported us, so we also wanted
+            to
+            give back to this lovely town.</p>
+        </div>
         <br>
 
         <h3 id="seat-intro">More comfortable seats</h3>
 
-        <p>Our goal is for you to have an immersive movie experience, with that in mind, we would like to introduce you
+        <p class="intro-text">Our goal is for you to have an immersive movie experience, with that in mind, we would
+          like to introduce you
           to our newly equipped seats with better cushioning system. We acknowledge that movies' durations can be
           extensive, these newly upgraded seats will ensure your comfortability and prevent lumbar and back pain. </p>
 
@@ -115,7 +121,8 @@
           </div>
           <div class="col-md-8 seat-info">
             <h5>Standard Seating</h5>
-            <p>Our new standard seats will now come with cupholders so you will never have to worry out spilling your
+            <p class="intro-text">Our new standard seats will now come with cupholders so you will never have to worry
+              out spilling your
               drinks ever again. Our new standard seats will now come with more padding than ever before. Not only that,
               the seat
               cover is made with high quality faux leather to bring you an enjoyable movie
@@ -132,7 +139,8 @@
           <div class="col-md-8 seat-info">
             <div class="seat-content">
               <h5>First Class Seating</h5>
-              <p>For those who craves a more luxurious movie experience, we have updated our first class furnitures.
+              <p class="intro-text">For those who craves a more luxurious movie experience, we have updated our first
+                class furnitures.
                 Which
                 includes real leather covers, reclinable seats for a more comfortable sitting position to retractable
                 tables to store all your needs. Never will you miss "the good part" of the movie from reaching down your
@@ -142,11 +150,12 @@
         </div>
 
         <br>
-        <hr style="border: grey solid 1px;" width="75%">
+        <hr style="border: grey solid 1px;" size="10px">
         <br>
 
         <h3>Cutting edge projection and sound system</h3>
-        <p>As a stride toward cutting edge movie technologies, we have upgraded our movie projection and sound systems.
+        <p class="intro-text">As a stride toward cutting edge movie technologies, we have upgraded our movie projection
+          and sound systems.
           We officially partnered with Dolby to brings you the best movie viewing experience without any compromises
           thanks to their Dolby 3D Vision and Dolby Atmos technologies.</p>
 
@@ -159,11 +168,20 @@
           <div class="col-md-8 dolby-info">
             <div class="dolby-content">
               <h5 id="Dolby-vision">Dolby 3D Vision</h5>
-              <p>With Dolby 3D Vision, you now have the option to view your favorite upcoming movies in 3D with out any
+              <p class="intro-text">With Dolby 3D Vision, you now have the option to view your favorite upcoming movies
+                in 3D with out any
                 compromise to the video quality. Integrated with advanced HDR technology, movies quality will now come
                 with a wider spectrum of color palette and contrast range. Furthermore, thanks to Dolby's 3D technology,
                 our 3D option will now have superior picture quality comparing to other projection technologies. Not
                 only that it comes with better 3D glasses which have diffrent sizes to fit both adult and children.</p>
+              <a class="more-info" data-toggle="collapse" href="#collapseInfo">
+                More information
+              </a>
+            </div>
+          </div>
+          <div class="collapse" id="collapseInfo">
+            <div class="card card-body">
+              SHOW OFF TECHNOLOGY IMAGES HERE
             </div>
           </div>
         </div>
@@ -177,7 +195,8 @@
           <div class="col-md-8 dolby-info">
             <div class="dolby-content">
               <h5 id="Dolby-atmos">Dolby Atmos</h5>
-              <p>Dolby Atmos will gives you powerfull and moving audio by using multiple speakers placed all around the
+              <p class="intro-text">Dolby Atmos will gives you powerfull and moving audio by using multiple speakers
+                placed all around the
                 room to give use high definition sound quality so that you can now pick up every bit of sound that the
                 sound producers intended you to pick up, even the tiny sounds such as when a movie character steps on a
                 twig or things approaching from behind. As the result, movies now come to live like never before making
@@ -193,13 +212,32 @@
       <div id="break">
       </div>
       <section id="pricing">
-        <h1 id="pricing-header"><img src="media/tickets.png" id="tickets-icon">TICKET PRICES</h1>
+        <h1 id="pricing-header"><img src="media/tickets.svg" id="tickets-icon" alt="Tickets icon"> TICKET PRICES</h1>
         <br>
-        <h4 id="special-offer"><img src="media/popcorn.svg" alt="Popcorn icon"
-            style="width: 50px; vertical-align: bottom;">CELEBRATE OUR GRAND RE-OPENING WITH <img
+        <h4 id="special-offer">CELEBRATE OUR GRAND RE-OPENING WITH <img
             src="media/special-offer.png" alt="Special offer icon" style="width: 120px; vertical-align: bottom;"></h4>
         <br>
-        <p>Some promotional paragraph or image here...
+        <img src="media/promotion-banner.jpg" alt="Promotion banner" width="100%">
+        <br>
+        <p>To celebrate our re-opening and welcome back old as well as new movie-goers, we are offering special discounts on
+          tickets for every type of seats. The discounted periods are:
+          <ul>
+          <li>
+            <img src="media/popcorn.svg" alt="Popcorn icon"
+            style="width: 40px; vertical-align: bottom;"> At 12PM on weekdays (from Monday to Friday <em>only</em>, does not include Saturday nor Sunday)
+        </li>
+        <li>
+          <img src="media/popcorn.svg" alt="Popcorn icon"
+            style="width: 40px; vertical-align: bottom;"> All day long on Mondays <strong>and</strong> Wednesdays
+        </li>
+        </ul>
+        For more detailed information on our prices, please refer to the <a href="#price-table" id="price-ref">price table</a> below.
+        <br>
+        <br>
+        We have <strong>6</strong> types of seats for customers to choose from, including both adult and child seats. We hope the variety of cinema seatings will provide our audience with the best comfort.
+        <i>Images of the seats can be found below.</i>
+        <br>
+        IMAGES IMAGES
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo aut nulla, cumque repellendus aperiam non
           saepe doloribus quod id quis provident enim sed perferendis eligendi illum voluptate cupiditate,
           exercitationem corrupti est iure nobis repudiandae hic sapiente aliquid. Perspiciatis temporibus illum sed
@@ -213,56 +251,55 @@
           <table class="table" id="price-table">
             <thead id="price-head">
               <tr>
-                <th scope="col">Seat Type</th>
-                <th scope="col" id="Sale-col">
-                  <p><span class="badge badge-success">ALL DAY</span> Monday & Friday <br>
+                <th scope="col" id="seat-head">Seat Type <span class="badge badge-dark">Seat Code</span></th>
+                <th scope="col" id="sale-head">
+                  <p><span class="badge badge-success">ALL DAY</span> Monday & Wednesday <br>
                     <hr style="border: white solid 1px;"> 12PM <span class="badge badge-success">EVERY</span> weekday
                   </p>
                 </th>
-                <th scope="col">All other times</th>
+                <th scope="col" id="time-head">All other times</th>
               </tr>
             </thead>
             <tbody id="price-body">
               <tr>
-                <th scope="row">Standard Adult</th>
+                <th scope="row">Standard Adult <span class="badge badge-dark">STA</span></th>
                 <td>14.00</td>
                 <td>19.80</td>
               </tr>
               <tr>
-                <th scope="row">Standard Concession</th>
+                <th scope="row">Standard Concession <span class="badge badge-dark">STP</span></th>
                 <td>12.50</td>
                 <td>17.50</td>
               </tr>
               <tr>
-                <th scope="row">Standard Child</th>
+                <th scope="row">Standard Child <span class="badge badge-dark">STC</span></th>
                 <td>11.00</td>
                 <td>15.30</td>
               </tr>
               <tr>
-                <th scope="row">First Class Adult</th>
+                <th scope="row">First Class Adult <span class="badge badge-dark">FCA</span></th>
                 <td>24.00</td>
                 <td>30.00</td>
               </tr>
               <tr>
-                <th scope="row">First Class Concession</th>
+                <th scope="row">First Class Concession <span class="badge badge-dark">FCP</span></th>
                 <td>22.50</td>
                 <td>27.00</td>
               </tr>
               <tr>
-                <th scope="row">First Class Child</th>
+                <th scope="row">First Class Child <span class="badge badge-dark">FCC</span></th>
                 <td>21.00</td>
                 <td>24.00</td>
               </tr>
             </tbody>
           </table>
         </div>
-
         <br>
       </section>
       <div id="break">
       </div>
       <section id="now-showing">
-        <h1 id="showing-header"><img src="media/movie.png" id="movie-icon">NOW SHOWING</h1>
+        <h1 id="showing-header"><img src="media/camera.svg" id="movie-icon" alt="Camera icon"> NOW SHOWING</h1>
         <br>
         <div id="carouselMovies" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
@@ -297,7 +334,7 @@
         <br>
         <div class="row row-cols-1 row-cols-md-2">
           <div class="col d-flex">
-            <div class="card mb-4 flex-fill">
+            <div class="card mb-4 flex-fill movie-card">
               <div class="row no-gutters">
                 <div class="col-md-6">
                   <img src="media/avengers.jpg" class="card-img" alt="Avengers Endgame Poster">
@@ -309,7 +346,9 @@
                     <p class="card-text">Day - Hour</p>
                     <p class="card-text">Day - Hour</p>
                     <p class="card-text">Day - Hour</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <br>
+                    <p class="card-text more-details"><a href="#synopsis-area"><img src="media/clapperboard.svg"
+                          alt="clapperboard icon" class="more-details-icon"> More details</a></p>
                     <img src="media/PG-13.svg" alt="Rated PG-13" width="40%" class="movie-rating">
                   </div>
                 </div>
@@ -317,7 +356,7 @@
             </div>
           </div>
           <div class="col d-flex">
-            <div class="card mb-4 flex-fill">
+            <div class="card mb-4 flex-fill movie-card">
               <div class="row no-gutters">
                 <div class="col-md-6">
                   <img src="media/topend-wedding.jpg" class="card-img" alt="Top End Wedding Poster">
@@ -329,7 +368,9 @@
                     <p class="card-text">Day - Hour</p>
                     <p class="card-text">Day - Hour</p>
                     <p class="card-text">Day - Hour</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <br>
+                    <p class="card-text more-details"><a href="#synopsis-area"><img src="media/clapperboard.svg"
+                          alt="clapperboard icon" class="more-details-icon"> More details</a></p>
                     <img src="media/Mature.png" alt="Rated" width="20%" class="movie-rating">
                   </div>
                 </div>
@@ -339,7 +380,7 @@
         </div>
         <div class="row row-cols-1 row-cols-md-2">
           <div class="col d-flex">
-            <div class="card mb-4 flex-fill">
+            <div class="card mb-4 flex-fill movie-card">
               <div class="row no-gutters">
                 <div class="col-md-6">
                   <img src="media/dumbo.jpg" class="card-img" alt="Dumbo Poster">
@@ -351,7 +392,9 @@
                     <p class="card-text">Day - Hour</p>
                     <p class="card-text">Day - Hour</p>
                     <p class="card-text">Day - Hour</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <br>
+                    <p class="card-text more-details"><a href="#synopsis-area"><img src="media/clapperboard.svg"
+                          alt="clapperboard icon" class="more-details-icon"> More details</a></p>
                     <img src="media/G.svg" alt="Rated G" width="20%" class="movie-rating">
                   </div>
                 </div>
@@ -359,7 +402,7 @@
             </div>
           </div>
           <div class="col d-flex">
-            <div class="card mb-4 flex-fill">
+            <div class="card mb-4 flex-fill movie-card">
               <div class="row no-gutters">
                 <div class="col-md-6">
                   <img src="media/happy-prince.jpg" class="card-img" alt="The Happy Prince Poster">
@@ -371,7 +414,9 @@
                     <p class="card-text">Day - Hour</p>
                     <p class="card-text">Day - Hour</p>
                     <p class="card-text">Day - Hour</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <br>
+                    <p class="card-text more-details"><a href="#synopsis-area"><img src="media/clapperboard.svg"
+                          alt="clapperboard icon" class="more-details-icon"> More details</a></p>
                     <img src="media/R.svg" alt="Rated R" width="20%" class="movie-rating">
                   </div>
                 </div>
@@ -383,26 +428,67 @@
       </section>
       <div id="break">
       </div>
-      <section id="synopsis-area">
+      <section id="synopsis-section">
         <h1 id="synopsis-header">MOVIE SYNOPSIS</h1>
         <br>
-        <div class="row border synopsis">
-          <div class="col-md-6">
-            <h5 class="synopsis-title">Avengers: Endgame <img src="media/PG-13.svg" alt="Rated PG-13" width="20%"
-                class="movie-rating-synopsis"></h5>
-            <br>
-            <h6>Plot summary: </h6>
-            <p>After vanishing half the population of the galaxy, Thanos was on the edge of fulfilling his mission.
-              However, the rest of the heroes, including Tony Stark (Iron Man), Thor, Captain America, etc. are trying
-              to look for a plan to bring back their love ones and allies to unite once again in order to fight back
-              Thanos and his army. This is the perfect sequel to Avengers Infinity War. This movie ensures a thrilling
-              and action packed movie experience.</p>
+        <div id="synopsis-area">
+          <div class="row synopsis">
+            <div class="col-md-6">
+              <h5 class="synopsis-title">Avengers: Endgame <img src="media/PG-13.svg" alt="Rated PG-13" width="20%"
+                  class="movie-rating-synopsis"></h5>
+            </div>
           </div>
-          <div class="col-md-6 order-first order-md-last">
-            <div class="trailer-container"><iframe width="560" height="315"
-                src="https://www.youtube.com/embed/TcMBFSGVi1c" frameborder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe></div>
+          <div class="row synopsis">
+            <div class="col-md-6">
+              <h6 id="summary-head"><img class="synop-icon" src="media/video-camera.png" alt="Video icon"> Plot summary:
+              </h6>
+              <p style="text-align: justify;">After vanishing half the population of the galaxy, Thanos was on the edge
+                of fulfilling his mission.
+                However, the rest of the heroes, including Tony Stark (Iron Man), Thor, Captain America, etc. are trying
+                to look for a plan to bring back their love ones and allies to unite once again in order to fight back
+                Thanos and his army. This is the perfect sequel to Avengers Infinity War. This movie ensures a thrilling
+                and action packed movie experience.</p>
+            </div>
+            <div class="col-md-6 order-first order-md-last">
+              <div class="trailer-container"><iframe width="560" height="315"
+                  src="https://www.youtube.com/embed/TcMBFSGVi1c" frameborder="0"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen></iframe></div>
+            </div>
+          </div>
+          <div class="row synopsis">
+            <div class="col-md-4">
+              <h5 id="booking-head"><img class="synop-icon" src="media/book-tickets.png" alt="Tickets icon"> Make a
+                Booking:</h5>
+            </div>
+            <div class="col-md-8" id="booking-btn-row">
+              <a class="booking-btn" data-toggle="modal" data-target=".booking-modal" role="button">Day - Hour</a>
+              <a class="booking-btn" data-toggle="modal" data-target=".booking-modal" role="button">Day - Hour</a>
+              <a class="booking-btn" data-toggle="modal" data-target=".booking-modal" role="button">Day - Hour</a>
+              <a class="booking-btn" data-toggle="modal" data-target=".booking-modal" role="button">Day - Hour</a>
+              <a class="booking-btn" data-toggle="modal" data-target=".booking-modal" role="button">Day - Hour</a>
+              <a class="booking-btn" data-toggle="modal" data-target=".booking-modal" role="button">Day - Hour</a>
+            </div>
+          </div>
+          <div class="modal fade booking-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+              <div class="modal-content booking-content">
+                <div class="modal-header booking-header">
+                  <h5 class="modal-title"><b>Booking Form</b></h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body booking-form">
+                  <p>Put the booking form here...</p>
+                </div>
+                <div class="modal-footer booking-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

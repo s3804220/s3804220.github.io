@@ -25,7 +25,6 @@ body{
 #company {
     color: white;
     text-align: center;
-    font-size: 30px;
 }
 #company-name {
     font-weight: bold;
@@ -41,14 +40,14 @@ body{
 .navbar {
     background-color: #093145;
 }
-.btn.btn-primary {
+.nav-item > .btn.btn-primary {
     font-family: "Roboto Slab";
     color: #fff;
     background-color: transparent;
     border-color: transparent;
     margin: 10px;
 }
-.btn.btn-primary:hover {
+.nav-item > .btn.btn-primary:hover {
     font-family: "Roboto Slab";
     font-weight: bold;
     color: rgb(151, 3, 3);
@@ -58,7 +57,7 @@ body{
     background-color: #E0E0E0;
 
 }
-.btn.btn-primary:active, .btn.btn-primary:focus, .btn.btn-primary:active:focus {
+.nav-item > .btn.btn-primary:active, .nav-item > .btn.btn-primary:focus, .nav-item > .btn.btn-primary:active:focus {
     font-family: "Roboto Slab";
     background: #757575;
     background-color: #757575;
@@ -69,20 +68,30 @@ body{
     font-family: BudmoJiggler;
     src: url(font/budmo\ jiggler.ttf);
 }
-#about-us-header{
+#intro {
      /* Creative Commons image sourced from https://www.pexels.com/photo/people-sitting-on-gang-chairs-2774556/ and used for educational purposes only */
-    background-image: url(media/about-us-header-img.jpg);
+    background-image: url(media/curtain-bg.jpg);
     
+    background-size: contain;
+    background-position: top;
     background-attachment: fixed;
-    background-position: bottom;
     background-repeat: no-repeat;
-    background-size: 2500px;
-    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.7);
 
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.7);
+    padding: 60px;
+}
+#about-us-header {
     font-family: "Bungee Inline";
     text-align: center;
     color: white;
-    padding: 60px;
+}
+.intro-text {
+    text-align: justify;
+}
+.dolby-sys-img {
+    background-color: black;
+    width: 300px;
+    height: 200px;
 }
 .dolby-sys-img {
     background-color: black;
@@ -101,9 +110,6 @@ body{
 #movie-icon, #tickets-icon {
     vertical-align: baseline;
 }
-#tickets-icon {
-    rotate: -30deg;
-}
 @media screen and (min-width: 901px) {
     #showing-header, #pricing-header, #synopsis-header {
         font-size: 70px;
@@ -113,6 +119,9 @@ body{
     }
     #TopBtn {
         width: 70px;
+    }
+    #company {
+        font-size: 30px;
     }
 }
 @media screen and (max-width: 900px) and (min-width: 601px) {
@@ -125,6 +134,12 @@ body{
     #TopBtn {
         width: 60px;
     }
+    #company {
+        font-size: 25px;
+    }
+    #logo {
+        height: 50px;
+    }
 }
 @media screen and (max-width: 600px) {
     #showing-header, #pricing-header, #synopsis-header {
@@ -136,8 +151,14 @@ body{
     #TopBtn {
         width: 50px;
     }
+    #company {
+        font-size: 20px;
+    }
+    #logo {
+        height: 50px;
+    }
 }
-#About-us, #now-showing, #pricing, #synopsis-area {
+#About-us, #now-showing, #pricing, #synopsis-section {
     background-color: #093145;
     padding: 30px;
 }
@@ -148,10 +169,10 @@ body{
     height: 30px;
     opacity: 0.8;
 }
-.card {
+.movie-card {
     border-style: groove;
-    border-width: 10px;
-    border-color: #837e7e;
+    border-width: 5px;
+    border-color: #43ABC9;
     padding: 5px;
     background-color: #E0E0E0;
 }
@@ -168,12 +189,6 @@ body{
     right: 0px;
     bottom: 0px;
 }
-.movie-rating-synopsis {
-    position: absolute;
-    background-color: #E0E0E0;
-    right: 0px;
-    top: 0px;
-}
 .row.no-gutters {
     display: flex;
 }
@@ -185,30 +200,28 @@ body{
     left: 90%;
 }
 #price-table {
-    border: 5px groove #43ABC9;
+    border-collapse: separate; 
     font-family: Montserrat;
 }
-#price-head tr > th{
+#price-head tr > th {
     text-align: center;
-    display: table-cell;
     vertical-align: middle;
     color: honeydew;
     background-color: #0D3D56;
-    border: 5px groove #43ABC9;
 }
 #price-body tr > th, #price-body tr > td {
     border-collapse: collapse;
     color: #1b1b1b;
     text-align: center;
-    background-color: #E0E0E0;
-    border: 2px groove;
+    background-color: #E0FFFF;
+    border: 1px groove;
 }
 @keyframes myani {
     0% {border: 5px dashed #43ABC9; background-color: rgba(0, 0, 0, 0.2);}
     100% {border: 5px dotted #43ABC9; background-color: rgba(0, 0, 0, 0.5);}
     
 }
-#Sale-col {
+#sale-head {
     animation: myani 3s infinite;
 }
 .badge.badge-success {
@@ -218,7 +231,6 @@ body{
 }
 #special-offer {
     text-align: center;
-    display: inline-block;
     border: double;
     padding: 10px;
     vertical-align: middle;
@@ -226,7 +238,6 @@ body{
     color: honeydew;
     background-color: #0D3D56;
     border: 4px groove #43ABC9;
-    animation: myani 3s infinite;
 }
 @media screen and (max-width: 800px) {
     .carousel-indicators, .carousel-indicators li {
@@ -238,6 +249,21 @@ body{
     height: 10px;
     background-color: lightblue;
     border-radius: 100%;
+}
+#price-ref {
+    display: inline-block;
+}
+#price-ref:link, #price-ref:visited {
+    font-weight: bold;
+    padding: 5px;
+    border: double;
+    color: darksalmon;
+}
+#price-ref:hover {
+    font-weight: bold;
+    padding: 5px;
+    border: double;
+    color: yellow;
 }
 .trailer-container {
     position: relative;
@@ -254,12 +280,94 @@ body{
     width: 100%;
     height: 100%;
 }
+#synopsis-area {
+    background-image: url(media/synopsis-bg.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    border: double #3C6478;
+    padding: 5px;
+}
 .synopsis {
     padding: 5px;
-    text-align: justify;
-    background-color: #E0E0E0;
-    color: black;
 }
 .synopsis-title {
     font-weight: bold;
+    padding: 10px;
+    box-shadow: inset 0px 0px 60px rgba(0, 0, 0, 0.6);
+}
+.movie-rating-synopsis {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    background-color: honeydew;
+}
+#seat-head {
+    border-top-left-radius: 50px;
+    border: 5px groove #43ABC9;
+}
+#time-head {
+    border-top-right-radius: 50px;
+    border: 5px groove #43ABC9;
+}
+#booking-head {
+    font-weight: bold;
+}
+.booking-btn {
+    border: 5px aqua double;
+    background-color: #093145;
+    padding: 5px;
+    display: inline-block;
+    margin: 5px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+#booking-btn-row > .booking-btn:hover, .booking-btn:focus {
+    border: 5px yellow groove;
+    text-decoration: none;
+    margin: 0px;
+    background-color: #202020;
+    color: yellow;
+    font-weight: bold;
+}
+.booking-content {
+    color: black;
+}
+#booking-btn-row {
+}
+.synop-icon {
+    height: 40px;
+}
+.more-details-icon {
+    height: 30px;
+    vertical-align: bottom;
+}
+#summary-head {
+    font-weight: bold;
+    font-size: larger;
+}
+#collapseInfo {
+    color: black;
+}
+.more-details > a:link {
+    font-weight: bold;
+    padding: 5px;
+    border: 2px dotted;
+}
+.more-details > a:visited {
+    font-weight: bold;
+    color: darkblue;
+    padding: 5px;
+    border: 2px dotted;
+}
+.more-details > a:hover {
+    color: darkred;
+    text-decoration: none;
+}
+.booking-header, .booking-footer {
+    background-color: #093145;
+    color: honeydew;
+}
+.booking-form {
+    background-color: #3C6478;
+    color: honeydew;
 }
