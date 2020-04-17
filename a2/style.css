@@ -173,6 +173,10 @@ body {
     border: dotted;
     padding: 5px;
 }
+.more-info > .seat-center > .seat-btn:hover, .more-info > .seat-center > .seat-btn:focus{
+    border: dotted;
+    padding: 5px;
+}
 .movie-card {
     border-style: groove;
     border-width: 5px;
@@ -372,11 +376,11 @@ body {
     border: 2px dotted;
     text-decoration: none;
 }
-.dolby-header, .dolby-footer {
+.seat-header, .dolby-header, .seat-footer, .dolby-footer {
     background-color: #093145;
     color: honeydew;
 }
-.dolby-body {
+.seat-body, .dolby-body {
     background-color: #3C6478;
     color: honeydew;
 }
