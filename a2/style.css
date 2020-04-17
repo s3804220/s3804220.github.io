@@ -1,21 +1,19 @@
 /* Insert your styles here */
-html{
+html {
     scroll-behavior: smooth;
 }
-body{
-    /* Creative Commons image sourced from https://www.pexels.com/photo/architecture-room-indoors-auditorium-109669/ and used for educational purposes only */
+body {
     background-image: url(media/cinema-BG.jpg);
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
 }
-.container{
+.container {
     font-family: Montserrat, sans-serif;
     background-color: #3C6478;
     color: #fff;
 }
-.jumbotron{
-    /* Creative Commons image sourced from https://www.pexels.com/photo/architecture-building-business-cinema-436413/ and used for educational purposes only */
+.jumbotron {
     background-image: url(media/dolby-bg.png);
     background-size: cover;
     background-position: 0 50%;
@@ -80,6 +78,9 @@ body{
     box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.7);
     padding: 60px;
 }
+.content-title {
+    font-weight: bold;
+}
 #about-us-header {
     font-family: "Bungee Inline";
     text-align: center;
@@ -89,7 +90,7 @@ body{
     text-align: justify;
 }
 .dolby-sys-img {
-    background-color: black;
+    background-color: #1d1d1d;
     width: 300px;
     height: 200px;
 }
@@ -153,7 +154,7 @@ body{
         height: 50px;
     }
 }
-#About-us, #now-showing, #pricing, #synopsis-section {
+#About-us, #now-showing, #pricing, #synopsis-section, #booking-section {
     background-color: #093145;
     padding: 30px;
 }
@@ -164,6 +165,14 @@ body{
     height: 30px;
     opacity: 0.8;
 }
+.more-info {
+    font-weight: bold;
+    color: #3FE0D0;
+}
+.more-info > .dolby-btn:hover, .more-info > .dolby-btn:focus {
+    border: dotted;
+    padding: 5px;
+}
 .movie-card {
     border-style: groove;
     border-width: 5px;
@@ -171,21 +180,30 @@ body{
     padding: 5px;
     background-color: #E0E0E0;
 }
-.card-title, .card-text {
+.card-text.showtime {
     font-family: "Roboto Slab";
     color: black;
     text-align: center;
+    line-height: 200%;
+}
+.card-text.more-details {
+    text-align: center;
 }
 .card-title {
+    font-family: "Roboto Slab";
+    color: black;
     font-weight: bold;
+    text-align: center;
 }
 .movie-rating {
     position: absolute;
     right: 0px;
     bottom: 0px;
 }
-.row.no-gutters {
-    display: flex;
+.movie-poster {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 2px #404040 solid;
 }
 #TopBtn {
     position: fixed;
@@ -196,7 +214,8 @@ body{
 }
 #price-table {
     border-collapse: separate; 
-    font-family: Montserrat;
+    font-family: Lato;
+    font-size: large;
 }
 #price-head tr > th {
     text-align: center;
@@ -221,7 +240,7 @@ body{
 }
 .badge.badge-success {
     font-family: 'Times New Roman', Times, serif;
-    font-size: 120%;
+    font-size: 110%;
     padding: 5px;
 }
 #special-offer {
@@ -292,9 +311,10 @@ body{
 }
 .movie-rating-synopsis {
     position: absolute;
-    right: 0px;
-    top: 0px;
-    background-color: honeydew;
+    right: 5px;
+    top: 5px;
+    width: 20%;
+    background-color: #fff;
 }
 #seat-head {
     border-top-left-radius: 50px;
@@ -315,19 +335,14 @@ body{
     margin: 5px;
     border-radius: 10px;
     font-weight: bold;
+    color: #fff;
 }
-#booking-btn-row > .booking-btn:hover, .booking-btn:focus {
+.booking-btn:hover {
     border: 5px yellow groove;
     text-decoration: none;
-    margin: 0px;
     background-color: #202020;
     color: yellow;
     font-weight: bold;
-}
-.booking-content {
-    color: black;
-}
-#booking-btn-row {
 }
 .synop-icon {
     height: 40px;
@@ -346,23 +361,22 @@ body{
 .more-details > a:link {
     font-weight: bold;
     padding: 5px;
-    border: 2px dotted;
 }
 .more-details > a:visited {
     font-weight: bold;
     color: darkblue;
     padding: 5px;
-    border: 2px dotted;
 }
 .more-details > a:hover {
     color: darkred;
+    border: 2px dotted;
     text-decoration: none;
 }
-.booking-header, .booking-footer {
+.dolby-header, .dolby-footer {
     background-color: #093145;
     color: honeydew;
 }
-.booking-form {
+.dolby-body {
     background-color: #3C6478;
     color: honeydew;
 }

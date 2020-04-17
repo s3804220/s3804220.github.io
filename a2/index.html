@@ -31,6 +31,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bungee+Inline">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 
   <!-- Link to web icon-->
   <!-- Creative Commons image sourced from https://www.freelogodesign.org/preview?lang=en&name=&logo=3cb08b7e-706d-4539-a663-82c8ea221204 and used for educational purposes only -->
@@ -68,9 +69,20 @@
     <div class="head-strip"></div>
     <main>
       <article id='About-us'>
-        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+        <div id="headBanner" class="carousel slide carousel-fade" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#headBanner" data-slide-to="0" class="active"></li>
+            <li data-target="#headBanner" data-slide-to="1"></li>
+            <li data-target="#headBanner" data-slide-to="2"></li>
+            <li data-target="#headBanner" data-slide-to="3"></li>
+            <li data-target="#headBanner" data-slide-to="4"></li>
+          </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
+              <a href="#now-showing"><img src="media/showing-banner.jpg" class="d-block w-100"
+                  alt="Now Showing banner"></a>
+            </div>
+            <div class="carousel-item">
               <a href="#seat-intro"><img src="media/seating-banner.jpg" class="d-block w-100"
                   alt="Cinema seats banner"></a>
             </div>
@@ -82,12 +94,15 @@
               <a href="#Dolby-atmos"><img src="media/dolby-atmos-banner.jpg" class="d-block w-100"
                   alt="Dolby Atmos banner"></a>
             </div>
+            <div class="carousel-item">
+              <a href="#pricing"><img src="media/deal-banner.jpg" class="d-block w-100" alt="Special deals banner"></a>
+            </div>
           </div>
-          <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+          <a class="carousel-control-prev" href="#headBanner" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
           </a>
-          <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+          <a class="carousel-control-next" href="#headBanner" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
           </a>
@@ -107,7 +122,7 @@
         </div>
         <br>
 
-        <h3 id="seat-intro">More comfortable seats</h3>
+        <h3 id="seat-intro" class="content-title">More comfortable seats</h3>
 
         <p class="intro-text">Our goal is for you to have an immersive movie experience, with that in mind, we would
           like to introduce you
@@ -121,7 +136,7 @@
             <img src="media/standard-seat.jpg" alt="standard-seat" class="img-fluid  seat-img">
           </div>
           <div class="col-md-8 seat-info">
-            <h5>Standard Seating</h5>
+            <h5 class="content-title">Standard Seating</h5>
             <p class="intro-text">Our new standard seats will now come with cupholders so you will never have to worry
               out spilling your
               drinks ever again. Our new standard seats will now come with more padding than ever before. Not only that,
@@ -139,7 +154,7 @@
           </div>
           <div class="col-md-8 seat-info">
             <div class="seat-content">
-              <h5>First Class Seating</h5>
+              <h5 class="content-title">First Class Seating</h5>
               <p class="intro-text">For those who craves a more luxurious movie experience, we have updated our first
                 class furnitures.
                 Which
@@ -154,7 +169,7 @@
         <hr style="border: grey solid 1px;" size="10px">
         <br>
 
-        <h3>Cutting edge projection and sound system</h3>
+        <h3 class="content-title">Cutting edge projection and sound system</h3>
         <p class="intro-text">As a stride toward cutting edge movie technologies, we have upgraded our movie projection
           and sound systems.
           We officially partnered with Dolby to brings you the best movie viewing experience without any compromises
@@ -168,49 +183,59 @@
           </div>
           <div class="col-md-8 dolby-info">
             <div class="dolby-content">
-              <h5 id="Dolby-vision">Dolby 3D Vision</h5>
+              <h5 id="Dolby-vision" class="content-title">Dolby 3D Vision</h5>
               <p class="intro-text">With Dolby 3D Vision, you now have the option to view your favorite upcoming movies
                 in 3D with out any
                 compromise to the video quality. Integrated with advanced HDR technology, movies quality will now come
                 with a wider spectrum of color palette and contrast range. Furthermore, thanks to Dolby's 3D technology,
                 our 3D option will now have superior picture quality comparing to other projection technologies. Not
                 only that it comes with better 3D glasses which have diffrent sizes to fit both adult and children.</p>
-              <a class="more-info" data-toggle="collapse" href="#collapseInfo">
-                More information
-              </a>
+              <div class="more-info">
+                <a class="dolby-btn" data-toggle="modal" data-target="#dVision-modal" role="button">
+                  >> Snippet of the cinematic world through Dolby Vision
+                </a>
+              </div>
             </div>
           </div>
-          <div class="collapse" id="collapseInfo">
-            <div class="card card-body" style="width: 100%;">
-              <div id="carouselExampleFade1" class="carousel slide carousel-fade" data-ride="carousel">
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img src="media/dolby-vision-img1.png" class="img-fluid" alt="Dolby Vision Image 1"
-                      style="width: 100%; height: 500px;">
+        </div>
+        <div id="dVision-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+            <div class="modal-content dolby-expand">
+              <div class="modal-header dolby-header">
+                <h5 class="modal-title"><b>Dolby 3D Vision</b></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body dolby-body">
+                <div id="dVision-slide" class="carousel slide carousel-fade" data-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="media/dolby-vision-img1.png" class="img-fluid" alt="Dolby Vision Image 1">
+                    </div>
+                    <div class=" carousel-item">
+                      <img src="media/dolby-vision-img2.png" class="img-fluid" alt="Dolby Vision Image 2">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="media/dolby-vision-img3.png" class="img-fluid" alt="Dolby Vision Image 3">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="media/dolby-vision-img4.png" class="img-fluid" alt="Dolby Vision Image 4">
+                    </div>
                   </div>
-                  <div class=" carousel-item">
-                    <img src="media/dolby-vision-img2.png" class="img-fluid" alt="Dolby Vision Image 2"
-                      style="width: 100%; height: 500px;">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="media/dolby-vision-img3.png" class="img-fluid" alt="Dolby Vision Image 3"
-                      style="width: 100%; height: 500px;">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="media/dolby-vision-img4.png" class="img-fluid" alt="Dolby Vision Image 4"
-                      style="width: 100%; height: 500px;">
-                  </div>
+                  <a class="carousel-control-prev" href="#dVision-slide" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#dVision-slide" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleFade1" role="button" data-slide="prev"
-                  style="right: 75; ">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleFade1" role="button" data-slide="next"
-                  style="left: 75; ">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
-                </a>
+              </div>
+              <div class="modal-footer dolby-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
@@ -225,20 +250,70 @@
           </div>
           <div class="col-md-8 dolby-info">
             <div class="dolby-content">
-              <h5 id="Dolby-atmos">Dolby Atmos</h5>
+              <h5 id="Dolby-atmos" class="content-title">Dolby Atmos</h5>
               <p class="intro-text">Dolby Atmos will gives you powerfull and moving audio by using multiple speakers
                 placed all around the
                 room to give use high definition sound quality so that you can now pick up every bit of sound that the
                 sound producers intended you to pick up, even the tiny sounds such as when a movie character steps on a
                 twig or things approaching from behind. As the result, movies now come to live like never before making
                 you feel even more immmersed in them.</p>
+              <div class="more-info">
+                <a class="dolby-btn" data-toggle="modal" data-target="#dAtmos-modal" role="button">
+                  >> Snippet of the cinematic world through Dolby Atmos
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="dAtmos-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+            <div class="modal-content dolby-expand">
+              <div class="modal-header dolby-header">
+                <h5 class="modal-title"><b>Dolby Atmos</b></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body dolby-body">
+                <div id="dAtmos-slide" class="carousel slide carousel-fade" data-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <p style="font-weight: bold; text-align: center;">The world of sound - Dolby Atmos</p>
+                      <iframe width="560" height="315" src="https://www.youtube.com/embed/91BUM3WhCfo" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen style="display: block; margin: 0 auto;"></iframe>
+                    </div>
+                    <div class="carousel-item">
+                      <img src="media/dolby-atmos1.jpg" class="img-fluid" alt="Dolby Atmos Image 1">
+                    </div>
+                    <div class=" carousel-item">
+                      <img src="media/dolby-atmos2.jpg" class="img-fluid" alt="Dolby Atmos Image 2">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="media/dolby-atmos3.jpg" class="img-fluid" alt="Dolby Atmos Image 3">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="media/dolby-atmos4.jpg" class="img-fluid" alt="Dolby Atmos Image 4">
+                    </div>
+                  </div>
+                  <a class="carousel-control-prev" href="#dAtmos-slide" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#dAtmos-slide" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </div>
+              </div>
+              <div class="modal-footer dolby-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
             </div>
           </div>
         </div>
 
-
-        <!-- Creative Commons image sourced from https://pixabay.com/en/maintenance-under-construction-2422173/ and used for educational purposes only -->
-        <!-- <img src='../../media/website-under-construction.png' alt='Website Under Construction' /> -->
       </article>
       <div id="break">
       </div>
@@ -248,7 +323,7 @@
         <h4 id="special-offer">CELEBRATE OUR GRAND RE-OPENING WITH <img src="media/special-offer.png"
             alt="Special offer icon" style="width: 120px; vertical-align: bottom;"></h4>
         <br>
-        <img src="media/promotion-banner.jpg" alt="Promotion banner" width="100%">
+        <img src="media/promotion-banner.jpg" alt="Promotion banner" class="img-fluid">
         <br>
         <p>To celebrate our re-opening and welcome back old as well as new movie-goers, we are offering special
           discounts on
@@ -370,21 +445,26 @@
           <div class="col d-flex">
             <div class="card mb-4 flex-fill movie-card">
               <div class="row no-gutters">
-                <div class="col-md-6">
-                  <img src="media/avengers.jpg" class="card-img" alt="Avengers Endgame Poster">
+                <div class="col-lg-6">
+                  <img src="media/avengers.jpg" class="card-img movie-poster" alt="Avengers Endgame Poster">
                 </div>
-                <div class="col-md-6">
+                <div class="col-lg-6">
                   <div class="card-body">
                     <h5 class="card-title">Avengers: Endgame</h5>
-                    <p class="card-text">Wednesday - 9pm</p>
-                    <p class="card-text">Thursday - 9pm</p>
-                    <p class="card-text">Friday - 9pm</p>
-                    <p class="card-text">Saturday - 6pm</p>
-                    <p class="card-text">Sunday - 6pm</p>
+                    <p class="card-text showtime">Wednesday - 9pm
+                      <br>
+                      Thursday - 9pm
+                      <br>
+                      Friday - 9pm
+                      <br>
+                      Saturday - 6pm
+                      <br>
+                      Sunday - 6pm
+                    </p>
                     <br>
                     <p class="card-text more-details"><a href="#synopsis-area"><img src="media/clapperboard.svg"
-                          alt="clapperboard icon" class="more-details-icon"> More details</a></p>
-                    <img src="media/PG-13.svg" alt="Rated PG-13" width="40%" class="movie-rating">
+                          alt="clapperboard icon" class="more-details-icon"> Details & Booking</a></p>
+                    <img src="media/PG-13.svg" alt="Rated PG-13" width="35%" class="movie-rating">
                   </div>
                 </div>
               </div>
@@ -393,20 +473,25 @@
           <div class="col d-flex">
             <div class="card mb-4 flex-fill movie-card">
               <div class="row no-gutters">
-                <div class="col-md-6">
-                  <img src="media/topend-wedding.jpg" class="card-img" alt="Top End Wedding Poster">
+                <div class="col-lg-6">
+                  <img src="media/topend-wedding.jpg" class="card-img movie-poster" alt="Top End Wedding Poster">
                 </div>
-                <div class="col-md-6">
+                <div class="col-lg-6">
                   <div class="card-body">
                     <h5 class="card-title">Top End Wedding</h5>
-                    <p class="card-text">Monday - 6pm</p>
-                    <p class="card-text">Tuesday - 6pm</p>
-                    <p class="card-text">Saturday - 3pm</p>
-                    <p class="card-text">Sunday - 3pm</p>
-                    <br>
-                    <p class="card-text more-details"><a href="#synopsis-area"><img src="media/clapperboard.svg"
-                          alt="clapperboard icon" class="more-details-icon"> More details</a></p>
-                    <img src="media/Mature.png" alt="Rated" width="20%" class="movie-rating">
+                    <p class="card-text showtime">Monday - 6pm
+                      <br>
+                      Tuesday - 6pm
+                      <br>
+                      Saturday - 3pm
+                      <br>
+                      Sunday - 3pm
+                      <br>
+                      <br>
+                      <br>
+                      <p class="card-text more-details"><a href="#synopsis-area"><img src="media/clapperboard.svg"
+                            alt="clapperboard icon" class="more-details-icon"> Details & Booking</a></p>
+                      <img src="media/Mature.png" alt="Rated" width="15%" class="movie-rating">
                   </div>
                 </div>
               </div>
@@ -417,23 +502,31 @@
           <div class="col d-flex">
             <div class="card mb-4 flex-fill movie-card">
               <div class="row no-gutters">
-                <div class="col-md-6">
-                  <img src="media/dumbo.jpg" class="card-img" alt="Dumbo Poster">
+                <div class="col-lg-6">
+                  <img src="media/dumbo.jpg" class="card-img movie-poster" alt="Dumbo Poster">
                 </div>
-                <div class="col-md-6">
+                <div class="col-lg-6">
                   <div class="card-body">
                     <h5 class="card-title">Dumbo</h5>
-                    <p class="card-text">Monday - 12pm</p>
-                    <p class="card-text">Tuesday - 12pm</p>
-                    <p class="card-text">Wednesday - 6pm</p>
-                    <p class="card-text">Thursday - 6pm</p>
-                    <p class="card-text">Friday - 6pm</p>
-                    <p class="card-text">Saturday - 12pm</p>
-                    <p class="card-text">Sunday - 12pm</p>
+                    <p class="card-text showtime">Monday - 12pm
+                      <br>
+                      Tuesday - 12pm
+                      <br>
+                      Wednesday - 6pm
+                      <br>
+                      Thursday - 6pm
+                      <br>
+                      Friday - 6pm
+                      <br>
+                      Saturday - 12pm
+                      <br>
+                      Sunday - 12pm
+                    </p>
                     <br>
                     <p class="card-text more-details"><a href="#synopsis-area"><img src="media/clapperboard.svg"
-                          alt="clapperboard icon" class="more-details-icon"> More details</a></p>
-                    <img src="media/G.svg" alt="Rated G" width="20%" class="movie-rating">
+                          alt="clapperboard icon" class="more-details-icon"> Details & Booking</a></p>
+
+                    <img src="media/G.svg" alt="Rated G" width="15%" class="movie-rating">
                   </div>
                 </div>
               </div>
@@ -442,29 +535,36 @@
           <div class="col d-flex">
             <div class="card mb-4 flex-fill movie-card">
               <div class="row no-gutters">
-                <div class="col-md-6">
-                  <img src="media/happy-prince.jpg" class="card-img" alt="The Happy Prince Poster">
+                <div class="col-lg-6">
+                  <img src="media/happy-prince.jpg" class="card-img movie-poster" alt="The Happy Prince Poster">
                 </div>
-                <div class="col-md-6">
+                <div class="col-lg-6">
                   <div class="card-body">
                     <h5 class="card-title">The Happy Prince</h5>
-                    <p class="card-text">Wednesday - 12pm</p>
-                    <p class="card-text">Thursday - 12pm</p>
-                    <p class="card-text">Friday - 12pm</p>
-                    <p class="card-text">Saturday - 9pm</p>
-                    <p class="card-text">Sunday - 9pm</p>
+                    <p class="card-text showtime">Wednesday - 12pm
+                      <br>
+                      Thursday - 12pm
+                      <br>
+                      Friday - 12pm
+                      <br>
+                      Saturday - 9pm
+                      <br>
+                      Sunday - 9pm
+                    </p>
+                    <br>
+                    <br>
                     <br>
                     <p class="card-text more-details"><a href="#synopsis-area"><img src="media/clapperboard.svg"
-                          alt="clapperboard icon" class="more-details-icon"> More details</a></p>
-                    <img src="media/R.svg" alt="Rated R" width="20%" class="movie-rating">
+                          alt="clapperboard icon" class="more-details-icon"> Details & Booking</a></p>
+                    <img src="media/R.svg" alt="Rated R" width="15%" class="movie-rating">
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
       </section>
+
       <div id="break">
       </div>
       <section id="synopsis-section">
@@ -473,7 +573,7 @@
         <div id="synopsis-area">
           <div class="row synopsis">
             <div class="col-md-6">
-              <h5 class="synopsis-title">Avengers: Endgame <img src="media/PG-13.svg" alt="Rated PG-13" width="20%"
+              <h5 class="synopsis-title">Avengers: Endgame <img src="media/PG-13.svg" alt="Rated PG-13"
                   class="movie-rating-synopsis"></h5>
             </div>
           </div>
@@ -501,37 +601,33 @@
               <h5 id="booking-head"><img class="synop-icon" src="media/book-tickets.png" alt="Tickets icon"> Make a
                 Booking:</h5>
             </div>
-            <div class="col-md-8" id="booking-btn-row">
-              <a class="booking-btn" data-toggle="modal" data-target=".booking-modal" role="button">Day - Hour</a>
-              <a class="booking-btn" data-toggle="modal" data-target=".booking-modal" role="button">Day - Hour</a>
-              <a class="booking-btn" data-toggle="modal" data-target=".booking-modal" role="button">Day - Hour</a>
-              <a class="booking-btn" data-toggle="modal" data-target=".booking-modal" role="button">Day - Hour</a>
-              <a class="booking-btn" data-toggle="modal" data-target=".booking-modal" role="button">Day - Hour</a>
-              <a class="booking-btn" data-toggle="modal" data-target=".booking-modal" role="button">Day - Hour</a>
-            </div>
-          </div>
-          <div class="modal fade booking-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-              <div class="modal-content booking-content">
-                <div class="modal-header booking-header">
-                  <h5 class="modal-title"><b>Booking Form</b></h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body booking-form">
-                  <p>Put the booking form here...</p>
-                </div>
-                <div class="modal-footer booking-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-              </div>
+            <div class="col-md-8">
+
+              <a class="booking-btn" data-toggle="collapse" href="#Booking-collapse" role="button" aria-expanded="false"
+                aria-controls="Booking-collapse">Day - Hour</a>
+              <a class="booking-btn" data-toggle="collapse" href="#Booking-collapse" role="button" aria-expanded="false"
+                aria-controls="Booking-collapse">Day - Hour</a>
+              <a class="booking-btn" data-toggle="collapse" href="#Booking-collapse" role="button" aria-expanded="false"
+                aria-controls="Booking-collapse">Day - Hour</a>
+              <a class="booking-btn" data-toggle="collapse" href="#Booking-collapse" role="button" aria-expanded="false"
+                aria-controls="Booking-collapse">Day - Hour</a>
+              <a class="booking-btn" data-toggle="collapse" href="#Booking-collapse" role="button" aria-expanded="false"
+                aria-controls="Booking-collapse">Day - Hour</a>
+
             </div>
           </div>
         </div>
       </section>
+      <div class="collapse" id="Booking-collapse">
+        <div id="break">
+        </div>
+        <section id="booking-section">
+          <h1 id="booking-header"><b>BOOK YOUR TICKET</b></h1>
+          <br>
+          <!-- Creative Commons image sourced from https://pixabay.com/en/maintenance-under-construction-2422173/ and used for educational purposes only -->
+          <img src='media/website-under-construction.png' alt='Website Under Construction' class="img-fluid">
+        </section>
+      </div>
 
     </main>
 
