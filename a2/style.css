@@ -67,7 +67,6 @@ body {
     src: url(font/budmo\ jiggler.ttf);
 }
 #intro {
-     /* Creative Commons image sourced from https://www.pexels.com/photo/people-sitting-on-gang-chairs-2774556/ and used for educational purposes only */
     background-image: url(media/curtain-bg.jpg);
     
     background-size: contain;
@@ -77,6 +76,18 @@ body {
 
     box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.7);
     padding: 60px;
+}
+#about-div {
+    background-image: url(media/about-div.jpg);
+    
+    background-size: cover;
+    background-position: bottom;
+    background-size: 2000px;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.7);
+    padding: 100px;
 }
 .content-title {
     font-weight: bold;
@@ -89,10 +100,23 @@ body {
 .intro-text {
     text-align: justify;
 }
+.lobby-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.carousel-caption {
+    background-color: rgba(9, 49, 69, 0.9);
+    text-align: center;
+}
 .dolby-sys-img {
     background-color: #1d1d1d;
     width: 300px;
     height: 200px;
+    margin: 10px;
+}
+.seat-img {
+    padding: 10px;
 }
 #showing-header, #pricing-header, #synopsis-header {
     font-family: BudmoJiggler;
@@ -154,7 +178,7 @@ body {
         height: 50px;
     }
 }
-#About-us, #now-showing, #pricing, #synopsis-section, #booking-section {
+#About-us, #now-showing, #pricing, #synopsis-section, #booking-section, #contact-info {
     background-color: #093145;
     padding: 30px;
 }
@@ -275,7 +299,7 @@ body {
     font-weight: bold;
     padding: 5px;
     border: double;
-    color: darksalmon;
+    color: #3FE0D0;
 }
 #price-ref:hover {
     font-weight: bold;
@@ -283,12 +307,21 @@ body {
     border: double;
     color: yellow;
 }
+.seat-description {
+    font-weight: bold;
+    text-align: center;
+}
+.seating-type {
+    padding: 5px;
+}
+.seat-toggle:hover {
+    border: 2px dotted honeydew;
+}
 .trailer-container {
     position: relative;
     padding-bottom: 56.25%;
     padding-top: 30px; height: 0; overflow: hidden;
 }
-     
 .trailer-container iframe,
 .trailer-container object,
 .trailer-container embed {
@@ -383,4 +416,13 @@ body {
 .seat-body, .dolby-body {
     background-color: #3C6478;
     color: honeydew;
+}
+.git-link {
+    color: deepskyblue;
+    text-decoration: none;
+}
+.git-link:hover {
+    font-weight: bold;
+    color: cornsilk;
+    text-decoration: underline;
 }

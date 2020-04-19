@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Assignment 2 - Cinemax</title>
+  <title>Cinemax</title>
 
   <!-- Keep wireframe.css for debugging, add your css to style.css -->
   <link id='wireframecss' type="text/css" rel="stylesheet" href="../wireframe.css" disabled>
@@ -122,6 +122,100 @@
         </div>
         <br>
 
+        <h3 id="cinema-intro" class="content-title">Complete renovations</h3>
+        <p class="intro-text">The experience of movie-goers is not contained only in the screen room, but it is in their
+          every interaction with our cinema: from stepping in to get tickets, waiting for friends, to activities like
+          buying popcorn or taking photos.
+          <br>
+          With that thought in mind, we have renovated our cinema to not only bring customers comfort <em>during</em>
+          the movie-watching time, but also <em>before</em> and <em>after</em> watching the movie.</p>
+        <div class="row">
+          <div class="col-md-4">
+            <img src="media/main-lobby.jpeg" alt="Main lobby image" class="img-fluid" style="padding: 10px;">
+          </div>
+          <div class="col-md-8">
+            <p class="intro-text">
+              Our lobby has been upgraded to include more food and drinks to suit customer's needs, as well as more
+              chairs
+              and even comfy sofas for customer to relax on. Other areas have also been renovated to bring a more
+              stylish, modern and enjoyable experience to movie-goers.
+            </p>
+            <div class="more-info">
+              <a class="dolby-btn" data-toggle="modal" data-target="#cinemalayout-modal" role="button">
+                >> A more detailed look of our new cinema layout can be found here
+              </a>
+            </div>
+          </div>
+        </div>
+        <div id="cinemalayout-modal" class="modal fade" tabindex="-1" role="dialog"
+          aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+            <div class="modal-content dolby-expand">
+              <div class="modal-header dolby-header">
+                <h5 class="modal-title"><b>Cinemax layout</b></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body dolby-body">
+                <div id="cinemalayout-slide" class="carousel slide carousel-fade" data-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="media/lobby-1.jpg" class="img-fluid lobby-img" alt="Cinema Layout Image 1">
+                      <div class="carousel-caption d-none d-md-block">
+                        <p>Upgraded hallway to screen rooms with large, easy-to-see numbers and smooth flooring!</p>
+                      </div>
+                    </div>
+                    <div class=" carousel-item">
+                      <img src="media/lobby-2.jpg" class="img-fluid lobby-img" alt="Cinema Layout Image 2">
+                      <div class="carousel-caption d-none d-md-block">
+                        <p>More popcorns - the staple movie snack! Plus other food and drinks!</p>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <img src="media/lobby-3.jpg" class="img-fluid lobby-img" alt="Cinema Layout Image 3">
+                      <div class="carousel-caption d-none d-md-block">
+                        <p>Hallway to washrooms even have a cinematic feel!</p>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <img src="media/lobby-4.jpg" class="img-fluid lobby-img" alt="Cinema Layout Image 4">
+                      <div class="carousel-caption d-none d-md-block">
+                        <p>Cool cardboard images and posters of currently showing movies to take pictures and show off
+                          with friends!</p>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <img src="media/lobby-5.jpg" class="img-fluid lobby-img" alt="Cinema Layout Image 5">
+                      <div class="carousel-caption d-none d-md-block">
+                        <p>Kids (and older animated-movie-lovers) have something to take pictures with too!</p>
+                      </div>
+                    </div>
+                  </div>
+                  <a class="carousel-control-prev" href="#cinemalayout-slide" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#cinemalayout-slide" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </div>
+              </div>
+              <div class="modal-footer dolby-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+
+        <p class="intro-text">Of course, we did not forget to upgrade the <em>actual</em> movie-watching experience in
+          the screen room. You can find
+          out more about our newly installed seats and cinematic systems below. <img src="media/down-arrow.png"
+            alt="Down arrow icon" height="25em" width="25em"></p>
+        <br>
+
         <h3 id="seat-intro" class="content-title">More comfortable seats</h3>
 
         <p class="intro-text">Our goal is for you to have an immersive movie experience, with that in mind, we would
@@ -133,7 +227,7 @@
 
         <div class="row">
           <div class="col-md-4">
-            <img src="media/standard-seat.jpg" alt="standard-seat" class="img-fluid  seat-img">
+            <img src="media/standard-seat.jpg" alt="standard-seat" class="img-fluid seat-img">
           </div>
           <div class="col-md-8 seat-info">
             <h5 class="content-title">Standard Seating</h5>
@@ -150,7 +244,7 @@
 
         <div class="row">
           <div class="col-md-4">
-            <img src="media/first-class-seat.jpg" alt="first-class-seat" class="img-fluid  seat-img">
+            <img src="media/first-class-seat.jpg" alt="first-class-seat" class="img-fluid seat-img">
           </div>
           <div class="col-md-8 seat-info">
             <div class="seat-content">
@@ -167,8 +261,8 @@
         <br><br>
         <div class="more-info">
           <div style="text-align: center;" class="seat-center">
-            <a class="seat-btn" data-toggle="modal" data-target="#seat-modal"
-              role="button">>> Snippet of our newly upgraded high quality seats</a></div>
+            <a class="seat-btn" data-toggle="modal" data-target="#seat-modal" role="button">>> Snippet of our newly
+              upgraded high quality seats</a></div>
         </div>
         <div id="seat-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
           aria-hidden="true">
@@ -184,18 +278,26 @@
                 <div id="seat-slide" class="carousel slide carousel-fade" data-ride="carousel">
                   <div class="carousel-inner">
                     <div class="carousel-item active">
-                      <img src="media/seat-img.jpeg" class="img-fluid" alt="Seat Image 1" style="width:100%; height:555px;">
+                      <img src="media/seat-img.jpeg" class="img-fluid" alt="Seat Image 1"
+                        style="width:100%; height:555px;">
                     </div>
                     <div class=" carousel-item">
-                      <img src="media/seat-img1.jpg" class="img-fluid" alt="Seat Image 2" style="width:100%; height:555px;">
+                      <img src="media/seat-img0.jpg" class="img-fluid" alt="Seat Image 2"
+                        style="width:100%; height:555px;">
+                    </div>
+                    <div class=" carousel-item">
+                      <img src="media/seat-img1.jpg" class="img-fluid" alt="Seat Image 3"
+                        style="width:100%; height:555px;">
                     </div>
                     <div class="carousel-item">
-                      <img src="media/seat-img3.jpg" class="img-fluid" alt="Seat Image 3" style="width:100%; height:555px;">
+                      <img src="media/seat-img3.jpg" class="img-fluid" alt="Seat Image 4"
+                        style="width:100%; height:555px;">
                     </div>
                     <div class="carousel-item">
-                      <img src="media/seat-img2.jpg" class="img-fluid" alt="Seat Image 4" style="width:100%; height:555px;">
+                      <img src="media/seat-img2.jpg" class="img-fluid" alt="Seat Image 5"
+                        style="width:100%; height:555px;">
                     </div>
-                    
+
                   </div>
                   <a class="carousel-control-prev" href="#seat-slide" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -216,6 +318,8 @@
 
         <br>
         <hr style="border: grey solid 1px;" size="10px">
+        <div id="about-div">
+        </div>
         <br>
 
         <h3 class="content-title">Cutting edge projection and sound system</h3>
@@ -228,7 +332,7 @@
 
         <div class="row">
           <div class="col-md-4">
-            <img src="media/dolby-vision-img.png" alt="first-class-seat" class="img-fluid dolby-sys-img">
+            <img src="media/dolby-vision-img.png" alt="Dolby Vision Image" class="img-fluid dolby-sys-img">
           </div>
           <div class="col-md-8 dolby-info">
             <div class="dolby-content">
@@ -238,7 +342,8 @@
                 compromise to the video quality. Integrated with advanced HDR technology, movies quality will now come
                 with a wider spectrum of color palette and contrast range. Furthermore, thanks to Dolby's 3D technology,
                 our 3D option will now have superior picture quality comparing to other projection technologies. Not
-                only that it comes with better 3D glasses which have diffrent sizes to fit both adult and children.</p>
+                only that, it also comes with better 3D glasses which have different sizes to fit both adult and
+                children.</p>
               <div class="more-info">
                 <a class="dolby-btn" data-toggle="modal" data-target="#dVision-modal" role="button">
                   >> Snippet of the cinematic world through Dolby Vision
@@ -295,17 +400,19 @@
 
         <div class="row">
           <div class="col-md-4">
-            <img src="media/dolby-atmos-img.png" alt="first-class-seat" class="img-fluid dolby-sys-img">
+            <img src="media/dolby-atmos-img.png" alt="Dolby Atmos Image" class="img-fluid dolby-sys-img">
           </div>
           <div class="col-md-8 dolby-info">
             <div class="dolby-content">
               <h5 id="Dolby-atmos" class="content-title">Dolby Atmos</h5>
-              <p class="intro-text">Dolby Atmos will gives you powerfull and moving audio by using multiple speakers
-                placed all around the
-                room to give use high definition sound quality so that you can now pick up every bit of sound that the
-                sound producers intended you to pick up, even the tiny sounds such as when a movie character steps on a
-                twig or things approaching from behind. As the result, movies now come to live like never before making
-                you feel even more immmersed in them.</p>
+              <p class="intro-text">Dolby Atmos will give you powerful and moving audio by using multiple speakers
+                placed all around the room to give out high definition sound quality, so that you can now pick up every
+                bit of sound that the
+                sound producers intended for you to pick up, even the tiniest sounds such as when a movie character
+                steps on a
+                twig or things approaching from behind. As the result, movies now come to life like never before -
+                making
+                the experience even more immersive for the audience.</p>
               <div class="more-info">
                 <a class="dolby-btn" data-toggle="modal" data-target="#dAtmos-modal" role="button">
                   >> Snippet of the cinematic world through Dolby Atmos
@@ -373,10 +480,10 @@
             alt="Special offer icon" style="width: 120px; vertical-align: bottom;"></h4>
         <br>
         <img src="media/promotion-banner.jpg" alt="Promotion banner" class="img-fluid">
-        <br>
-        <p>To celebrate our re-opening and welcome back old as well as new movie-goers, we are offering special
-          discounts on
-          tickets for every type of seats. The discounted periods are:
+        <br><br>
+        <p class="intro-text">As an event to celebrate our re-opening and welcome back old as well as new movie-goers, we are offering
+          special
+          discounts on tickets for every type of seats. The discounted periods are:
           <ul>
             <li>
               <img src="media/popcorn.svg" alt="Popcorn icon" style="width: 40px; vertical-align: bottom;"> At 12PM on
@@ -391,68 +498,183 @@
             table</a> below.
           <br>
           <br>
-          We have <strong>6</strong> types of seats for customers to choose from, including both adult and child seats.
-          We hope the variety of cinema seatings will provide our audience with the best comfort.
-          <i>Images of the seats can be found below.</i>
+          <p class="intro-text">We have <strong>6</strong> types of seats for customers to choose from, including seats fitted for both
+            adult
+            and children.
+            We hope the different choices of cinema seatings will provide our audience with the best comfort.</p>
+
+          <i>Images of the seats can be found below (click to enlarge).</i>
+          <br><br>
+          <div class="row">
+            <div class="col-md-4">
+              <a role="button" data-toggle="modal" data-target="#sta-seat"><img src="media/STA.jpg"
+                  alt="Standard Adult Seats" class="img-fluid seating-type seat-toggle"></a>
+              <p class="seat-description">Standard Adult Seats</p>
+            </div>
+            <div class="col-md-4">
+              <a role="button" data-toggle="modal" data-target="#stp-seat"><img src="media/STP.jpg"
+                  alt="Standard Concession Seats" class="img-fluid seating-type seat-toggle"></a>
+              <p class="seat-description">Standard Concession Seats</p>
+            </div>
+            <div class="col-md-4">
+              <a role="button" data-toggle="modal" data-target="#stc-seat"><img src="media/STC.jpg"
+                  alt="Standard Child Seats" class="img-fluid seating-type seat-toggle"></a>
+              <p class="seat-description">Standard Child Seats</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <a role="button" data-toggle="modal" data-target="#fca-seat"><img src="media/FCA.jpg"
+                  alt="First Class Adult Seats" class="img-fluid seating-type seat-toggle"></a>
+              <p class="seat-description">First Class Adult Seats</p>
+            </div>
+            <div class="col-md-4">
+              <a role="button" data-toggle="modal" data-target="#fcp-seat"><img src="media/FCP.jpg"
+                  alt="First Class Concession Seats" class="img-fluid seating-type seat-toggle"></a>
+              <p class="seat-description">First Class Concession Seats</p>
+            </div>
+            <div class="col-md-4">
+              <a role="button" data-toggle="modal" data-target="#fcc-seat"><img src="media/FCC.jpg"
+                  alt="First Class Child Seats" class="img-fluid seating-type seat-toggle"></a>
+              <p class="seat-description">First Class Child Seats</p>
+            </div>
+          </div>
+          <div id="sta-seat" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-body dolby-body">
+                  <img src="media/STA.jpg" alt="Standard Adult Seats" class="img-fluid seating-type">
+                </div>
+                <div class="modal-footer dolby-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="stp-seat" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-body dolby-body">
+                  <img src="media/STP.jpg" alt="Standard Concession Seats" class="img-fluid seating-type">
+                </div>
+                <div class="modal-footer dolby-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="stc-seat" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-body dolby-body">
+                  <img src="media/STC.jpg" alt="Standard Child Seats" class="img-fluid seating-type">
+                </div>
+                <div class="modal-footer dolby-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="fca-seat" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-body dolby-body">
+                  <img src="media/FCA.jpg" alt="First Class Adult Seats" class="img-fluid seating-type">
+                </div>
+                <div class="modal-footer dolby-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="fcp-seat" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-body dolby-body">
+                  <img src="media/FCP.jpg" alt="First Class Concession Seats" class="img-fluid seating-type">
+                </div>
+                <div class="modal-footer dolby-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="fcc-seat" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-body dolby-body">
+                  <img src="media/FCC.jpg" alt="First Class Child Seats" class="img-fluid seating-type">
+                </div>
+                <div class="modal-footer dolby-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
           <br>
-          IMAGES IMAGES
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo aut nulla, cumque repellendus aperiam non
-          saepe doloribus quod id quis provident enim sed perferendis eligendi illum voluptate cupiditate,
-          exercitationem corrupti est iure nobis repudiandae hic sapiente aliquid. Perspiciatis temporibus illum sed
-          sequi? Quia, ad? Voluptatum qui doloremque quis cum et, cumque voluptatem nobis magnam recusandae. Tenetur
-          quis sint quas animi provident vero, porro sed doloribus. Voluptatem soluta nihil impedit unde? Eligendi non
-          possimus maxime itaque, voluptatum quae nesciunt expedita reprehenderit earum numquam aperiam facere ad
-          obcaecati.
-        </p>
-        <br>
-        <div class="table-responsive">
-          <table class="table" id="price-table">
-            <thead id="price-head">
-              <tr>
-                <th scope="col" id="seat-head">Seat Type <span class="badge badge-dark">Seat Code</span></th>
-                <th scope="col" id="sale-head">
-                  <p><span class="badge badge-success">ALL DAY</span> Monday & Wednesday <br>
-                    <hr style="border: white solid 1px;"> 12PM <span class="badge badge-success">EVERY</span> weekday
-                  </p>
-                </th>
-                <th scope="col" id="time-head">All other times</th>
-              </tr>
-            </thead>
-            <tbody id="price-body">
-              <tr>
-                <th scope="row">Standard Adult <span class="badge badge-dark">STA</span></th>
-                <td>14.00</td>
-                <td>19.80</td>
-              </tr>
-              <tr>
-                <th scope="row">Standard Concession <span class="badge badge-dark">STP</span></th>
-                <td>12.50</td>
-                <td>17.50</td>
-              </tr>
-              <tr>
-                <th scope="row">Standard Child <span class="badge badge-dark">STC</span></th>
-                <td>11.00</td>
-                <td>15.30</td>
-              </tr>
-              <tr>
-                <th scope="row">First Class Adult <span class="badge badge-dark">FCA</span></th>
-                <td>24.00</td>
-                <td>30.00</td>
-              </tr>
-              <tr>
-                <th scope="row">First Class Concession <span class="badge badge-dark">FCP</span></th>
-                <td>22.50</td>
-                <td>27.00</td>
-              </tr>
-              <tr>
-                <th scope="row">First Class Child <span class="badge badge-dark">FCC</span></th>
-                <td>21.00</td>
-                <td>24.00</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <br>
+          <p class="intro-text">
+            With the variety of seats installed in our cinema, plus the lighting in the screen room as well as any extra
+            equipments provided (such as tables for putting belongings, food or beverages), we hope customers can feel
+            at
+            home while enjoying the best movie experience without any discomfort or interference.
+            Please choose tickets for the seats to your liking, we hope to see you real soon!
+          </p>
+          <br>
+          <h5>Pricing table:</h5>
+          <div class="table-responsive">
+            <table class="table" id="price-table">
+              <thead id="price-head">
+                <tr>
+                  <th scope="col" id="seat-head">Seat Type <span class="badge badge-dark">Seat Code</span></th>
+                  <th scope="col" id="sale-head">
+                    <p><span class="badge badge-success">ALL DAY</span> Monday & Wednesday <br>
+                      <hr style="border: white solid 1px;"> 12PM <span class="badge badge-success">EVERY</span> weekday
+                    </p>
+                  </th>
+                  <th scope="col" id="time-head">All other times</th>
+                </tr>
+              </thead>
+              <tbody id="price-body">
+                <tr>
+                  <th scope="row">Standard Adult <span class="badge badge-dark">STA</span></th>
+                  <td>14.00</td>
+                  <td>19.80</td>
+                </tr>
+                <tr>
+                  <th scope="row">Standard Concession <span class="badge badge-dark">STP</span></th>
+                  <td>12.50</td>
+                  <td>17.50</td>
+                </tr>
+                <tr>
+                  <th scope="row">Standard Child <span class="badge badge-dark">STC</span></th>
+                  <td>11.00</td>
+                  <td>15.30</td>
+                </tr>
+                <tr>
+                  <th scope="row">First Class Adult <span class="badge badge-dark">FCA</span></th>
+                  <td>24.00</td>
+                  <td>30.00</td>
+                </tr>
+                <tr>
+                  <th scope="row">First Class Concession <span class="badge badge-dark">FCP</span></th>
+                  <td>22.50</td>
+                  <td>27.00</td>
+                </tr>
+                <tr>
+                  <th scope="row">First Class Child <span class="badge badge-dark">FCC</span></th>
+                  <td>21.00</td>
+                  <td>24.00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <br>
       </section>
       <div id="break">
       </div>
@@ -490,6 +712,9 @@
           </a>
         </div>
         <br>
+        <p>To read the movie's synopsis, watch the trailer and book tickets, please refer to the "Details & Booking"
+          link for each movie.</p>
+
         <div class="row row-cols-1 row-cols-md-2">
           <div class="col d-flex">
             <div class="card mb-4 flex-fill movie-card">
@@ -628,7 +853,8 @@
           </div>
           <div class="row synopsis">
             <div class="col-md-6">
-              <h6 id="summary-head"><img class="synop-icon" src="media/video-camera.png" alt="Video icon"> Plot summary:
+              <h6 id="summary-head"><img class="synop-icon" src="media/video-camera.png" alt="Video icon"> Plot
+                description:
               </h6>
               <p style="text-align: justify;">After vanishing half the population of the galaxy, Thanos was on the edge
                 of fulfilling his mission.
@@ -653,15 +879,15 @@
             <div class="col-md-8">
 
               <a class="booking-btn" data-toggle="collapse" href="#Booking-collapse" role="button" aria-expanded="false"
-                aria-controls="Booking-collapse">Day - Hour</a>
+                aria-controls="Booking-collapse">Wednesday - 9pm</a>
               <a class="booking-btn" data-toggle="collapse" href="#Booking-collapse" role="button" aria-expanded="false"
-                aria-controls="Booking-collapse">Day - Hour</a>
+                aria-controls="Booking-collapse">Thursday - 9pm</a>
               <a class="booking-btn" data-toggle="collapse" href="#Booking-collapse" role="button" aria-expanded="false"
-                aria-controls="Booking-collapse">Day - Hour</a>
+                aria-controls="Booking-collapse">Friday - 9pm</a>
               <a class="booking-btn" data-toggle="collapse" href="#Booking-collapse" role="button" aria-expanded="false"
-                aria-controls="Booking-collapse">Day - Hour</a>
+                aria-controls="Booking-collapse">Saturday - 6pm</a>
               <a class="booking-btn" data-toggle="collapse" href="#Booking-collapse" role="button" aria-expanded="false"
-                aria-controls="Booking-collapse">Day - Hour</a>
+                aria-controls="Booking-collapse">Sunday - 6pm</a>
 
             </div>
           </div>
@@ -681,17 +907,40 @@
     </main>
 
     <a href="#top"><img id="TopBtn" src="media/top.png" alt="Back to Top"></a>
+    <div id="break">
+    </div>
 
     <footer>
+      <div id="contact-info" style="position: relative;">
+        <b>CINEMAX</b>
+        <br>
+        <p><b>Contact information:</b>
+          <br>
+          <b>Email:</b> contact_support@cinemax.com
+          <br>
+          <b>Phone number:</b> +84 900779977
+          <br>
+          <b>Address:</b> 221B Baker Street Faraway City
+        </p>
+        <br>
+        <img src="media/cinemax_logo.png" alt="Cinemax logo"
+          style="position: absolute; right: 0px; bottom: 0px; background-color: rgba(255, 255, 255, 0.2);">
+      </div>
+      <hr style="border: grey solid 1px;" size="10px">
       <div>&copy;
         <script>
           document.write(new Date().getFullYear());
-        </script> - Group 2: Vo An Huy (s3804220), Doan Nguyen My Hanh (s3639869) Last modified 19/4/2020.
+        </script> - Assignment by Group 7: <br> Vo An Huy (s3804220 - <a
+          href="https://github.com/s3804220/s3804220.github.io" class="git-link" target="_blank">Github Repo</a>),<br>Doan Nguyen My Hanh (s3639869 - <a
+          href="https://github.com/s3639869/wp" class="git-link" target="_blank">Github Repo</a>)<br>Last
+        modified 19/4/2020
         <?= date ("Y F d  H:i", filemtime($_SERVER['SCRIPT_FILENAME'])); ?>.</div>
+      <br>
       <div>Disclaimer: This website is not a real website and is being developed as part of a School of Science Web
         Programming course at RMIT University in Melbourne, Australia.</div>
       <div><button id='toggleWireframeCSS' onclick='toggleWireframe()'>Toggle Wireframe CSS</button></div>
     </footer>
   </div>
 </body>
+
 </html>
