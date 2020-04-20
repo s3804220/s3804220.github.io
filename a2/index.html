@@ -481,7 +481,8 @@
         <br>
         <img src="media/promotion-banner.jpg" alt="Promotion banner" class="img-fluid">
         <br><br>
-        <p class="intro-text">As an event to celebrate our re-opening and welcome back old as well as new movie-goers, we are offering
+        <p class="intro-text">As an event to celebrate our re-opening and welcome back old as well as new movie-goers,
+          we are offering
           special
           discounts on tickets for every type of seats. The discounted periods are:
           <ul>
@@ -498,7 +499,8 @@
             table</a> below.
           <br>
           <br>
-          <p class="intro-text">We have <strong>6</strong> types of seats for customers to choose from, including seats fitted for both
+          <p class="intro-text">We have <strong>6</strong> types of seats for customers to choose from, including seats
+            fitted for both
             adult
             and children.
             We hope the different choices of cinema seatings will provide our audience with the best comfort.</p>
@@ -899,8 +901,123 @@
         <section id="booking-section">
           <h1 id="booking-header"><b>BOOK YOUR TICKET</b></h1>
           <br>
-          <!-- Creative Commons image sourced from https://pixabay.com/en/maintenance-under-construction-2422173/ and used for educational purposes only -->
-          <img src='media/website-under-construction.png' alt='Website Under Construction' class="img-fluid">
+          <form action="https://titan.csit.rmit.edu.au/~e54061/wp/lunardo-formtest.php" method="post">
+            <div class="row">
+              <div class="col-md-4">
+                <fieldset>
+                  <legend>Standard</legend>
+                  <p>Adult:
+                    <select name="adult-standard" id="adult-standard" style="width:100%;">
+                      <option value="0">0</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                    </select>
+                  </p>
+                  <p>Concession:
+                    <select name="concession-standard" id="concession-standard" style="width:100%;">
+                      <option value="0">0</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                    </select>
+                  </p>
+                  <p>Children:
+                    <select name="children-standard" id="children-standard" style="width: 100%;">
+                      <option value="0">0</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                    </select>
+                  </p>
+                </fieldset>
+                <hr style="border: grey solid 1px;" size="10px">
+                <fieldset>
+                  <legend>First Class</legend>
+                  <p>Adult:
+                    <select name="adult-fc" id="adult-fc" style="width:100%;">
+                      <option value="0">0</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                    </select>
+                  </p>
+                  <p>Concession:
+                    <select name="concession-fc" id="concession-fc" style="width:100%;">
+                      <option value="0">0</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                    </select>
+                  </p>
+                  <p>Children:
+                    <select name="children-fc" id="children-fc" style="width: 100%;">
+                      <option value="0">0</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                    </select>
+                  </p>
+                </fieldset>
+              </div>
+
+              <div class="col-md-8" style="padding-left:200px;">
+
+                <br><br>
+
+                <p>Name:
+                  <input type="text" name="Name" style="width: 100%;">
+                </p>
+
+                <br>
+
+                <p>Email:
+                  <input type="email" name="Email" style="width: 100%;">
+                </p>
+
+                <br>
+
+                <p>Mobile:
+                  <input type="number" name="Mobile" style="width: 100%;">
+                </p>
+
+                <br>
+
+                <p>Credit Card:
+                  <input type="number" name="CreditCard" style="width: 100%;">
+                </p>
+                <br>
+                <p>Expiry:
+                  <select name="ex-month" id="ex-month">
+                    <option value="MM" selected>MM</option>
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                  </select>
+                  <select name="ex-year" id="ex-year">
+                    <option value="YYYY" selected>YYYY</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                  </select>
+                </p>
+                <br>
+                <input type="submit" value="Submit">
+              </div>
+            </div>
+          </form>
         </section>
       </div>
 
@@ -931,8 +1048,9 @@
         <script>
           document.write(new Date().getFullYear());
         </script> - Assignment by Group 7: <br> Vo An Huy (s3804220 - <a
-          href="https://github.com/s3804220/s3804220.github.io" class="git-link" target="_blank">Github Repo</a>),<br>Doan Nguyen My Hanh (s3639869 - <a
-          href="https://github.com/s3639869/wp" class="git-link" target="_blank">Github Repo</a>)<br>Last
+          href="https://github.com/s3804220/s3804220.github.io" class="git-link" target="_blank">Github
+          Repo</a>),<br>Doan Nguyen My Hanh (s3639869 - <a href="https://github.com/s3639869/wp" class="git-link"
+          target="_blank">Github Repo</a>)<br>Last
         modified 19/4/2020
         <?= date ("Y F d  H:i", filemtime($_SERVER['SCRIPT_FILENAME'])); ?>.</div>
       <br>
