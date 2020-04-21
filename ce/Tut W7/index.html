@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 7 Tutorial</title>
+    <style>
+        input:invalid{
+            border: 2px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <label for="username">Username <i>(letters and numbers only, no punctuation or special
+                characters)</i></label><br>
+        <input type="text" id="username" name="username" pattern="[A-Za-z0-9]+" oninvalid="alert('stop')"">
+        <br>
+        <label for="phone">Phone Number <i>Vietnamese phone numbers only</i></label>
+        <br>
+        <input type="text" id="phone" name="phone" pattern="^(0|\+84)[ ]?\d{9}$">
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+    
+</body>
+</html>

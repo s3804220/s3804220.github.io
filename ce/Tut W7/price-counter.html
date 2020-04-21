@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script defer src="tool.js"></script>
+</head>
+
+<body>
+    p1 <button type=button onclick="minus('p1')">-</button>
+
+    <input type=text id='p1-qty' value='0' name='P1' onblur="updateQuantity('p1')">
+    
+    <button type=button onclick="plus('p1')">+</button>
+
+    <span id='p1-subtotal' name='P1'>Total: $0.00</span>
+
+    <br><br>
+
+    p2 <button type=button onclick="minus('p2')">-</button>
+
+    <input type=text id='p2-qty' value='0' name='P2' onblur="updateQuantity('p2')">
+    
+    <button type=button onclick="plus('p2')">+</button>
+
+    <span id='p2-subtotal' name='P2'>Total: $0.00</span>
+
+    <br><br>
+
+    <button id='grand-total' onclick="grandTotal()">Get Grand Total</button>
+</body>
+
+</html>
