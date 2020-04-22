@@ -1,5 +1,4 @@
 /* Insert your javascript here */
-var movieID = { ACT, RMC, ANM, AHF }; // not used yet
 
 function toggleSynopsis(whichID){
     var whichMovie = document.getElementById("synopsis" + whichID);
