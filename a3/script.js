@@ -4,7 +4,7 @@ var movieID = { ACT, RMC, ANM, AHF }; // not used yet
 function toggleSynopsis(whichID){
     var whichMovie = document.getElementById("synopsis" + whichID);
     var movieButton = document.getElementById("movieButton" + whichID);
-    var movieName = whichMovie.getAttribute("name");
+    var movieName = movieButton.getAttribute("name");
     var synopsisDisplay = whichMovie.style.display;
 
     if (synopsisDisplay == 'block'){
@@ -14,7 +14,7 @@ function toggleSynopsis(whichID){
     }
     else {
         whichMovie.style.display = 'block';
-        console.log(movieName + "show");
+        console.log(movieName + ": show");
         return;
     }
 }
