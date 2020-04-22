@@ -3,7 +3,6 @@ var prices = {
     p2: 3.5
 }
 
-
 function plus(whichID) {
     console.log('plus button click');
     var whichQty = document.getElementById(whichID + "-qty");
@@ -49,5 +48,5 @@ function grandTotal() {
         var whichQty = document.getElementById(pid + "-qty");
         grandTotal += prices[pid] * whichQty.value;
     }
-    alert(grandTotal); // should display the grand total!
+    alert('Your grand total is: $' + grandTotal.toFixed(2));
 }
