@@ -118,7 +118,7 @@ body {
 .seat-img {
     padding: 10px;
 }
-#showing-header, #pricing-header, #synopsis-header {
+#showing-header, #pricing-header, .synopsis-header {
     font-family: BudmoJiggler;
     text-align: center;
     color: rgb(151, 3, 3);
@@ -131,7 +131,7 @@ body {
     vertical-align: baseline;
 }
 @media screen and (min-width: 901px) {
-    #showing-header, #pricing-header, #synopsis-header {
+    #showing-header, #pricing-header, .synopsis-header {
         font-size: 70px;
     }
     #movie-icon, #tickets-icon {
@@ -145,7 +145,7 @@ body {
     }
 }
 @media screen and (max-width: 900px) and (min-width: 601px) {
-    #showing-header, #pricing-header, #synopsis-header {
+    #showing-header, #pricing-header, .synopsis-header {
         font-size: 60px;
     }
     #movie-icon, #tickets-icon {
@@ -162,7 +162,7 @@ body {
     }
 }
 @media screen and (max-width: 600px) {
-    #showing-header, #pricing-header, #synopsis-header {
+    #showing-header, #pricing-header, .synopsis-header {
         font-size: 40px;
     }
     #movie-icon, #tickets-icon {
@@ -182,10 +182,10 @@ body {
     background-color: #093145;
     padding: 30px;
 }
-.synopsis-section{
+.synopsis-section, #Booking-collapse {
     display: none;
 }
-#break {
+.break {
     background: url(media/camera-film-re.png);
     background-repeat: repeat-x;
     background-size: contain;
@@ -334,7 +334,7 @@ body {
     width: 100%;
     height: 100%;
 }
-#synopsis-area {
+.synopsis-area {
     background-image: url(media/synopsis-bg.jpg);
     background-attachment: fixed;
     background-size: cover;
@@ -364,7 +364,7 @@ body {
     border-top-right-radius: 50px;
     border: 5px groove #43ABC9;
 }
-#booking-head {
+.booking-head {
     font-weight: bold;
 }
 .booking-btn {
@@ -391,7 +391,7 @@ body {
     height: 30px;
     vertical-align: bottom;
 }
-#summary-head {
+.summary-head, #auto-info {
     font-weight: bold;
     font-size: larger;
 }
@@ -428,4 +428,17 @@ body {
     font-weight: bold;
     color: cornsilk;
     text-decoration: underline;
+}
+#order {
+    position: absolute;
+    right: 0px;
+    bottom: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: large;
+    font-weight: bold;
+    background-color: #fff;
+}
+#cust-name:invalid {
+    border-color: red;
 }
