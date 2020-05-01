@@ -129,7 +129,7 @@ function checkCustName(){
   }
   else{
     disableSubmitButton(true);
-    custNameDisplay.style.border = '2px solid red';
+    custNameDisplay.style.border = '4px solid red';
     console.log('invalid.');
   }
 }
