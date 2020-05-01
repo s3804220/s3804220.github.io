@@ -439,6 +439,3 @@ body {
     font-weight: bold;
     background-color: #fff;
 }
-#cust-name:invalid {
-    border-color: red;
-}

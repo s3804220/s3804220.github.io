@@ -1131,7 +1131,7 @@
                     <br><br>
                     <div class="form-group">
                       <label for="cust-name">Name</label>
-                      <input type="text" name="cust[name]" id="cust-name" pattern="^[a-zA-Z\'\.\-]+[ ]*[a-zA-Z]+$" style="width: 100%;" required>
+                      <input type="text" name="cust[name]" id="cust-name" onblur="checkCustName()" onkeypress="checkCustName()" style="width: 100%;" required>
                     </div>
 
                     <div class="form-group">

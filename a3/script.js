@@ -118,3 +118,30 @@ function calcPrice() {
   }
   document.getElementById('total').innerHTML = "Total $ "+totalPrice.toFixed(2);
 }
+function checkCustName(){
+  var custNameDisplay = document.getElementById('cust-name');
+  var pattern = /^[a-zA-Z\'\.\-]+[\s]*([a-zA-Z\'\.\-]+[\s]*)+$/;
+  //var pattern = /^[a-zA-Z\'\.\-]+[ ]*[a-zA-Z]+$/;
+  if (pattern.test(custNameDisplay.value)){
+    disableSubmitButton(false);
+    custNameDisplay.style.border = 'none';
+    console.log('correct.');
+  }
+  else{
+    disableSubmitButton(true);
+    custNameDisplay.style.border = '2px solid red';
+    console.log('invalid.');
+  }
+}
+function disableSubmitButton(value){ //true, false only
+  var submitButton = document.getElementById('order');
+  if (value == true){
+    submitButton.disabled = value;
+  }
+  else if (value == false){
+    submitButton.disabled = value;
+  }
+  else{
+    console.log("Incorrect value for function toggleSubmitButton()");
+  }
+}
