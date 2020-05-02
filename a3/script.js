@@ -120,16 +120,64 @@ function checkCustName(){
   var nameInput = document.getElementById('cust-name');
   var pattern = /^[a-zA-Z\'\.\-]+[\s]?([a-zA-Z\'\.\-]+[\s]?)+$/;
   if (pattern.test(nameInput.value)){
-    disableSubmitButton(false);
     nameInput.style.border = '2px solid #008040';
     console.log('name valid');
+    return true;
+  }
+  else{
+    nameInput.style.border = '2px solid #C00000';
+    console.log('name invalid');
+    return false;
+  }
+}
+
+function checkCustMobile() {
+  var mobileInput = document.getElementById('cust-mobile');
+  var pattern = /^(\(04\)|04|\+61[\s]?4)[\s]?(\d[\s]?){8}$/;
+  if (pattern.test(mobileInput.value)){
+    mobileInput.style.border = '2px solid #008040';
+    console.log('mobile valid');
+    return true;
+  }
+  else{
+    mobileInput.style.border = '2px solid #C00000';
+    console.log('mobile invalid');
+    return false;
+  }
+}
+
+function checkCustCard() {
+  var cardInput = document.getElementById('cust-card');
+  var pattern = /^(\d[\s]?){14,19}$/;
+  if (pattern.test(cardInput.value)){
+    cardInput.style.border = '2px solid #008040';
+    console.log('card valid');
+    return true;
+  }
+  else{
+    cardInput.style.border = '2px solid #C00000';
+    console.log('card invalid');
+    return false;
+  }
+}
+
+document.getElementById('cust-expiry').min = new Date().toISOString().slice(0,7);
+
+function checkAllCustInput(){
+  checkCustName();
+  checkCustMobile();
+  checkCustCard();
+
+  if (checkCustName() && checkCustMobile() && checkCustCard()){
+    disableSubmitButton(false);
+    console.log('All inputs are valid');
   }
   else{
     disableSubmitButton(true);
-    nameInput.style.border = '2px solid #C00000';
-    console.log('name invalid');
+    console.log('Some inputs are invalid');
   }
 }
+
 function disableSubmitButton(value){ //true, false only
   var submitButton = document.getElementById('order');
   if (value == true){
@@ -142,35 +190,3 @@ function disableSubmitButton(value){ //true, false only
     console.log("Incorrect value for function toggleSubmitButton()");
   }
 }
-
-function checkCustMobile() {
-  var mobileInput = document.getElementById('cust-mobile');
-  var pattern = /^(\(04\)|04|\+61[\s]?4)[\s]?(\d[\s]?){8}$/;
-  if (pattern.test(mobileInput.value)){
-    disableSubmitButton(false);
-    mobileInput.style.border = '2px solid #008040';
-    console.log('mobile valid');
-  }
-  else{
-    disableSubmitButton(true);
-    mobileInput.style.border = '2px solid #C00000';
-    console.log('mobile invalid');
-  }
-}
-
-function checkCustCard() {
-  var cardInput = document.getElementById('cust-card');
-  var pattern = /^(\d[\s]?){14,19}$/;
-  if (pattern.test(cardInput.value)){
-    disableSubmitButton(false);
-    cardInput.style.border = '2px solid #008040';
-    console.log('card valid');
-  }
-  else{
-    disableSubmitButton(true);
-    cardInput.style.border = '2px solid #C00000';
-    console.log('card invalid');
-  }
-}
-
-document.getElementById('cust-expiry').min = new Date().toISOString().slice(0,7);
