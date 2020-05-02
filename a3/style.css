@@ -438,4 +438,56 @@ body {
     font-size: large;
     font-weight: bold;
     background-color: #fff;
+    box-shadow: 2px 2px 1px 1px #3C6478;
+    border-radius: 10px;
+    border: #093145 4px double;
+}
+#order:hover {
+    background-color: #093145;
+    box-shadow: 2px 2px 1px 1px #3C6478;
+    border-radius: 10px;
+    border: #fff 4px double;
+    color: #fff;
+}
+#total {
+    border: #093145 dashed 1px;
+    border-radius: 10px;
+    padding: 5px 50px;
+}
+form {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 20px;
+    color: #202020;
+    border-radius: 10px;
+    font-family: Lato;
+    border: double #3C6478 4px;
+}
+fieldset {
+    border: #093145 solid 1px;
+    padding: 10px;
+    margin: 10px;
+    text-align: right;
+}
+label {
+    font-weight: bold;
+}
+.seat-select {
+    margin-left: 10px;
+}
+legend {
+    width: auto;
+    padding: 5px;
+    text-align: left;
+}
+input {
+    border: #3C6478 solid 1px;
+}
+#auto-info {
+    font-size: 35px;
+    font-weight: bold;
+    color: #093145;
+}
+nav ul li a.nav-link.btn.btn-primary.btn-lg.active {
+    background-color: #3C6478;
+    border: dashed 1px;
 }

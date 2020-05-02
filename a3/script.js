@@ -10,23 +10,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const sectionMargin = 200;
 
-  let currentActive = 0;
+  var nowActive = 0;
 
   window.onscroll = () => {
 
-    var current = main_secs.length - [...main_secs].reverse().findIndex((section) => window.scrollY >= section.offsetTop - sectionMargin) - 1
+    var currentSec = main_secs.length - [...main_secs].reverse().findIndex((section) => window.scrollY >= section.offsetTop - sectionMargin) - 1
 
-    if (current !== currentActive) {
+    if (currentSec !== nowActive) {
       removeAllActive();
-      currentActive = current;
-      makeActive(current);
+      nowActive = currentSec;
+      makeActive(currentSec);
     }
   };
 });
-
-function getKey(object, value) {
-  return Object.keys(object).find(key => object[key] === value);
-}
 
 const days = { 'MON': 'Monday', 'TUE': 'Tuesday', 'WED': 'Wednesday', 'THU': 'Thursday', 'FRI': 'Friday', 'SAT': 'Saturday', 'SUN': 'Sunday' };
 const weekDays = ['MON','TUE', 'WED','THU','FRI'];
@@ -100,6 +96,7 @@ function addList(selection) {
   for (var i = 1; i <= 10; i++) {
     var options = document.createElement('option');
     options.text = options.value = i;
+    options.style.fontWeight = "bold";
     selection.add(options);
   }
 }
@@ -116,21 +113,21 @@ function calcPrice() {
         totalPrice += seatPrice[selections[i].id.slice(-3)] * selections[i].value;
       }
   }
-  document.getElementById('total').innerHTML = "Total $ "+totalPrice.toFixed(2);
+  document.getElementById('total').innerHTML = totalPrice.toFixed(2);
 }
+
 function checkCustName(){
-  var custNameDisplay = document.getElementById('cust-name');
-  var pattern = /^[a-zA-Z\'\.\-]+[\s]*([a-zA-Z\'\.\-]+[\s]*)+$/;
-  //var pattern = /^[a-zA-Z\'\.\-]+[ ]*[a-zA-Z]+$/;
-  if (pattern.test(custNameDisplay.value)){
+  var nameInput = document.getElementById('cust-name');
+  var pattern = /^[a-zA-Z\'\.\-]+[\s]?([a-zA-Z\'\.\-]+[\s]?)+$/;
+  if (pattern.test(nameInput.value)){
     disableSubmitButton(false);
-    custNameDisplay.style.border = 'none';
-    console.log('correct.');
+    nameInput.style.border = '2px solid #008040';
+    console.log('name valid');
   }
   else{
     disableSubmitButton(true);
-    custNameDisplay.style.border = '4px solid red';
-    console.log('invalid.');
+    nameInput.style.border = '2px solid #C00000';
+    console.log('name invalid');
   }
 }
 function disableSubmitButton(value){ //true, false only
@@ -145,3 +142,35 @@ function disableSubmitButton(value){ //true, false only
     console.log("Incorrect value for function toggleSubmitButton()");
   }
 }
+
+function checkCustMobile() {
+  var mobileInput = document.getElementById('cust-mobile');
+  var pattern = /^(\(04\)|04|\+61[\s]?4)[\s]?(\d[\s]?){8}$/;
+  if (pattern.test(mobileInput.value)){
+    disableSubmitButton(false);
+    mobileInput.style.border = '2px solid #008040';
+    console.log('mobile valid');
+  }
+  else{
+    disableSubmitButton(true);
+    mobileInput.style.border = '2px solid #C00000';
+    console.log('mobile invalid');
+  }
+}
+
+function checkCustCard() {
+  var cardInput = document.getElementById('cust-card');
+  var pattern = /^(\d[\s]?){14,19}$/;
+  if (pattern.test(cardInput.value)){
+    disableSubmitButton(false);
+    cardInput.style.border = '2px solid #008040';
+    console.log('card valid');
+  }
+  else{
+    disableSubmitButton(true);
+    cardInput.style.border = '2px solid #C00000';
+    console.log('card invalid');
+  }
+}
+
+document.getElementById('cust-expiry').min = new Date().toISOString().slice(0,7);
