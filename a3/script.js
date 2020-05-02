@@ -164,9 +164,6 @@ function checkCustCard() {
 document.getElementById('cust-expiry').min = new Date().toISOString().slice(0,7);
 
 function checkAllCustInput(){
-  checkCustName();
-  checkCustMobile();
-  checkCustCard();
 
   if (checkCustName() && checkCustMobile() && checkCustCard()){
     disableSubmitButton(false);
