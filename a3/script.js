@@ -58,7 +58,6 @@ function toggleSynopsis(whichID) {
 }
 
 const bookingBtn = [...document.querySelectorAll(".booking-btn")];
-const bookingSth = document.querySelectorAll(".booking-btn");
 const bookSection = document.getElementById("Booking-collapse");
 bookingBtn.forEach((btnElement) => btnElement.addEventListener('click', toggleBooking));
 
@@ -164,26 +163,14 @@ function checkCustCard() {
 document.getElementById('cust-expiry').min = new Date().toISOString().slice(0,7);
 
 function checkAllCustInput(){
+  var submitButton = document.getElementById('order');
 
   if (checkCustName() && checkCustMobile() && checkCustCard()){
-    disableSubmitButton(false);
+    submitButton.disabled = false;
     console.log('All inputs are valid');
   }
   else{
-    disableSubmitButton(true);
+    submitButton.disabled = true;
     console.log('Some inputs are invalid');
-  }
-}
-
-function disableSubmitButton(value){ //true, false only
-  var submitButton = document.getElementById('order');
-  if (value == true){
-    submitButton.disabled = value;
-  }
-  else if (value == false){
-    submitButton.disabled = value;
-  }
-  else{
-    console.log("Incorrect value for function toggleSubmitButton()");
   }
 }

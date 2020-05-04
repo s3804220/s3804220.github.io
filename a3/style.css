@@ -353,7 +353,6 @@ body {
     position: absolute;
     right: 5px;
     top: 5px;
-    width: 20%;
     background-color: #fff;
 }
 #seat-head {
@@ -444,10 +443,15 @@ body {
 }
 #order:hover {
     background-color: #093145;
-    box-shadow: 2px 2px 1px 1px #3C6478;
     border-radius: 10px;
     border: #fff 4px double;
     color: #fff;
+}
+#order:disabled:hover {
+    background-color: #fff;
+    border-radius: 10px;
+    border: #093145 4px double;
+    color: rgb(150, 150, 150);
 }
 #total {
     border: #093145 dashed 1px;
