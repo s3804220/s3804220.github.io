@@ -28,7 +28,7 @@ const days = { 'MON': 'Monday', 'TUE': 'Tuesday', 'WED': 'Wednesday', 'THU': 'Th
 const weekDays = ['MON','TUE', 'WED','THU','FRI'];
 const movieID = { 'ACT': 'Avengers: Endgame', 'RMC': 'Top End Wedding', 'ANM': 'Dumbo', 'AHF': 'The Happy Prince' };
 const timeConvert = { 'T12': '12pm', 'T15': '3pm', 'T18': '6pm', 'T21': '9pm' };
-const seatPrice = { 'STA': 19.80, 'STP': 17.50, 'STC': 15.30, 'FCA': 30.00, 'FCP': 27.00, 'FCC': 24.00 };
+const seatFull = { 'STA': 19.80, 'STP': 17.50, 'STC': 15.30, 'FCA': 30.00, 'FCP': 27.00, 'FCC': 24.00 };
 const seatDiscount = { 'STA': 14.00, 'STP': 12.50, 'STC': 11.00, 'FCA': 24.00, 'FCP': 22.50, 'FCC': 21.00 };
 var currentMovieID;
 var currentMovieName;
@@ -100,6 +100,7 @@ function addList(selection) {
   }
 }
 selections.forEach((seatItem) => seatItem.addEventListener('change', calcPrice));
+selections.forEach((seatItem) => seatItem.addEventListener('change', checkSeats));
 
 function calcPrice() {
   var totalPrice = 0;
@@ -109,10 +110,30 @@ function calcPrice() {
         totalPrice += seatDiscount[selections[i].id.slice(-3)] * selections[i].value;
       }
       else {
-        totalPrice += seatPrice[selections[i].id.slice(-3)] * selections[i].value;
+        totalPrice += seatFull[selections[i].id.slice(-3)] * selections[i].value;
       }
   }
   document.getElementById('total').innerHTML = totalPrice.toFixed(2);
+}
+
+var nameValid = false;
+var mobileValid = false;
+var cardValid = false;
+var seatsValid = false;
+
+function checkSeats() {
+  for (let i = 0; i < selections.length; i++) {
+    if (selections[i].value != '') {
+      seatsValid = true;
+      document.getElementById("seat-req").innerHTML = '';
+      break;
+    }
+    else {
+      seatsValid = false;
+      document.getElementById("seat-req").innerHTML = "Please select your seat(s)";
+    }
+  }
+  checkAllCustInput();
 }
 
 function checkCustName(){
@@ -120,14 +141,13 @@ function checkCustName(){
   var pattern = /^[a-zA-Z\'\.\-]+[\s]?([a-zA-Z\'\.\-]+[\s]?)+$/;
   if (pattern.test(nameInput.value)){
     nameInput.style.border = '2px solid #008040';
-    console.log('name valid');
-    return true;
+    nameValid = true;
   }
   else{
     nameInput.style.border = '2px solid #C00000';
-    console.log('name invalid');
-    return false;
+    nameValid = false;
   }
+  checkAllCustInput();
 }
 
 function checkCustMobile() {
@@ -135,14 +155,13 @@ function checkCustMobile() {
   var pattern = /^(\(04\)|04|\+61[\s]?4)[\s]?(\d[\s]?){8}$/;
   if (pattern.test(mobileInput.value)){
     mobileInput.style.border = '2px solid #008040';
-    console.log('mobile valid');
-    return true;
+    mobileValid = true;
   }
   else{
     mobileInput.style.border = '2px solid #C00000';
-    console.log('mobile invalid');
-    return false;
+    mobileValid = false;
   }
+  checkAllCustInput();
 }
 
 function checkCustCard() {
@@ -150,27 +169,23 @@ function checkCustCard() {
   var pattern = /^(\d[\s]?){14,19}$/;
   if (pattern.test(cardInput.value)){
     cardInput.style.border = '2px solid #008040';
-    console.log('card valid');
-    return true;
+    cardValid = true;
   }
   else{
     cardInput.style.border = '2px solid #C00000';
-    console.log('card invalid');
-    return false;
+    cardValid = false;
   }
+  checkAllCustInput();
 }
 
 document.getElementById('cust-expiry').min = new Date().toISOString().slice(0,7);
 
 function checkAllCustInput(){
   var submitButton = document.getElementById('order');
-
-  if (checkCustName() && checkCustMobile() && checkCustCard()){
+  if (nameValid == true && mobileValid == true && cardValid == true && seatsValid == true){
     submitButton.disabled = false;
-    console.log('All inputs are valid');
   }
   else{
     submitButton.disabled = true;
-    console.log('Some inputs are invalid');
   }
 }

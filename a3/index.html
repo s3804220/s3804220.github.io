@@ -1070,6 +1070,8 @@
           
             <div class="row">
               <div class="col-md-4">
+                <br>
+                <p id="seat-req">Please select your seat(s)</p>
                 <fieldset>
                   <legend>Standard</legend>
                   <div class="form-group">
@@ -1122,25 +1124,26 @@
                   <div class="col-md-3 d-none d-md-block"></div>
                   <div class="col-md-9">
                     <br><br>
+                    <p class="require">* are required fields</p>
                     <div class="form-group">
-                      <label for="cust-name">Name</label>
-                      <input type="text" name="cust[name]" id="cust-name" oninput="checkAllCustInput()" style="width: 100%;" required>
+                      <label for="cust-name">Name <span class="require">*</span></label>
+                      <input type="text" name="cust[name]" id="cust-name" oninput="checkCustName()" style="width: 100%;" required>
                     </div>
 
                     <div class="form-group">
-                      <label for="cust-email">Email</label>
+                      <label for="cust-email">Email <span class="require">*</span></label>
                       <input type="email" name="cust[email]" id="cust-email" style="width: 100%;" required>
                     </div>
                     <div class="form-group">
-                      <label for="cust-mobile">Mobile</label>
-                      <input type="tel" name="cust[mobile]" id="cust-mobile" oninput="checkAllCustInput()" style="width: 100%;" required>
+                      <label for="cust-mobile">Mobile <span class="require">*</span></label>
+                      <input type="tel" name="cust[mobile]" id="cust-mobile" oninput="checkCustMobile()" style="width: 100%;" required>
                     </div>
                     <div class="form-group">
-                      <label for="cust-card">Credit Card</label>
-                      <input type="text" name="cust[card]" id="cust-card" oninput="checkAllCustInput()" style="width: 100%;" required>
+                      <label for="cust-card">Credit Card <span class="require">*</span></label>
+                      <input type="text" name="cust[card]" id="cust-card" oninput="checkCustCard()" style="width: 100%;" required>
                     </div>
                     <div class="form-group">
-                      <label for="cust-expiry">Expiry</label>
+                      <label for="cust-expiry">Expiry <span class="require">*</span></label>
                       <input type="month" name="cust[expiry]" id="cust-expiry" style="width: 100%;" placeholder="YYYY-MM" required>
                     </div>
                     <br><br>
@@ -1181,7 +1184,7 @@
           href="https://github.com/s3804220/s3804220.github.io" class="git-link" target="_blank">Github
           Repo</a>),<br>Doan Nguyen My Hanh (s3639869 - <a href="https://github.com/s3639869/wp" class="git-link"
           target="_blank">Github Repo</a>)<br>Last
-        modified 03/05/2020
+        modified 08/05/2020
         <?= date ("Y F d  H:i", filemtime($_SERVER['SCRIPT_FILENAME'])); ?>.</div>
       <br>
       <div>Disclaimer: This website is not a real website and is being developed as part of a School of Science Web
