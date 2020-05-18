@@ -41,8 +41,9 @@
   <!-- Link to script.js -->
   <script defer src="script.js"></script>
 
-  <!-- Link to tools.php -->
+  <!-- Link to tools.php and link index.php to style.css -->
   <?php include 'tools.php';?>
+  <style><?php include('style.css');?></style>
 </head>
 
 <body>
@@ -1151,6 +1152,7 @@
                     </div>
                     <br><br>
                     <input type="submit" name="order" value="Order" id="order" disabled>
+                    <input type="submit" name='session-reset' value ='Reset the session' id='session-reset'>
                   </div>
                 </div>
               </div>
@@ -1162,7 +1164,6 @@
     <a href="#top"><img id="TopBtn" src="media/top.png" alt="Back to Top"></a>
     <div class="break">
     </div>
-
     <footer>
       <div id="contact-info" style="position: relative;">
         <b>CINEMAX</b>
@@ -1179,6 +1180,10 @@
         <img src="media/cinemax_logo.png" alt="Cinemax logo"
           style="position: absolute; right: 0px; bottom: 0px; background-color: rgba(255, 255, 255, 0.2);">
       </div>
+      <hr style="border: grey solid 1px;" size="10px">
+      <?php helloWorld();
+        echo '<br>';
+      ?>
       <hr style="border: grey solid 1px;" size="10px">
       <div>&copy;
         <script>

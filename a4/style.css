@@ -463,6 +463,25 @@ body {
     border: #093145 4px double;
     color: rgb(150, 150, 150);
 }
+#session-reset{
+    position: absolute;
+    right: 150px;
+    bottom: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: large;
+    font-weight: bold;
+    background-color: #fff;
+    box-shadow: 2px 2px 1px 1px #3C6478;
+    border-radius: 10px;
+    border: #093145 4px double;
+}
+#session-reset:hover {
+    background-color: #093145;
+    border-radius: 10px;
+    border: #fff 4px double;
+    color: #fff;
+}
 #total {
     border: #093145 dashed 1px;
     border-radius: 10px;
