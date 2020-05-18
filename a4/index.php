@@ -47,6 +47,53 @@
 </head>
 
 <body>
+  <?php
+  if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    if (empty($_POST["name"])) {
+      $nameErr = "Name is required";
+    } else {
+      $name = test_input($_POST["name"]);
+      if (!preg_match("/^[a-zA-Z\'\.\-]+[\s]?([a-zA-Z\'\.\-]+[\s]?)+$/", $name)){
+        $nameErr = "Invalid name format.";
+      }
+    }
+    if (empty($_POST["email"])) {
+      $emailErr = "Email is required";
+    } else {
+      $email = test_input($_POST["email"]);
+      if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+          $emailErr = "Invalid email format";
+      }
+    }
+  
+    if (empty($_POST["mobile"])) {
+      $mobileErr = "Mobile phone is required";
+    } else {
+      $mobile = test_input($_POST["mobile"]);
+      if (!preg_match("/^(\(04\)|04|\+61[\s]?4)[\s]?(\d[\s]?){8}$/", $mobile)){
+        $mobileErr = "Invalid phone number format. Australian mobie phone only.";
+      }
+    }
+  
+    if (empty($_POST["card"])) {
+      $cardErr = "Credit card is required";
+    } else {
+      $card = test_input($_POST["card"]);
+      if (!preg_match("/^(\d[\s]?){14,19}$/", $card)){
+        $cardErr = "Invalid credit card format.";
+      }
+    }
+    
+    if (empty($_POST["expiry"])) {
+      $expiryErr = "Credit card expiry date is required.";
+    } else {
+      $expiry = test_input($_POST['expiry']);
+      if (date_diff(date(Y-m), $expiry)){
+        $expirydErr = "Credit card is about to expire. Please choose another card.";
+      }
+    }
+  } 
+  ?>
   <div class="container">
     <header id="top">
       <a href="index.html"><img src="media/logo-banner.jpg" alt="company-logo" id="logo" width="100%"></a>
@@ -1131,27 +1178,27 @@
                     <p class="require">* are required fields</p>
                     <div class="form-group">
                       <label for="cust-name">Name <span class="require">*</span></label>
-                      <input type="text" name="cust[name]" id="cust-name" oninput="checkCustName()" style="width: 100%;" required>
+                      <input type="text" name="cust[name]" id="cust-name" style="width: 100%;">required oninput="checkCustName()"
                     </div>
 
                     <div class="form-group">
                       <label for="cust-email">Email <span class="require">*</span></label>
-                      <input type="email" name="cust[email]" id="cust-email" style="width: 100%;" required>
+                      <input type="email" name="cust[email]" id="cust-email" style="width: 100%;" >required
                     </div>
                     <div class="form-group">
                       <label for="cust-mobile">Mobile <span class="require">*</span></label>
-                      <input type="tel" name="cust[mobile]" id="cust-mobile" oninput="checkCustMobile()" style="width: 100%;" required>
+                      <input type="tel" name="cust[mobile]" id="cust-mobile" style="width: 100%;" >requiredoninput="checkCustMobile()"
                     </div>
                     <div class="form-group">
                       <label for="cust-card">Credit Card <span class="require">*</span></label>
-                      <input type="text" name="cust[card]" id="cust-card" oninput="checkCustCard()" style="width: 100%;" required>
+                      <input type="text" name="cust[card]" id="cust-card" style="width: 100%;" >required oninput="checkCustCard()" 
                     </div>
                     <div class="form-group">
                       <label for="cust-expiry">Expiry <span class="require">*</span></label>
-                      <input type="month" name="cust[expiry]" id="cust-expiry" style="width: 100%;" placeholder="YYYY-MM" required>
+                      <input type="month" name="cust[expiry]" id="cust-expiry" style="width: 100%;" placeholder="YYYY-MM" >required
                     </div>
                     <br><br>
-                    <input type="submit" name="order" value="Order" id="order" disabled>
+                    <input type="submit" name="order" value="Order" id="order" >disabled
                     <input type="submit" name='session-reset' value ='Reset the session' id='session-reset'>
                   </div>
                 </div>

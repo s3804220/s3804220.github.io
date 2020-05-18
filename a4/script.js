@@ -121,71 +121,71 @@ var mobileValid = false;
 var cardValid = false;
 var seatsValid = false;
 
-function checkSeats() {
-  for (let i = 0; i < selections.length; i++) {
-    if (selections[i].value != '') {
-      seatsValid = true;
-      document.getElementById("seat-req").innerHTML = '';
-      break;
-    }
-    else {
-      seatsValid = false;
-      document.getElementById("seat-req").innerHTML = "Please select your seat(s)";
-    }
-  }
-  checkAllCustInput();
-}
+// function checkSeats() {
+//   for (let i = 0; i < selections.length; i++) {
+//     if (selections[i].value != '') {
+//       seatsValid = true;
+//       document.getElementById("seat-req").innerHTML = '';
+//       break;
+//     }
+//     else {
+//       seatsValid = false;
+//       document.getElementById("seat-req").innerHTML = "Please select your seat(s)";
+//     }
+//   }
+//   checkAllCustInput();
+// }
 
-function checkCustName(){
-  var nameInput = document.getElementById('cust-name');
-  var pattern = /^[a-zA-Z\'\.\-]+[\s]?([a-zA-Z\'\.\-]+[\s]?)+$/;
-  if (pattern.test(nameInput.value)){
-    nameInput.style.border = '2px solid #008040';
-    nameValid = true;
-  }
-  else{
-    nameInput.style.border = '2px solid #C00000';
-    nameValid = false;
-  }
-  checkAllCustInput();
-}
+// function checkCustName(){
+//   var nameInput = document.getElementById('cust-name');
+//   var pattern = /^[a-zA-Z\'\.\-]+[\s]?([a-zA-Z\'\.\-]+[\s]?)+$/;
+//   if (pattern.test(nameInput.value)){
+//     nameInput.style.border = '2px solid #008040';
+//     nameValid = true;
+//   }
+//   else{
+//     nameInput.style.border = '2px solid #C00000';
+//     nameValid = false;
+//   }
+//   checkAllCustInput();
+// }
 
-function checkCustMobile() {
-  var mobileInput = document.getElementById('cust-mobile');
-  var pattern = /^(\(04\)|04|\+61[\s]?4)[\s]?(\d[\s]?){8}$/;
-  if (pattern.test(mobileInput.value)){
-    mobileInput.style.border = '2px solid #008040';
-    mobileValid = true;
-  }
-  else{
-    mobileInput.style.border = '2px solid #C00000';
-    mobileValid = false;
-  }
-  checkAllCustInput();
-}
+// function checkCustMobile() {
+//   var mobileInput = document.getElementById('cust-mobile');
+//   var pattern = /^(\(04\)|04|\+61[\s]?4)[\s]?(\d[\s]?){8}$/;
+//   if (pattern.test(mobileInput.value)){
+//     mobileInput.style.border = '2px solid #008040';
+//     mobileValid = true;
+//   }
+//   else{
+//     mobileInput.style.border = '2px solid #C00000';
+//     mobileValid = false;
+//   }
+//   checkAllCustInput();
+// }
 
-function checkCustCard() {
-  var cardInput = document.getElementById('cust-card');
-  var pattern = /^(\d[\s]?){14,19}$/;
-  if (pattern.test(cardInput.value)){
-    cardInput.style.border = '2px solid #008040';
-    cardValid = true;
-  }
-  else{
-    cardInput.style.border = '2px solid #C00000';
-    cardValid = false;
-  }
-  checkAllCustInput();
-}
+// function checkCustCard() {
+//   var cardInput = document.getElementById('cust-card');
+//   var pattern = /^(\d[\s]?){14,19}$/;
+//   if (pattern.test(cardInput.value)){
+//     cardInput.style.border = '2px solid #008040';
+//     cardValid = true;
+//   }
+//   else{
+//     cardInput.style.border = '2px solid #C00000';
+//     cardValid = false;
+//   }
+//   checkAllCustInput();
+// }
 
-document.getElementById('cust-expiry').min = new Date().toISOString().slice(0,7);
+// document.getElementById('cust-expiry').min = new Date().toISOString().slice(0,7);
 
-function checkAllCustInput(){
-  var submitButton = document.getElementById('order');
-  if (nameValid == true && mobileValid == true && cardValid == true && seatsValid == true){
-    submitButton.disabled = false;
-  }
-  else{
-    submitButton.disabled = true;
-  }
-}
+// function checkAllCustInput(){
+//   var submitButton = document.getElementById('order');
+//   if (nameValid == true && mobileValid == true && cardValid == true && seatsValid == true){
+//     submitButton.disabled = false;
+//   }
+//   else{
+//     submitButton.disabled = true;
+//   }
+// }
