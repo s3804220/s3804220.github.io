@@ -40,6 +40,9 @@
 
   <!-- Link to script.js -->
   <script defer src="script.js"></script>
+
+  <!-- Link to tools.php -->
+  <?php include 'tools.php';?>
 </head>
 
 <body>
