@@ -1,0 +1,507 @@
+/* Insert your styles here */
+html {
+    scroll-behavior: smooth;
+}
+body {
+    background-image: url(media/cinema-BG.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+.container {
+    font-family: Montserrat, sans-serif;
+    background-color: #3C6478;
+    color: #fff;
+}
+.jumbotron {
+    background-image: url(media/dolby-bg.png);
+    background-size: cover;
+    background-position: 0 50%;
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.7);
+    text-align: center;
+}
+#company {
+    color: white;
+    text-align: center;
+}
+#company-name {
+    font-weight: bold;
+    font-family: Audiowide;
+}
+.head-strip {
+    background: url(media/filmstrip.jpg);
+    background-repeat: repeat-x;
+    background-size: contain;
+    height: 30px;
+    opacity: 0.8;
+}
+.navbar {
+    background-color: #093145;
+}
+.nav-item > .btn.btn-primary {
+    font-family: "Roboto Slab";
+    color: #fff;
+    background-color: transparent;
+    border-color: transparent;
+    margin: 10px;
+}
+.nav-item > .btn.btn-primary:hover {
+    font-family: "Roboto Slab";
+    font-weight: bold;
+    color: rgb(151, 3, 3);
+    border: 2px;
+    border-style: dashed;
+    border-color: black;
+    background-color: #E0E0E0;
+
+}
+.nav-item > .btn.btn-primary:active, .nav-item > .btn.btn-primary:focus, .nav-item > .btn.btn-primary:active:focus {
+    font-family: "Roboto Slab";
+    background: #757575;
+    background-color: #757575;
+    color: #1b1b1b;
+    border: transparent;
+}
+@font-face {
+    font-family: BudmoJiggler;
+    src: url(font/budmo\ jiggler.ttf);
+}
+#intro {
+    background-image: url(media/curtain-bg.jpg);
+    
+    background-size: contain;
+    background-position: top;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.7);
+    padding: 60px;
+}
+#about-div {
+    background-image: url(media/about-div.jpg);
+    
+    background-size: cover;
+    background-position: bottom;
+    background-size: 2000px;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.7);
+    padding: 100px;
+}
+.content-title {
+    font-weight: bold;
+}
+#about-us-header {
+    font-family: "Bungee Inline";
+    text-align: center;
+    color: white;
+}
+.intro-text {
+    text-align: justify;
+}
+.lobby-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.carousel-caption {
+    background-color: rgba(9, 49, 69, 0.9);
+    text-align: center;
+}
+.dolby-sys-img {
+    background-color: #1d1d1d;
+    width: 300px;
+    height: 200px;
+    margin: 10px;
+}
+.seat-img {
+    padding: 10px;
+}
+#showing-header, #pricing-header, .synopsis-header {
+    font-family: BudmoJiggler;
+    text-align: center;
+    color: rgb(151, 3, 3);
+    padding: 30px;
+    background-image: url(media/cinema-banner.png);
+    background-size: auto 100%;
+    opacity: 0.9;
+}
+#movie-icon, #tickets-icon {
+    vertical-align: baseline;
+}
+@media screen and (min-width: 901px) {
+    #showing-header, #pricing-header, .synopsis-header {
+        font-size: 70px;
+    }
+    #movie-icon, #tickets-icon {
+        height: 50px;
+    }
+    #TopBtn {
+        width: 70px;
+    }
+    #company {
+        font-size: 30px;
+    }
+}
+@media screen and (max-width: 900px) and (min-width: 601px) {
+    #showing-header, #pricing-header, .synopsis-header {
+        font-size: 60px;
+    }
+    #movie-icon, #tickets-icon {
+        height: 40px;
+    }
+    #TopBtn {
+        width: 60px;
+    }
+    #company {
+        font-size: 25px;
+    }
+    #logo {
+        height: 50px;
+    }
+}
+@media screen and (max-width: 600px) {
+    #showing-header, #pricing-header, .synopsis-header {
+        font-size: 40px;
+    }
+    #movie-icon, #tickets-icon {
+        height: 30px;
+    }
+    #TopBtn {
+        width: 50px;
+    }
+    #company {
+        font-size: 20px;
+    }
+    #logo {
+        height: 50px;
+    }
+}
+#About-us, #now-showing, #pricing, .synopsis-section, #booking-section, #contact-info {
+    background-color: #093145;
+    padding: 30px;
+}
+.synopsis-section, #Booking-collapse {
+    display: none;
+}
+.break {
+    background: url(media/camera-film-re.png);
+    background-repeat: repeat-x;
+    background-size: contain;
+    height: 30px;
+    opacity: 0.8;
+}
+.more-info {
+    font-weight: bold;
+    color: #3FE0D0;
+}
+.more-info > .dolby-btn:hover, .more-info > .dolby-btn:focus {
+    border: dotted;
+    padding: 5px;
+}
+.more-info > .seat-center > .seat-btn:hover, .more-info > .seat-center > .seat-btn:focus{
+    border: dotted;
+    padding: 5px;
+}
+.movie-card {
+    border-style: groove;
+    border-width: 5px;
+    border-color: #43ABC9;
+    padding: 5px;
+    background-color: #E0E0E0;
+}
+.card-text.showtime {
+    font-family: "Roboto Slab";
+    color: black;
+    text-align: center;
+    line-height: 200%;
+}
+.card-text.more-details {
+    text-align: center;
+}
+.card-title {
+    font-family: "Roboto Slab";
+    color: black;
+    font-weight: bold;
+    text-align: center;
+}
+.movie-rating {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+}
+.movie-poster {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 2px #404040 solid;
+}
+#TopBtn {
+    position: fixed;
+    bottom: 0px;
+    float: right;
+    right: 0px;
+    left: 90%;
+}
+#price-table {
+    border-collapse: separate; 
+    font-family: Lato;
+    font-size: large;
+}
+#price-head tr > th {
+    text-align: center;
+    vertical-align: middle;
+    color: honeydew;
+    background-color: #0D3D56;
+}
+#price-body tr > th, #price-body tr > td {
+    border-collapse: collapse;
+    color: #1b1b1b;
+    text-align: center;
+    background-color: #E0FFFF;
+    border: 1px groove;
+}
+@keyframes myani {
+    0% {border: 5px dashed #43ABC9; background-color: rgba(0, 0, 0, 0.2);}
+    100% {border: 5px dotted #43ABC9; background-color: rgba(0, 0, 0, 0.5);}
+    
+}
+#sale-head {
+    animation: myani 3s infinite;
+}
+.badge.badge-success {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 110%;
+    padding: 5px;
+}
+#special-offer {
+    text-align: center;
+    border: double;
+    padding: 10px;
+    vertical-align: middle;
+    font-weight: bold;
+    color: honeydew;
+    background-color: #0D3D56;
+    border: 4px groove #43ABC9;
+}
+@media screen and (max-width: 800px) {
+    .carousel-indicators, .carousel-indicators li {
+        display: none;
+    }
+}
+.carousel-indicators li {
+    width: 10px;
+    height: 10px;
+    background-color: lightblue;
+    border-radius: 100%;
+}
+#price-ref {
+    display: inline-block;
+}
+#price-ref:link, #price-ref:visited {
+    font-weight: bold;
+    padding: 5px;
+    border: double;
+    color: #3FE0D0;
+}
+#price-ref:hover {
+    font-weight: bold;
+    padding: 5px;
+    border: double;
+    color: yellow;
+}
+.seat-description {
+    font-weight: bold;
+    text-align: center;
+}
+.seating-type {
+    padding: 5px;
+}
+.seat-toggle:hover {
+    border: 2px dotted honeydew;
+}
+.trailer-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px; height: 0; overflow: hidden;
+}
+.trailer-container iframe,
+.trailer-container object,
+.trailer-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.synopsis-area {
+    background-image: url(media/synopsis-bg.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    border: double #3C6478;
+    padding: 5px;
+}
+.synopsis {
+    padding: 5px;
+}
+.synopsis-title {
+    font-weight: bold;
+    padding: 10px;
+    box-shadow: inset 0px 0px 60px rgba(0, 0, 0, 0.6);
+}
+.movie-rating-synopsis {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    background-color: #fff;
+}
+#seat-head {
+    border-top-left-radius: 50px;
+    border: 5px groove #43ABC9;
+}
+#time-head {
+    border-top-right-radius: 50px;
+    border: 5px groove #43ABC9;
+}
+.booking-head {
+    font-weight: bold;
+}
+.booking-btn {
+    border: 5px aqua double;
+    background-color: #093145;
+    padding: 5px;
+    display: inline-block;
+    margin: 5px;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #fff;
+}
+.booking-btn:hover {
+    border: 5px yellow groove;
+    text-decoration: none;
+    background-color: #202020;
+    color: yellow;
+    font-weight: bold;
+}
+.synop-icon {
+    height: 40px;
+}
+.more-details-icon {
+    height: 30px;
+    vertical-align: bottom;
+}
+.summary-head, #auto-info {
+    font-weight: bold;
+    font-size: larger;
+}
+#collapseInfo {
+    color: black;
+}
+.more-details > a:link {
+    font-weight: bold;
+    padding: 5px;
+}
+.more-details > a:visited {
+    font-weight: bold;
+    color: darkblue;
+    padding: 5px;
+}
+.more-details > a:hover {
+    color: darkred;
+    border: 2px dotted;
+    text-decoration: none;
+}
+.seat-header, .dolby-header, .seat-footer, .dolby-footer {
+    background-color: #093145;
+    color: honeydew;
+}
+.seat-body, .dolby-body {
+    background-color: #3C6478;
+    color: honeydew;
+}
+.git-link {
+    color: deepskyblue;
+    text-decoration: none;
+}
+.git-link:hover {
+    font-weight: bold;
+    color: cornsilk;
+    text-decoration: underline;
+}
+.require{
+    color: red;
+}
+#seat-req {
+    color: red;
+    padding-left: 10px;
+}
+#cust-email:valid {
+    border: 2px solid #008040;
+}
+#order {
+    position: absolute;
+    right: 0px;
+    bottom: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: large;
+    font-weight: bold;
+    background-color: #fff;
+    box-shadow: 2px 2px 1px 1px #3C6478;
+    border-radius: 10px;
+    border: #093145 4px double;
+}
+#order:hover {
+    background-color: #093145;
+    border-radius: 10px;
+    border: #fff 4px double;
+    color: #fff;
+}
+#order:disabled:hover {
+    background-color: #fff;
+    border-radius: 10px;
+    border: #093145 4px double;
+    color: rgb(150, 150, 150);
+}
+#total {
+    border: #093145 dashed 1px;
+    border-radius: 10px;
+    padding: 5px 50px;
+}
+form {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 20px;
+    color: #202020;
+    border-radius: 10px;
+    font-family: Lato;
+    border: double #3C6478 4px;
+}
+fieldset {
+    border: #093145 solid 1px;
+    padding: 10px;
+    margin: 10px;
+    text-align: right;
+}
+label {
+    font-weight: bold;
+}
+.seat-select {
+    margin-left: 10px;
+}
+legend {
+    width: auto;
+    padding: 5px;
+    text-align: left;
+}
+input {
+    border: #3C6478 solid 1px;
+}
+#auto-info {
+    font-size: 35px;
+    font-weight: bold;
+    color: #093145;
+}
+nav ul li a.nav-link.btn.btn-primary.btn-lg.active {
+    background-color: #3C6478;
+    border: dashed 1px;
+}
