@@ -49,15 +49,19 @@
 <body>
   <?php
   if ($_SERVER["REQUEST_METHOD"] == "POST"){
-    if (empty($_POST["name"])) {
+
+    $nameErr = '';
+    if (empty($_POST["custname"])) {
       $nameErr = "Name is required";
     } else {
-      $name = test_input($_POST["name"]);
+      $name = $_POST["custname"];
       if (!preg_match("/^[a-zA-Z\'\.\-]+[\s]?([a-zA-Z\'\.\-]+[\s]?)+$/", $name)){
         $nameErr = "Invalid name format.";
       }
     }
-    if (empty($_POST["email"])) {
+
+    $emailErr = "";
+    if (empty($_POST["custemail"])) {
       $emailErr = "Email is required";
     } else {
       $email = test_input($_POST["email"]);
@@ -65,29 +69,32 @@
           $emailErr = "Invalid email format";
       }
     }
-  
-    if (empty($_POST["mobile"])) {
+
+    $mobileErr = "";
+    if (empty($_POST["custmobile"])) {
       $mobileErr = "Mobile phone is required";
     } else {
-      $mobile = test_input($_POST["mobile"]);
+      $mobile = test_input($_POST["custmobile"]);
       if (!preg_match("/^(\(04\)|04|\+61[\s]?4)[\s]?(\d[\s]?){8}$/", $mobile)){
         $mobileErr = "Invalid phone number format. Australian mobie phone only.";
       }
     }
-  
-    if (empty($_POST["card"])) {
+
+    $cardErr = "";
+    if (empty($_POST["custcard"])) {
       $cardErr = "Credit card is required";
     } else {
-      $card = test_input($_POST["card"]);
+      $card = test_input($_POST["custcard"]);
       if (!preg_match("/^(\d[\s]?){14,19}$/", $card)){
         $cardErr = "Invalid credit card format.";
       }
     }
     
-    if (empty($_POST["expiry"])) {
+    $expiryErr = "";
+    if (empty($_POST["custexpiry"])) {
       $expiryErr = "Credit card expiry date is required.";
     } else {
-      $expiry = test_input($_POST['expiry']);
+      $expiry = test_input($_POST['custexpiry']);
       if (date_diff(date(Y-m), $expiry)){
         $expirydErr = "Credit card is about to expire. Please choose another card.";
       }
@@ -1113,7 +1120,7 @@
           </button>
           <h1 id="booking-header"><b>BOOK YOUR TICKET</b></h1>
           <br>
-          <form action="https://titan.csit.rmit.edu.au/~e54061/wp/lunardo-formtest.php" method="post">
+          <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <p id="auto-info"></p>
             <input type="hidden" name="movie[id]" id="movie-id">
             <input type="hidden" name="movie[day]" id="movie-day">
@@ -1178,27 +1185,29 @@
                     <p class="require">* are required fields</p>
                     <div class="form-group">
                       <label for="cust-name">Name <span class="require">*</span></label>
-                      <input type="text" name="cust[name]" id="cust-name" style="width: 100%;">required oninput="checkCustName()"
+                      <input type="text" name="custname" id="cust-name" style="width: 100%;" value ="<?php echo $name?>">
+                      <span class="require"><?php echo $nameErr;?></span>
                     </div>
 
                     <div class="form-group">
                       <label for="cust-email">Email <span class="require">*</span></label>
-                      <input type="email" name="cust[email]" id="cust-email" style="width: 100%;" >required
+                      <input type="email" name="custemail" id="cust-email" style="width: 100%;" value="<?php echo $email?>">
+                      <span class="require"><?php echo $emailErr;?></span>
                     </div>
                     <div class="form-group">
                       <label for="cust-mobile">Mobile <span class="require">*</span></label>
-                      <input type="tel" name="cust[mobile]" id="cust-mobile" style="width: 100%;" >requiredoninput="checkCustMobile()"
+                      <input type="tel" name="custmobile" id="cust-mobile" style="width: 100%;" >
                     </div>
                     <div class="form-group">
                       <label for="cust-card">Credit Card <span class="require">*</span></label>
-                      <input type="text" name="cust[card]" id="cust-card" style="width: 100%;" >required oninput="checkCustCard()" 
+                      <input type="text" name="custcard" id="cust-card" style="width: 100%;" >
                     </div>
                     <div class="form-group">
                       <label for="cust-expiry">Expiry <span class="require">*</span></label>
-                      <input type="month" name="cust[expiry]" id="cust-expiry" style="width: 100%;" placeholder="YYYY-MM" >required
+                      <input type="month" name="custexpiry" id="cust-expiry" style="width: 100%;" placeholder="YYYY-MM">
                     </div>
                     <br><br>
-                    <input type="submit" name="order" value="Order" id="order" >disabled
+                    <input type="submit" name="order" value="Order" id="order" href="booking-section">
                     <input type="submit" name='session-reset' value ='Reset the session' id='session-reset'>
                   </div>
                 </div>

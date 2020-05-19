@@ -471,7 +471,7 @@ body {
     padding-right: 30px;
     font-size: large;
     font-weight: bold;
-    background-color: #fff;
+    background-color:#fff;
     box-shadow: 2px 2px 1px 1px #3C6478;
     border-radius: 10px;
     border: #093145 4px double;
@@ -486,6 +486,9 @@ body {
     border: #093145 dashed 1px;
     border-radius: 10px;
     padding: 5px 50px;
+}
+.error{
+    color: #FF0000;
 }
 form {
     background: rgba(255, 255, 255, 0.85);
