@@ -49,7 +49,6 @@
 <body>
 
 <?php
-  session_start();
   function test_input($data){
     $data = trim($data);
     $data = stripslashes($data);
@@ -103,13 +102,13 @@
       $expiryErr = "Credit card expiry date is required.";
     } else {
       $expiry = test_input($_POST['custexpiry']);
-      if (date_diff(date(Y-m), $expiry)){
+      if (time() - (24*28) > strtotime($expiry)){
         $expirydErr = "Credit card is about to expire. Please choose another card.";
       }
     }
 
-    if ($nameERR = NULL and $mobileErr = NULL and $cardErr = NULL and $expiryErr = NULL){
-      header("receipt.php");
+    if ($nameERR == NULL and $mobileErr == NULL and $cardErr == NULL and $expiryErr == NULL){
+      header("Location: receipt.php");
     }
   } 
   ?>
@@ -1258,6 +1257,7 @@
       </div>
       <hr style="border: grey solid 1px;" size="10px">
       <?php echo '<h5>Debugging Area</h5>';
+        echo $expiry;
         helloWorld();
         echo '<br>';
         preShow($_POST);
