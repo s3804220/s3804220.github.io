@@ -43,7 +43,7 @@
 
   <!-- Link to tools.php and link index.php to style.css -->
   <?php include 'tools.php';?>
-  <style><?php include('style.css');?></style>
+  
 </head>
 
 <body>
@@ -56,88 +56,81 @@
     $data = htmlspecialchars($data);
     return $data;
   }
-  $seatErr = null;
-  $nameErr = null;
-  $emailErr = null;
-  $mobileErr = null;
-  $cardErr = null;
-  $expiryErr = null;
+  $days = [ 'MON' => 'Monday', 'TUE' => 'Tuesday', 'WED' => 'Wednesday', 'THU' => 'Thursday', 'FRI'=>'Friday', 'SAT'=>'Saturday', 'SUN'=>'Sunday'];
+  $movieID = ['ACT'=>'Avengers: Endgame', 'RMC'=> 'Top End Wedding', 'ANM'=> 'Dumbo', 'AHF'=> 'The Happy Prince'];
+  $timeConvert = ['T12'=>'12pm', 'T15'=>'3pm', 'T18'=>'6pm', 'T21'=>'9pm'];
+
+  $seatErr = NULL;
   if ($_SERVER["REQUEST_METHOD"] == "POST"){
-    $seatChk = true;
+    $selectedInfo = $movieID[$_POST['movie']['id']] . " - " . $days[$_POST['movie']['day']] . " - " . $timeConvert[$_POST['movie']['hour']];
+        
     if ($_POST['seats']['STA']=='' and $_POST['seats']['STP']=='' and $_POST['seats']['STC']==''
     and $_POST['seats']['FCA']=='' and $_POST['seats']['FCP']=='' and $_POST['seats']['FCC']=='') {
       $seatErr = "You did not select any seat(s)";
-      $seatChk = false;
     }
 
-    $nameChk = true;
+    $nameErr = NULL;
     if (empty($_POST['cust']['name'])) {
       $nameErr = "Name is required";
-      $nameChk = false;
     } else {
       $name = test_input($_POST['cust']['name']);
       if (!preg_match("/^[a-zA-Z\'\.\-]+[\s]?([a-zA-Z\'\.\-]+[\s]?)+$/", $name)){
         $nameErr = "Invalid name format.";
-        $nameChk = false;
       }
     }
 
-    $emailChk = true;
-
+    $emailErr = NULL;
     if (empty($_POST['cust']['email'])) {
       $emailErr = "Email is required";
-      $emailChk = false;
     } else {
       $email = test_input($_POST['cust']['email']);
       if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
           $emailErr = "Invalid email format";
-          $emailChk = false;
       }
     }
 
-    $mobileChk = true;
-
+    $mobileErr = NULL;
     if (empty($_POST['cust']['mobile'])) {
       $mobileErr = "Mobile phone is required";
-      $mobileChk = false;
     } else {
       $mobile = test_input($_POST['cust']['mobile']);
       if (!preg_match("/^(\(04\)|04|\+61[\s]?4)[\s]?(\d[\s]?){8}$/", $mobile)){
         $mobileErr = "Invalid phone number format. Australian mobile phone only.";
-        $mobileChk = false;
       }
     }
 
-    $cardChk = true;
-
+    $cardErr = NULL;
     if (empty($_POST['cust']['card'])) {
       $cardErr = "Credit card is required";
-      $cardChk = false;
     } else {
       $card = test_input($_POST['cust']['card']);
       if (!preg_match("/^(\d[\s]?){14,19}$/", $card)){
         $cardErr = "Invalid credit card format.";
-        $cardChk = false;
       }
     }
     
-    $expiryChk = true;
-
+    $expiryErr = NULL;
     if (empty($_POST['cust']['expiry'])) {
       $expiryErr = "Credit card expiry date is required.";
-      $expiryChk = false;
     } else {
       $expiry = test_input($_POST['cust']['expiry']);
-      if (time() - (24*28) > strtotime($expiry)){
-        $expiryErr = "Credit card is about to be/is expired. Please choose another card.";
-        $expiryChk = false;
+      if (time() > strtotime($expiry)){
+        $expiryErr = "Credit card might have already expired. Please choose another card.";
+      }
+      else if (time() + (28*86400) > strtotime($expiry)){
+        $expiryErr = "Credit card is about to expire. Please choose another card.";
       }
     }
 
-   if ($seatChk and $nameChk and $emailChk and $mobileChk and $cardChk and $expiryChk){
+    if ($nameErr == NULL and $emailErr == NULL and $mobileErr == NULL and $cardErr == NULL and $expiryErr == NULL and $seatErr == NULL){
       header("Location: receipt.php");
-      exit;
-   }
+    }
+    else {
+      echo "<style type='text/css'>";
+      echo "#Booking-collapse{";
+      echo "display: block;}";
+      echo "</style>";
+    }
   } 
   ?>
   
@@ -1160,11 +1153,12 @@
           </button>
           <h1 id="booking-header"><b>BOOK YOUR TICKET</b></h1>
           <br>
-          <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-            <p id="auto-info"></p>
-            <input type="hidden" name="movie[id]" id="movie-id">
-            <input type="hidden" name="movie[day]" id="movie-day">
-            <input type="hidden" name="movie[hour]" id="movie-hour">
+          <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <p id="auto-info"><?php echo $selectedInfo?></p>
+
+            <input type="hidden" name="movie[id]" id="movie-id" value ="<?php echo isset($_POST['movie']['id']) ? $_POST['movie']['id'] : ''; ?>">
+            <input type="hidden" name="movie[day]" id="movie-day" value ="<?php echo isset($_POST['movie']['day']) ? $_POST['movie']['day'] : ''; ?>">
+            <input type="hidden" name="movie[hour]" id="movie-hour" value ="<?php echo isset($_POST['movie']['hour']) ? $_POST['movie']['hour'] : ''; ?>">
           
             <div class="row">
               <div class="col-md-4">
@@ -1175,19 +1169,19 @@
                   <div class="form-group">
                     <label for="seats-STA">Adult</label>
                     <select class="seat-select" name="seats[STA]" id="seats-STA">
-                      <option value='<?php echo isset($_POST['seat']['STA']) ? $_POST['seat']['STA'] : ''; ?>'>Please Select</option>
+                      <option value=''>Please Select</option>
                     </select>
                   </div>
                   <div class="form-group">
                     <label for="seats-STP">Concession</label>
                     <select class="seat-select" name="seats[STP]" id="seats-STP">
-                      <option value='<?php echo isset($_POST['seat']['STP']) ? $_POST['seat']['STP'] : ''; ?>'>Please Select</option>
+                      <option value=''>Please Select</option>
                     </select>
                   </div>
                   <div class="form-group">
                     <label for="seats-STC">Child</label>
                     <select class="seat-select" name="seats[STC]" id="seats-STC">
-                      <option value='<?php echo isset($_POST['seat']['STC']) ? $_POST['seat']['STC'] : ''; ?>'>Please Select</option>
+                      <option value=''>Please Select</option>
                     </select>
                   </div>
                 </fieldset>
@@ -1197,19 +1191,19 @@
                   <div class="form-group">
                   <label for="seats-FCA">Adult</label>
                     <select class="seat-select" name="seats[FCA]" id="seats-FCA">
-                      <option value='<?php echo isset($_POST['seat']['FCA']) ? $_POST['seat']['FCA'] : ''; ?>'>Please Select</option>
+                      <option value=''>Please Select</option>
                     </select>
                   </div>
                   <div class="form-group">
                     <label for="seats-FCP">Concession</label>
                     <select class="seat-select" name="seats[FCP]" id="seats-FCP">
-                      <option value='<?php echo isset($_POST['seat']['FCP']) ? $_POST['seat']['FCP'] : ''; ?>'>Please Select</option>
+                      <option value=''>Please Select</option>
                     </select>
                   </div>
                   <div class="form-group">
                     <label for="seats-FCC">Child</label>
                     <select class="seat-select" name="seats[FCC]" id="seats-FCC">
-                      <option value='<?php echo isset($_POST['seat']['FCC']) ? $_POST['seat']['FCC'] : ''; ?>'>Please Select</option>
+                      <option value=''>Please Select</option>
                     </select>
                   </div>
                 </fieldset>
