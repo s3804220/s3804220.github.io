@@ -56,66 +56,77 @@
     $data = htmlspecialchars($data);
     return $data;
   }
-  $seatErr = NULL;
+  $seatChk = true;
   if ($_SERVER["REQUEST_METHOD"] == "POST"){
     if ($_POST['seats']['STA']=='' and $_POST['seats']['STP']=='' and $_POST['seats']['STC']==''
     and $_POST['seats']['FCA']=='' and $_POST['seats']['FCP']=='' and $_POST['seats']['FCC']=='') {
       $seatErr = "You did not select any seat(s)";
+      $seatChk = false;
     }
 
-    $nameErr = NULL;
+    $nameChk = true;
     if (empty($_POST['cust']['name'])) {
       $nameErr = "Name is required";
+      $nameChk = false;
     } else {
       $name = test_input($_POST['cust']['name']);
       if (!preg_match("/^[a-zA-Z\'\.\-]+[\s]?([a-zA-Z\'\.\-]+[\s]?)+$/", $name)){
         $nameErr = "Invalid name format.";
+        $nameChk = false;
       }
     }
 
-    $emailErr = NULL;
+    $emailChk = true;
     if (empty($_POST['cust']['email'])) {
       $emailErr = "Email is required";
+      $emailChk = false;
     } else {
       $email = test_input($_POST['cust']['email']);
       if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
           $emailErr = "Invalid email format";
+          $emailChk = false;
       }
     }
 
-    $mobileErr = NULL;
+    $mobileChk = true;
     if (empty($_POST['cust']['mobile'])) {
       $mobileErr = "Mobile phone is required";
+      $mobileChk = false;
     } else {
       $mobile = test_input($_POST['cust']['mobile']);
       if (!preg_match("/^(\(04\)|04|\+61[\s]?4)[\s]?(\d[\s]?){8}$/", $mobile)){
         $mobileErr = "Invalid phone number format. Australian mobile phone only.";
+        $mobileChk = false;
       }
     }
 
-    $cardErr = NULL;
+    $cardChk = true;
     if (empty($_POST['cust']['card'])) {
       $cardErr = "Credit card is required";
+      $cardChk = false;
     } else {
       $card = test_input($_POST['cust']['card']);
       if (!preg_match("/^(\d[\s]?){14,19}$/", $card)){
         $cardErr = "Invalid credit card format.";
+        $cardChk = false;
       }
     }
     
-    $expiryErr = NULL;
+    $expiryChk = true;
     if (empty($_POST['cust']['expiry'])) {
       $expiryErr = "Credit card expiry date is required.";
+      $expiryChk = false;
     } else {
       $expiry = test_input($_POST['cust']['expiry']);
       if (time() - (24*28) > strtotime($expiry)){
         $expiryErr = "Credit card is about to be/is expired. Please choose another card.";
+        $expiryChk = false;
       }
     }
 
-    if ($nameErr == NULL and $emailErr == NULL and $mobileErr == NULL and $cardErr == NULL and $expiryErr == NULL and $seatErr == NULL){
-      header("Location: receipt.php");
-    }
+   if ($seatChk and $nameChk and $emailChk and $mobileChk and $cardChk and $expiryChk){
+     header("Location: receipt.php");
+   }
   } 
   ?>
   
@@ -1138,7 +1149,7 @@
           </button>
           <h1 id="booking-header"><b>BOOK YOUR TICKET</b></h1>
           <br>
-          <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+          <form target="_blank" action="receipt.php" method="post">echo htmlspecialchars($_SERVER["PHP_SELF"]);
             <p id="auto-info"></p>
             <input type="hidden" name="movie[id]" id="movie-id">
             <input type="hidden" name="movie[day]" id="movie-day">

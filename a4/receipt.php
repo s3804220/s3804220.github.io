@@ -8,6 +8,12 @@
 <body>
     <?php
     echo "<h1>Welcome to the receipt page......</h1>";
+        $custname = $_POST['cust']['name'];
+        $custemail = $_POST['cust']['email'];
+        $custmobile = $_POST['cust']['mobile'];
+        $custcard = $_POST['cust']['card'];
+        $custexpiry = $_POST['cust']['name'];
     ?>
+    <p>Hello <?php echo $custname?></p>
 </body>
 </html>
