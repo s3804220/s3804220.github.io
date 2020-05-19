@@ -47,10 +47,12 @@
 </head>
 
 <body>
-  <?php
+
+<?php
+  session_start();
   if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
-    $nameErr = '';
+    $nameErr = NULL;
     if (empty($_POST["custname"])) {
       $nameErr = "Name is required";
     } else {
@@ -60,7 +62,7 @@
       }
     }
 
-    $emailErr = "";
+    $emailErr = NULL;
     if (empty($_POST["custemail"])) {
       $emailErr = "Email is required";
     } else {
@@ -70,7 +72,7 @@
       }
     }
 
-    $mobileErr = "";
+    $mobileErr = NULL;
     if (empty($_POST["custmobile"])) {
       $mobileErr = "Mobile phone is required";
     } else {
@@ -80,7 +82,7 @@
       }
     }
 
-    $cardErr = "";
+    $cardErr = NULL;
     if (empty($_POST["custcard"])) {
       $cardErr = "Credit card is required";
     } else {
@@ -90,7 +92,7 @@
       }
     }
     
-    $expiryErr = "";
+    $expiryErr = NULL;
     if (empty($_POST["custexpiry"])) {
       $expiryErr = "Credit card expiry date is required.";
     } else {
@@ -99,8 +101,13 @@
         $expirydErr = "Credit card is about to expire. Please choose another card.";
       }
     }
+
+    if ($nameERR = NULL and $mobileErr = NULL and $cardErr = NULL and $expiryErr = NULL){
+      header("invoice.php");
+    }
   } 
   ?>
+  
   <div class="container">
     <header id="top">
       <a href="index.html"><img src="media/logo-banner.jpg" alt="company-logo" id="logo" width="100%"></a>
@@ -1194,20 +1201,24 @@
                       <input type="email" name="custemail" id="cust-email" style="width: 100%;" value="<?php echo $email?>">
                       <span class="require"><?php echo $emailErr;?></span>
                     </div>
+
                     <div class="form-group">
                       <label for="cust-mobile">Mobile <span class="require">*</span></label>
-                      <input type="tel" name="custmobile" id="cust-mobile" style="width: 100%;" >
+                      <input type="tel" name="custmobile" id="cust-mobile" style="width: 100%;" value="<?php echo $mobile?>">
                     </div>
+
                     <div class="form-group">
                       <label for="cust-card">Credit Card <span class="require">*</span></label>
                       <input type="text" name="custcard" id="cust-card" style="width: 100%;" >
                     </div>
+
                     <div class="form-group">
                       <label for="cust-expiry">Expiry <span class="require">*</span></label>
                       <input type="month" name="custexpiry" id="cust-expiry" style="width: 100%;" placeholder="YYYY-MM">
                     </div>
+
                     <br><br>
-                    <input type="submit" name="order" value="Order" id="order" href="booking-section">
+                    <input type="submit" name="order" value="Order" id="order">
                     <input type="submit" name='session-reset' value ='Reset the session' id='session-reset'>
                   </div>
                 </div>
