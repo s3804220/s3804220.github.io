@@ -56,8 +56,14 @@
     $data = htmlspecialchars($data);
     return $data;
   }
-  $seatChk = true;
+  $seatErr = null;
+  $nameErr = null;
+  $emailErr = null;
+  $mobileErr = null;
+  $cardErr = null;
+  $expiryErr = null;
   if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    $seatChk = true;
     if ($_POST['seats']['STA']=='' and $_POST['seats']['STP']=='' and $_POST['seats']['STC']==''
     and $_POST['seats']['FCA']=='' and $_POST['seats']['FCP']=='' and $_POST['seats']['FCC']=='') {
       $seatErr = "You did not select any seat(s)";
@@ -77,6 +83,7 @@
     }
 
     $emailChk = true;
+
     if (empty($_POST['cust']['email'])) {
       $emailErr = "Email is required";
       $emailChk = false;
@@ -89,6 +96,7 @@
     }
 
     $mobileChk = true;
+
     if (empty($_POST['cust']['mobile'])) {
       $mobileErr = "Mobile phone is required";
       $mobileChk = false;
@@ -101,6 +109,7 @@
     }
 
     $cardChk = true;
+
     if (empty($_POST['cust']['card'])) {
       $cardErr = "Credit card is required";
       $cardChk = false;
@@ -113,6 +122,7 @@
     }
     
     $expiryChk = true;
+
     if (empty($_POST['cust']['expiry'])) {
       $expiryErr = "Credit card expiry date is required.";
       $expiryChk = false;
@@ -125,7 +135,8 @@
     }
 
    if ($seatChk and $nameChk and $emailChk and $mobileChk and $cardChk and $expiryChk){
-     header("Location: receipt.php");
+      header("Location: receipt.php");
+      exit;
    }
   } 
   ?>
@@ -1149,7 +1160,7 @@
           </button>
           <h1 id="booking-header"><b>BOOK YOUR TICKET</b></h1>
           <br>
-          <form target="_blank" action="receipt.php" method="post">echo htmlspecialchars($_SERVER["PHP_SELF"]);
+          <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
             <p id="auto-info"></p>
             <input type="hidden" name="movie[id]" id="movie-id">
             <input type="hidden" name="movie[day]" id="movie-day">
@@ -1164,19 +1175,19 @@
                   <div class="form-group">
                     <label for="seats-STA">Adult</label>
                     <select class="seat-select" name="seats[STA]" id="seats-STA">
-                      <option value=''>Please Select</option>
+                      <option value='<?php echo isset($_POST['seat']['STA']) ? $_POST['seat']['STA'] : ''; ?>'>Please Select</option>
                     </select>
                   </div>
                   <div class="form-group">
                     <label for="seats-STP">Concession</label>
                     <select class="seat-select" name="seats[STP]" id="seats-STP">
-                      <option value=''>Please Select</option>
+                      <option value='<?php echo isset($_POST['seat']['STP']) ? $_POST['seat']['STP'] : ''; ?>'>Please Select</option>
                     </select>
                   </div>
                   <div class="form-group">
                     <label for="seats-STC">Child</label>
                     <select class="seat-select" name="seats[STC]" id="seats-STC">
-                      <option value=''>Please Select</option>
+                      <option value='<?php echo isset($_POST['seat']['STC']) ? $_POST['seat']['STC'] : ''; ?>'>Please Select</option>
                     </select>
                   </div>
                 </fieldset>
@@ -1186,19 +1197,19 @@
                   <div class="form-group">
                   <label for="seats-FCA">Adult</label>
                     <select class="seat-select" name="seats[FCA]" id="seats-FCA">
-                      <option value=''>Please Select</option>
+                      <option value='<?php echo isset($_POST['seat']['FCA']) ? $_POST['seat']['FCA'] : ''; ?>'>Please Select</option>
                     </select>
                   </div>
                   <div class="form-group">
                     <label for="seats-FCP">Concession</label>
                     <select class="seat-select" name="seats[FCP]" id="seats-FCP">
-                      <option value=''>Please Select</option>
+                      <option value='<?php echo isset($_POST['seat']['FCP']) ? $_POST['seat']['FCP'] : ''; ?>'>Please Select</option>
                     </select>
                   </div>
                   <div class="form-group">
                     <label for="seats-FCC">Child</label>
                     <select class="seat-select" name="seats[FCC]" id="seats-FCC">
-                      <option value=''>Please Select</option>
+                      <option value='<?php echo isset($_POST['seat']['FCC']) ? $_POST['seat']['FCC'] : ''; ?>'>Please Select</option>
                     </select>
                   </div>
                 </fieldset>
