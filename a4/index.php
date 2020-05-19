@@ -50,13 +50,19 @@
 
 <?php
   session_start();
+  function test_input($data){
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+  }
   if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $nameErr = NULL;
     if (empty($_POST["custname"])) {
       $nameErr = "Name is required";
     } else {
-      $name = $_POST["custname"];
+      $name = test_input($_POST["custname"]);
       if (!preg_match("/^[a-zA-Z\'\.\-]+[\s]?([a-zA-Z\'\.\-]+[\s]?)+$/", $name)){
         $nameErr = "Invalid name format.";
       }
@@ -66,7 +72,7 @@
     if (empty($_POST["custemail"])) {
       $emailErr = "Email is required";
     } else {
-      $email = test_input($_POST["email"]);
+      $email = test_input($_POST["custemail"]);
       if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
           $emailErr = "Invalid email format";
       }
@@ -78,7 +84,7 @@
     } else {
       $mobile = test_input($_POST["custmobile"]);
       if (!preg_match("/^(\(04\)|04|\+61[\s]?4)[\s]?(\d[\s]?){8}$/", $mobile)){
-        $mobileErr = "Invalid phone number format. Australian mobie phone only.";
+        $mobileErr = "Invalid phone number format. Australian mobile phone only.";
       }
     }
 
@@ -103,7 +109,7 @@
     }
 
     if ($nameERR = NULL and $mobileErr = NULL and $cardErr = NULL and $expiryErr = NULL){
-      header("invoice.php");
+      header("receipt.php");
     }
   } 
   ?>
@@ -1192,29 +1198,32 @@
                     <p class="require">* are required fields</p>
                     <div class="form-group">
                       <label for="cust-name">Name <span class="require">*</span></label>
-                      <input type="text" name="custname" id="cust-name" style="width: 100%;" value ="<?php echo $name?>">
+                      <input type="text" name="custname" id="cust-name" style="width: 100%;" value ="<?php echo isset($_POST["custname"]) ? $_POST["custname"] : ''; ?>">
                       <span class="require"><?php echo $nameErr;?></span>
                     </div>
 
                     <div class="form-group">
                       <label for="cust-email">Email <span class="require">*</span></label>
-                      <input type="email" name="custemail" id="cust-email" style="width: 100%;" value="<?php echo $email?>">
+                      <input type="email" name="custemail" id="cust-email" style="width: 100%;" value="<?php echo isset($_POST["custemail"]) ? $_POST["custemail"] : ''; ?>">
                       <span class="require"><?php echo $emailErr;?></span>
                     </div>
 
                     <div class="form-group">
                       <label for="cust-mobile">Mobile <span class="require">*</span></label>
-                      <input type="tel" name="custmobile" id="cust-mobile" style="width: 100%;" value="<?php echo $mobile?>">
+                      <input type="tel" name="custmobile" id="cust-mobile" style="width: 100%;" value="<?php echo isset($_POST["custmobile"]) ? $_POST["custmobile"] : ''; ?>">
+                      <span class="require"><?php echo $mobileErr;?></span>
                     </div>
 
                     <div class="form-group">
                       <label for="cust-card">Credit Card <span class="require">*</span></label>
-                      <input type="text" name="custcard" id="cust-card" style="width: 100%;" >
+                      <input type="text" name="custcard" id="cust-card" style="width: 100%;" value="<?php echo isset($_POST["custcard"]) ? $_POST["custcard"] : ''; ?>">
+                      <span class="require"><?php echo $cardErr;?></span>
                     </div>
 
                     <div class="form-group">
                       <label for="cust-expiry">Expiry <span class="require">*</span></label>
-                      <input type="month" name="custexpiry" id="cust-expiry" style="width: 100%;" placeholder="YYYY-MM">
+                      <input type="month" name="custexpiry" id="cust-expiry" style="width: 100%;" placeholder="YYYY-MM" value="<?php echo isset($_POST["custexpiry"]) ? $_POST["custexpiry"] : ''; ?>">
+                      <span class="require"><?php echo $expirydErr;?></span>
                     </div>
 
                     <br><br>
@@ -1248,8 +1257,11 @@
           style="position: absolute; right: 0px; bottom: 0px; background-color: rgba(255, 255, 255, 0.2);">
       </div>
       <hr style="border: grey solid 1px;" size="10px">
-      <?php helloWorld();
+      <?php echo '<h5>Debugging Area</h5>';
+        helloWorld();
         echo '<br>';
+        preShow($_POST);
+        preShow($_SESSION);
       ?>
       <hr style="border: grey solid 1px;" size="10px">
       <div>&copy;
@@ -1259,7 +1271,7 @@
           href="https://github.com/s3804220/s3804220.github.io" class="git-link" target="_blank">Github
           Repo</a>),<br>Doan Nguyen My Hanh (s3639869 - <a href="https://github.com/s3639869/wp" class="git-link"
           target="_blank">Github Repo</a>)<br>Last
-        modified 08/05/2020
+        modified
         <?= date ("Y F d  H:i", filemtime($_SERVER['SCRIPT_FILENAME'])); ?>.</div>
       <br>
       <div>Disclaimer: This website is not a real website and is being developed as part of a School of Science Web
