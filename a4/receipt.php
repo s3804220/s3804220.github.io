@@ -7,7 +7,7 @@
 </head>
 <body>
     <?php
-    echo "<h1>Welcome to the receipt page......</h1>"
+    echo "<h1>Welcome to the receipt page......</h1>";
     ?>
 </body>
 </html>

@@ -49,65 +49,71 @@
 <body>
 
 <?php
+  session_start();
   function test_input($data){
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
     return $data;
   }
+  $seatErr = NULL;
   if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    if ($_POST['seats']['STA']=='' and $_POST['seats']['STP']=='' and $_POST['seats']['STC']==''
+    and $_POST['seats']['FCA']=='' and $_POST['seats']['FCP']=='' and $_POST['seats']['FCC']=='') {
+      $seatErr = "You did not select any seat(s)";
+    }
 
     $nameErr = NULL;
-    if (empty($_POST["custname"])) {
+    if (empty($_POST['cust']['name'])) {
       $nameErr = "Name is required";
     } else {
-      $name = test_input($_POST["custname"]);
+      $name = test_input($_POST['cust']['name']);
       if (!preg_match("/^[a-zA-Z\'\.\-]+[\s]?([a-zA-Z\'\.\-]+[\s]?)+$/", $name)){
         $nameErr = "Invalid name format.";
       }
     }
 
     $emailErr = NULL;
-    if (empty($_POST["custemail"])) {
+    if (empty($_POST['cust']['email'])) {
       $emailErr = "Email is required";
     } else {
-      $email = test_input($_POST["custemail"]);
+      $email = test_input($_POST['cust']['email']);
       if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
           $emailErr = "Invalid email format";
       }
     }
 
     $mobileErr = NULL;
-    if (empty($_POST["custmobile"])) {
+    if (empty($_POST['cust']['mobile'])) {
       $mobileErr = "Mobile phone is required";
     } else {
-      $mobile = test_input($_POST["custmobile"]);
+      $mobile = test_input($_POST['cust']['mobile']);
       if (!preg_match("/^(\(04\)|04|\+61[\s]?4)[\s]?(\d[\s]?){8}$/", $mobile)){
         $mobileErr = "Invalid phone number format. Australian mobile phone only.";
       }
     }
 
     $cardErr = NULL;
-    if (empty($_POST["custcard"])) {
+    if (empty($_POST['cust']['card'])) {
       $cardErr = "Credit card is required";
     } else {
-      $card = test_input($_POST["custcard"]);
+      $card = test_input($_POST['cust']['card']);
       if (!preg_match("/^(\d[\s]?){14,19}$/", $card)){
         $cardErr = "Invalid credit card format.";
       }
     }
     
     $expiryErr = NULL;
-    if (empty($_POST["custexpiry"])) {
+    if (empty($_POST['cust']['expiry'])) {
       $expiryErr = "Credit card expiry date is required.";
     } else {
-      $expiry = test_input($_POST['custexpiry']);
+      $expiry = test_input($_POST['cust']['expiry']);
       if (time() - (24*28) > strtotime($expiry)){
-        $expirydErr = "Credit card is about to expire. Please choose another card.";
+        $expiryErr = "Credit card is about to be/is expired. Please choose another card.";
       }
     }
 
-    if ($nameERR == NULL and $mobileErr == NULL and $cardErr == NULL and $expiryErr == NULL){
+    if ($nameErr == NULL and $emailErr == NULL and $mobileErr == NULL and $cardErr == NULL and $expiryErr == NULL and $seatErr == NULL){
       header("Location: receipt.php");
     }
   } 
@@ -1141,7 +1147,7 @@
             <div class="row">
               <div class="col-md-4">
                 <br>
-                <p id="seat-req">Please select your seat(s)</p>
+                <span class="require"><?php echo $seatErr;?></span>
                 <fieldset>
                   <legend>Standard</legend>
                   <div class="form-group">
@@ -1197,32 +1203,32 @@
                     <p class="require">* are required fields</p>
                     <div class="form-group">
                       <label for="cust-name">Name <span class="require">*</span></label>
-                      <input type="text" name="custname" id="cust-name" style="width: 100%;" value ="<?php echo isset($_POST["custname"]) ? $_POST["custname"] : ''; ?>">
+                      <input type="text" name="cust[name]" id="cust-name" style="width: 100%;" value ="<?php echo isset($_POST['cust']['name']) ? $_POST['cust']['name'] : ''; ?>">
                       <span class="require"><?php echo $nameErr;?></span>
                     </div>
 
                     <div class="form-group">
                       <label for="cust-email">Email <span class="require">*</span></label>
-                      <input type="email" name="custemail" id="cust-email" style="width: 100%;" value="<?php echo isset($_POST["custemail"]) ? $_POST["custemail"] : ''; ?>">
+                      <input type="email" name="cust[email]" id="cust-email" style="width: 100%;" value="<?php echo isset($_POST['cust']['email']) ? $_POST['cust']['email'] : ''; ?>">
                       <span class="require"><?php echo $emailErr;?></span>
                     </div>
 
                     <div class="form-group">
                       <label for="cust-mobile">Mobile <span class="require">*</span></label>
-                      <input type="tel" name="custmobile" id="cust-mobile" style="width: 100%;" value="<?php echo isset($_POST["custmobile"]) ? $_POST["custmobile"] : ''; ?>">
+                      <input type="tel" name="cust[mobile]" id="cust-mobile" style="width: 100%;" value="<?php echo isset($_POST['cust']['mobile']) ? $_POST['cust']['mobile'] : ''; ?>">
                       <span class="require"><?php echo $mobileErr;?></span>
                     </div>
 
                     <div class="form-group">
                       <label for="cust-card">Credit Card <span class="require">*</span></label>
-                      <input type="text" name="custcard" id="cust-card" style="width: 100%;" value="<?php echo isset($_POST["custcard"]) ? $_POST["custcard"] : ''; ?>">
+                      <input type="text" name="cust[card]" id="cust-card" style="width: 100%;" value="<?php echo isset($_POST['cust']['card']) ? $_POST['cust']['card'] : ''; ?>">
                       <span class="require"><?php echo $cardErr;?></span>
                     </div>
 
                     <div class="form-group">
                       <label for="cust-expiry">Expiry <span class="require">*</span></label>
-                      <input type="month" name="custexpiry" id="cust-expiry" style="width: 100%;" placeholder="YYYY-MM" value="<?php echo isset($_POST["custexpiry"]) ? $_POST["custexpiry"] : ''; ?>">
-                      <span class="require"><?php echo $expirydErr;?></span>
+                      <input type="month" name="cust[expiry]" id="cust-expiry" style="width: 100%;" placeholder="YYYY-MM" value="<?php echo isset($_POST['cust']['expiry']) ? $_POST['cust']['expiry'] : ''; ?>">
+                      <span class="require"><?php echo $expiryErr;?></span>
                     </div>
 
                     <br><br>
@@ -1257,7 +1263,6 @@
       </div>
       <hr style="border: grey solid 1px;" size="10px">
       <?php echo '<h5>Debugging Area</h5>';
-        echo $expiry;
         helloWorld();
         echo '<br>';
         preShow($_POST);
