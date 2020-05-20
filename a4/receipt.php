@@ -77,8 +77,8 @@
             }
             if ($_SESSION['cart']['seats']['FCC'] > 0){
                 echo "<tr>";
-                echo "<td style='text-align: center;'>STA</td>";
-                echo "<td style='text-align: center;'>".$_SESSION['cart']['seats']['']."</td>";
+                echo "<td style='text-align: center;'>FCC</td>";
+                echo "<td style='text-align: center;'>".$_SESSION['cart']['seats']['FCC']."</td>";
                 echo "</tr>";
             }
         echo "</table>";
