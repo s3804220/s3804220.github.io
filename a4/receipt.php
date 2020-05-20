@@ -36,8 +36,9 @@
         <p>Movie date: <?php echo $_SESSION['cart']['movie']['day']?></p>
         <p>Movie hour code: <?php echo $_SESSION['cart']['movie']['hour']?></p>
         <p>Movie ID: <?php echo $_SESSION['cart']['movie']['id']?></p>
+        <br>
         <h2>Seat Information</h2>
-        <br><br>
+        <br>
         <?php
         echo "<table style='width:100%;'>";
         echo "<tr>";
@@ -77,7 +78,7 @@
             if ($_SESSION['cart']['seats']['FCC'] > 0){
                 echo "<tr>";
                 echo "<td style='text-align: center;'>STA</td>";
-                echo "<td style='text-align: center;'>".$_SESSION['cart']['seats']['FCC']."</td>";
+                echo "<td style='text-align: center;'>".$_SESSION['cart']['seats']['']."</td>";
                 echo "</tr>";
             }
         echo "</table>";
