@@ -13,6 +13,11 @@
     }
     echo "<h1>Welcome to the receipt page......</h1>";
     preShow($_SESSION);
+    $fp = fopen("bookings.txt", "a");
+    foreach($_SESSION['cart'] as $record){
+        fputcsv($fp, $record, "\t");
+    }
+    fclose($fp);
     ?>
 </body>
 </html>
