@@ -41,7 +41,7 @@
   <!-- Link to script.js -->
   <script defer src="script.js"></script>
 
-  <!-- Link to tools.php and link index.php to style.css -->
+  <!-- Link to tools.php -->
   <?php include 'tools.php';?>
   
 </head>
@@ -50,15 +50,6 @@
 
 <?php
   session_start();
-  function test_input($data){
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-  }
-  $days = [ 'MON' => 'Monday', 'TUE' => 'Tuesday', 'WED' => 'Wednesday', 'THU' => 'Thursday', 'FRI'=>'Friday', 'SAT'=>'Saturday', 'SUN'=>'Sunday'];
-  $movieID = ['ACT'=>'Avengers: Endgame', 'RMC'=> 'Top End Wedding', 'ANM'=> 'Dumbo', 'AHF'=> 'The Happy Prince'];
-  $timeConvert = ['T12'=>'12pm', 'T15'=>'3pm', 'T18'=>'6pm', 'T21'=>'9pm'];
 
   $seatErr = NULL;
   if ($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -123,12 +114,16 @@
     }
 
     if ($nameErr == NULL and $emailErr == NULL and $mobileErr == NULL and $cardErr == NULL and $expiryErr == NULL and $seatErr == NULL){
-      header("Location: receipt.php");
+      $_SESSION['cart'] = $_POST;
+
+      header("Location: receipt.php#");
     }
     else {
       echo "<style type='text/css'>";
       echo "#Booking-collapse{";
       echo "display: block;}";
+      echo "html{";
+      echo "scroll-behavior: auto; }";
       echo "</style>";
     }
   } 
@@ -136,7 +131,7 @@
   
   <div class="container">
     <header id="top">
-      <a href="index.html"><img src="media/logo-banner.jpg" alt="company-logo" id="logo" width="100%"></a>
+      <a href="index.php"><img src="media/logo-banner.jpg" alt="company-logo" id="logo" width="100%"></a>
       <div class="jumbotron">
         <p id="company">Bring your cine experience to new heights <br> Here at <span id="company-name">CINEMAX</span>
         </p>
@@ -1144,6 +1139,7 @@
         </div>
       </section>
 
+      
       <div id="Booking-collapse">
         <div class="break">
         </div>
@@ -1153,7 +1149,7 @@
           </button>
           <h1 id="booking-header"><b>BOOK YOUR TICKET</b></h1>
           <br>
-          <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+          <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])."#Booking-collapse";?>" method="post">
             <p id="auto-info"><?php echo $selectedInfo?></p>
 
             <input type="hidden" name="movie[id]" id="movie-id" value ="<?php echo isset($_POST['movie']['id']) ? $_POST['movie']['id'] : ''; ?>">
@@ -1169,19 +1165,19 @@
                   <div class="form-group">
                     <label for="seats-STA">Adult</label>
                     <select class="seat-select" name="seats[STA]" id="seats-STA">
-                      <option value=''>Please Select</option>
+                      <?php addOptions('STA'); ?>
                     </select>
                   </div>
                   <div class="form-group">
                     <label for="seats-STP">Concession</label>
                     <select class="seat-select" name="seats[STP]" id="seats-STP">
-                      <option value=''>Please Select</option>
+                    <?php addOptions('STP'); ?>
                     </select>
                   </div>
                   <div class="form-group">
                     <label for="seats-STC">Child</label>
                     <select class="seat-select" name="seats[STC]" id="seats-STC">
-                      <option value=''>Please Select</option>
+                    <?php addOptions('STC'); ?>
                     </select>
                   </div>
                 </fieldset>
@@ -1191,31 +1187,31 @@
                   <div class="form-group">
                   <label for="seats-FCA">Adult</label>
                     <select class="seat-select" name="seats[FCA]" id="seats-FCA">
-                      <option value=''>Please Select</option>
+                    <?php addOptions('FCA'); ?>
                     </select>
                   </div>
                   <div class="form-group">
                     <label for="seats-FCP">Concession</label>
                     <select class="seat-select" name="seats[FCP]" id="seats-FCP">
-                      <option value=''>Please Select</option>
+                    <?php addOptions('FCP'); ?>
                     </select>
                   </div>
                   <div class="form-group">
                     <label for="seats-FCC">Child</label>
                     <select class="seat-select" name="seats[FCC]" id="seats-FCC">
-                      <option value=''>Please Select</option>
+                    <?php addOptions('FCC'); ?>
                     </select>
                   </div>
                 </fieldset>
                 <br>
-                <p style="text-align: right;"><b>Total: $</b> <span id="total"></span></p>
+                <p style="text-align: right;"><b>Total: $</b> <span id="total"><?php calcTotal(); ?></span></p>
               </div>
 
               <div class="col-md-8">
                 <div class="row">
                   <div class="col-md-3 d-none d-md-block"></div>
                   <div class="col-md-9">
-                    <br><br>
+                    <br>
                     <p class="require">* are required fields</p>
                     <div class="form-group">
                       <label for="cust-name">Name <span class="require">*</span></label>
@@ -1249,13 +1245,14 @@
 
                     <br><br>
                     <input type="submit" name="order" value="Order" id="order">
-                    <input type="submit" name='session-reset' value ='Reset the session' id='session-reset'>
+                    <input type='submit' name='session-reset' value='Reset the session' id='session-reset'>
                   </div>
                 </div>
               </div>
           </form>
         </section>
       </div>
+      
     </main>
 
     <a href="#top"><img id="TopBtn" src="media/top.png" alt="Back to Top"></a>

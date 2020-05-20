@@ -89,7 +89,7 @@ function closeBooking() {
 }
 
 var selections = [...document.querySelectorAll(".seat-select")];
-selections.forEach(addList);
+/*selections.forEach(addList);
 
 function addList(selection) {
   for (var i = 1; i <= 10; i++) {
@@ -98,7 +98,8 @@ function addList(selection) {
     options.style.fontWeight = "bold";
     selection.add(options);
   }
-}
+}*/
+
 selections.forEach((seatItem) => seatItem.addEventListener('change', calcPrice));
 selections.forEach((seatItem) => seatItem.addEventListener('change', checkSeats));
 

@@ -38,5 +38,60 @@ if (isset($_POST['session-reset'])) {
   foreach($_SESSION as $something => &$whatever) {
        unset($whatever);
   }
+  session_destroy();
 }
+
+//Cleanse input
+function test_input($data){
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+
+// Loop to add options for select input
+function addOptions($seatsType){
+  echo "<option value=''";
+  if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    if ($_POST['seats'][$seatsType] == ''){
+      echo "selected='selected'";
+    }
+  }
+  echo ">Please Select</option>";
+  for ($i = 1; $i<=10; $i++){
+    echo "<option value=";
+    echo "'".$i."'";
+    if ($_SERVER["REQUEST_METHOD"] == "POST"){
+      if( $i == $_POST['seats'][$seatsType]){
+        echo "selected='selected'";
+      }
+    }
+    echo "><strong>".$i."</strong></option>";
+  }
+}
+
+$days = [ 'MON' => 'Monday', 'TUE' => 'Tuesday', 'WED' => 'Wednesday', 'THU' => 'Thursday', 'FRI'=>'Friday', 'SAT'=>'Saturday', 'SUN'=>'Sunday'];
+$movieID = ['ACT'=>'Avengers: Endgame', 'RMC'=> 'Top End Wedding', 'ANM'=> 'Dumbo', 'AHF'=> 'The Happy Prince'];
+$timeConvert = ['T12'=>'12pm', 'T15'=>'3pm', 'T18'=>'6pm', 'T21'=>'9pm'];
+
+function calcTotal(){
+  $seatFull = ['STA'=> 19.80, 'STP'=> 17.50, 'STC'=> 15.30, 'FCA'=> 30.00, 'FCP'=> 27.00, 'FCC'=> 24.00];
+  $seatDiscount = ['STA'=> 14.00, 'STP'=> 12.50, 'STC'=> 11.00, 'FCA'=> 24.00, 'FCP'=> 22.50, 'FCC'=> 21.00];
+  $weekDays = ['MON','TUE', 'WED','THU','FRI'];
+
+  if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    $total=0;
+    if($_POST['movie']['day']=='MON' or $_POST['movie']['day']=='WED' or (in_array($_POST['movie']['day'], $weekDays) and $_POST['movie']['hour']=='T12')){
+      foreach($seatDiscount as $type => $disPrice){
+        $total += $_POST['seats'][$type]*$disPrice;
+      }
+    } else {
+        foreach($seatFull as $type => $fullPrice){
+          $total += $_POST['seats'][$type]*$fullPrice;
+        }
+      }
+    echo number_format((float)$total, 2);
+  }
+}
+
 ?>
