@@ -36,6 +36,52 @@
         <p>Movie date: <?php echo $_SESSION['cart']['movie']['day']?></p>
         <p>Movie hour code: <?php echo $_SESSION['cart']['movie']['hour']?></p>
         <p>Movie ID: <?php echo $_SESSION['cart']['movie']['id']?></p>
+        <h2>Seat Information</h2>
+        <br><br>
+        <?php
+        echo "<table style='width:100%;'>";
+        echo "<tr>";
+        echo "<th> Seat code: </th>";
+        echo "<th> Quantiy: </th>";
+        echo "<th> Price: </th>";
+            if ($_SESSION['cart']['seats']['STA'] > 0){
+                echo "<tr>";
+                echo "<td style='text-align: center;'>STA</td>";
+                echo "<td style='text-align: center;'>".$_SESSION['cart']['seats']['STA']."</td>";
+                echo "</tr>";
+            }
+            if ($_SESSION['cart']['seats']['STP'] > 0){
+                echo "<tr>";
+                echo "<td style='text-align: center;'>STP</td>";
+                echo "<td style='text-align: center;'>".$_SESSION['cart']['seats']['STP']."</td>";
+                echo "</tr>";
+            }
+            if ($_SESSION['cart']['seats']['STC'] > 0){
+                echo "<tr>";
+                echo "<td style='text-align: center;'>STC</td>";
+                echo "<td style='text-align: center;'>".$_SESSION['cart']['seats']['STC']."</td>";
+                echo "</tr>";
+            }
+            if ($_SESSION['cart']['seats']['FCA'] > 0){
+                echo "<tr>";
+                echo "<td style='text-align: center;'>FCA</td>";
+                echo "<td style='text-align: center;'>".$_SESSION['cart']['seats']['FCA']."</td>";
+                echo "</tr>";
+            }
+            if ($_SESSION['cart']['seats']['FCP'] > 0){
+                echo "<tr>";
+                echo "<td style='text-align: center;'>FCP</td>";
+                echo "<td style='text-align: center;'>".$_SESSION['cart']['seats']['FCP']."</td>";
+                echo "</tr>";
+            }
+            if ($_SESSION['cart']['seats']['FCC'] > 0){
+                echo "<tr>";
+                echo "<td style='text-align: center;'>STA</td>";
+                echo "<td style='text-align: center;'>".$_SESSION['cart']['seats']['FCC']."</td>";
+                echo "</tr>";
+            }
+        echo "</table>";
+        ?>
     </div>
 </body>
 </html>
