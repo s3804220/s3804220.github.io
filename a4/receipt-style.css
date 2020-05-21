@@ -1,20 +1,190 @@
 body {
-    margin: 0;
-    padding: 0;
     background-color: #FAFAFA;
     font-size: 12pt;
     font-family: "Times New Roman", Times, serif;
 }
-.page {
-    width: 21cm;
-    min-height: 29.7cm;
-    padding: 2cm;
-    margin: 1cm auto;
-    border: 1px #D3D3D3 solid;
-    border-radius: 5px;
-    background: white;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+.info-title {
+    font-weight: bold;
+}
+#invoice-logo {
+    position: absolute;
+    left: 5%;
+    top: 25%;
+}
+#anb-num {
+    position: absolute;
+    left: 5%;
+    bottom: 10%;
+}
+#header-table {
+    margin-left: 450px;
+    vertical-align: middle;
+    border: transparent;
+    border-collapse: collapse;
+    text-align: center;
+}
+.header-info {
+    border-top: transparent;
+    border-bottom: transparent;
+    padding: 20px;
+}
+.header-icon {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 30px;
+    width: 30px;
+}
+#invoice-header {
+    position: relative;
+    background-color: rgb(117, 230, 220);
+}
+#invoice-heading {
+    color: teal;
+    border-top: teal double 4px;
+    border-bottom: teal double 4px;
+    padding-left: 50px;
+}
+#invoice-date {
+    padding-left: 50px;
+    color: black;
+    font-size: 14pt;
+    font-weight: normal;
+}
+.info-table {
+    border-collapse: collapse;
+    text-align: center;
+    border: teal 2px solid;
+}
+.head-strip {
+    background: url(media/filmstrip.jpg);
+    background-repeat: repeat-x;
+    background-size: contain;
+    height: 20px;
+    opacity: 0.8;
+}
+.seats-table {
+    border-collapse: collapse;
+    padding: 20px;
+    border-top: transparent;
+    border-right: transparent;
+    border-left: transparent;
+    border-bottom: teal 3px solid;
+}
+.seats-head {
+    font-weight: bold;
+    background-color: rgb(117, 230, 220);
+    border-top: teal 3px solid;
+}
+#seat-heading, #ticket-heading {
+    color: teal;
+}
+#gst-total, #gst-total td {
+    margin-right: 50px;
+    margin-left: auto;
+    border: transparent;
+    border-collapse: collapse;
+    padding: 10px 40px;
+}
+.gst-head {
+    text-align: left;
+}
+.gst-calc {
+    text-align: right;
 }
 table, th, td {
     border: 1px solid black;
-  }
+}
+@media screen {
+    .page {
+        padding: 50px;
+        margin: 50px;
+    }
+}
+@media screen and (max-width:1350px) and (min-width: 1001px){
+    #header-table {
+        margin-left: 350px;
+    }
+    .header-icon {
+        height: 28px;
+        width: 28px;
+    }
+    #invoice-logo {
+        left: 3%;
+        top: 25%;
+        width: 150px;
+    }
+    #anb-num {
+        left: 3%;
+        bottom: 10%;
+        font-size: 12pt;
+    }
+    .header-info {
+        padding: 8px;
+    }
+}
+@media screen and (max-width:1000px){
+    #header-table {
+        margin-left: 200px;
+    }
+    .header-icon {
+        height: 25px;
+        width: 25px;
+    }
+    #invoice-logo {
+        left: 5%;
+        top: 30%;
+        width: 100px;
+    }
+    #anb-num {
+        left: 3%;
+        bottom: 20%;
+        font-size: 10pt;
+    }
+    .header-info {
+        padding: 5px;
+    }
+}
+@media print {
+    .page {
+        width: 21cm;
+        min-height: 29.7cm;
+        padding: 2cm;
+        margin: 1cm auto;
+        border: 1px #D3D3D3 solid;
+        border-radius: 5px;
+        background: white;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+    h1, h2, h3, h4, h5 {
+        font-weight: bold;
+        page-break-after: avoid;
+        page-break-inside: avoid;
+    }
+    h1+p, h2+p, h3+p {
+        page-break-before: avoid;
+    }
+    table, figure {
+        page-break-inside: avoid;
+    }
+    #header-table {
+        margin-left: 250px;
+    }
+    .header-icon {
+        height: 25px;
+        width: 25px;
+    }
+    #invoice-logo {
+        left: 7%;
+        top: 25%;
+        width: 100px;
+    }
+    #anb-num {
+        left: 5%;
+        bottom: 20%;
+        font-size: 10pt;
+    }
+    .header-info {
+        padding: 5px;
+    }
+}
