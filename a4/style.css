@@ -435,9 +435,6 @@ body {
     color: red;
     padding-left: 10px;
 }
-#cust-email:valid {
-    border: 2px solid #008040;
-}
 #order {
     position: absolute;
     right: 0px;

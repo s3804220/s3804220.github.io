@@ -1204,7 +1204,7 @@
                   </div>
                 </fieldset>
                 <br>
-                <p style="text-align: right;"><b>Total: $</b> <span id="total"><?php echo calcTotalPost(); ?></span></p>
+                <p style="text-align: right;"><b>Total: $</b> <span id="total"><?php echo number_format((float)calcTotalPost(),2,'.',''); ?></span></p>
               </div>
 
               <div class="col-md-8">
@@ -1264,7 +1264,7 @@
         <br>
         <p><b>Contact information:</b>
           <br>
-          <b>Email:</b> contact_support@cinemax.com
+          <b>Email:</b> contact@cinemax.com
           <br>
           <b>Phone number:</b> +84 900779977
           <br>
@@ -1276,9 +1276,10 @@
       </div>
       <hr style="border: grey solid 1px;" size="10px">
       <?php echo '<h5>Debugging Area</h5>';
-        helloWorld();
         echo '<br>';
+        echo '<p>$_POST array:</p>';
         preShow($_POST);
+        echo '<p>$_SESSION array:</p>';
         preShow($_SESSION);
       ?>
       <hr style="border: grey solid 1px;" size="10px">

@@ -1,10 +1,6 @@
 <?php
   session_start();
 
-// Put your PHP functions and modules here
-function helloWorld(){
-  echo "Hello World";
-}
 // "preShow()" function prints data and shape/structure of data:
 function preShow( $arr, $returnAsString=false ) {
   $ret  = '<pre>' . print_r($arr, true) . '</pre>';
@@ -38,6 +34,7 @@ if (isset($_POST['session-reset'])) {
   unset($_SESSION['cart']);
 }
 
+// Put your PHP functions and modules here
 //Sanitize input
 function test_input($data){
   $data = trim($data);
@@ -90,7 +87,7 @@ function calcTotalPost(){
           $total += $_POST['seats'][$type]*$fullPrice;
         }
       }
-    return number_format((float)$total, 2);
+    return $total;
   }
 }
 function calcTotalSession(){
@@ -108,7 +105,18 @@ function calcTotalSession(){
           $bookingTotal += $_SESSION['cart']['seats'][$type]*$fullPrice;
         }
       }
-    return number_format((float)$bookingTotal, 2);
+    return $bookingTotal;
+  }
+}
+function countTickets(){
+  $ticketnum = 0;
+  if(!empty($_SESSION['cart']['seats'])){
+    foreach($_SESSION['cart']['seats'] as $type => $qty){
+      if($qty>0){
+          $ticketnum++;
+      }
+    }
+    return $ticketnum;
   }
 }
 

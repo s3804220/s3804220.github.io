@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Receipt</title>
     <link id='stylecss' type="text/css" rel="stylesheet" href="receipt-style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <?php include 'tools.php';?>
 </head>
 <body>
     <?php
-    if(empty($_SESSION)){
+    if(empty($_SESSION['cart'])){
         header("Location: index.php");
     }
 
@@ -20,7 +21,7 @@
         $_SESSION['cart']['cust'],
         $_SESSION['cart']['movie'],
         $_SESSION['cart']['seats'],
-        [calcTotalSession()]
+        [number_format((float)calcTotalSession(),2)]
     );
 
     $bookingSheet = fopen("bookings.txt", "a");
@@ -46,7 +47,7 @@
                     <td class="header-info">
                         <img src="media/envelope.svg" alt="Phone icon" class="header-icon">
                         <br>
-                        <b>Email:</b><br>contact_support@cinemax.com
+                        <b>Email:</b><br>contact@cinemax.com
                     </td>
                     <td class="header-info">
                         <img src="media/phone.svg" alt="Phone icon" class="header-icon">
@@ -112,7 +113,7 @@
                     <b>Total Price: </b>
                 </td>
                 <td class="gst-calc">
-                    $<?php echo number_format((float)calcTotalSession(), 2); ?>
+                    $<?php echo number_format((float)calcTotalSession(),2); ?>
                 </td>
             </tr>
             <tr style="border-bottom: teal 3px solid;">
@@ -132,19 +133,40 @@
                 </td>
             </tr>
         </table>
+        <h3 id="cinemax-foot">CINEMAX Theatres Inc.</h3>
+        <hr style="border: teal solid 1px;">
+        <h3 style="color: teal; text-align: right;">Thank you for your business!</h3>
+        <div class="head-strip"></div>
         <h2 id="ticket-heading">Print your tickets</h2>
         <hr style="border: teal dashed 2px;">
-        <br>
+        <?php
+        if (countTickets()>1){
+            echo "<h3 class='ticket-type'>Group Ticket</h3>";
+            echo "<div id='ticket-group'>";
+            echo "<p class='ticket-info'> Movie: ".$movieID[$_SESSION['cart']['movie']['id']]."</p>";
+            echo "<p class='ticket-info'> Movie time: ".$days[$_SESSION['cart']['movie']['day']]." - ".$timeConvert[$_SESSION['cart']['movie']['hour']]."</p>";
+            echo "<p class='ticket-info'>Seats:<br>";
+            foreach($_SESSION['cart']['seats'] as $type => $qty){
+                if ($qty > 0){
+                    echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$seatTypes[$type]." - ".$type.": ".$qty."<br>";
+                }
+            }
+            echo "</p></div><br>";
+            echo "<hr style='border: dashed 1px;'>";
+        }
+        ?>
+        <h3 class="ticket-type">Individual Ticket(s)</h3>
         <?php
         $ticketcnt = 1;
         foreach($_SESSION['cart']['seats'] as $type => $qty){
             if ($qty > 0){
                 for ($i = 1; $i <= $qty; $i++){
+                    echo "<p style='font-weight:bold;'> Ticket No. ".$ticketcnt."</p><hr>";
                     echo "<div class='ticket'>";
-                    echo "<img src='media/cinemax_logo.png'alt='Cinemax logo'><p style='font-weight:bold; text-align: right;'> Ticket No. ".$ticketcnt."</p><hr>";
                     echo "<p class='ticket-info'> Movie: ".$movieID[$_SESSION['cart']['movie']['id']]."</p>";
                     echo "<p class='ticket-info'> Movie time: ".$days[$_SESSION['cart']['movie']['day']]." - ".$timeConvert[$_SESSION['cart']['movie']['hour']]."</p>";
-                    echo "<p class='ticket-info'>Seat type: ".$seatTypes[$type]." - ".$type." - ".$i."</p>";
+                    echo "<p class='ticket-info'>Seat type: ".$seatTypes[$type]."</p>";
+                    echo "<p class='ticket-info'> Seat code: ".$type."</p>";
                     echo "</div><br>";
                     $ticketcnt++;
                 }
@@ -152,7 +174,6 @@
         }
         ?>
         <hr style="border: teal solid 2px;">
-        <h3 style="color: teal; text-align: right;">Thank you for your business!</h3>
     </div>
 </body>
 </html>
