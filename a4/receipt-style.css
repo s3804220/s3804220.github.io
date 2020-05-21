@@ -95,6 +95,13 @@ body {
 table, th, td {
     border: 1px solid black;
 }
+.ticket{
+    border-radius: 25px;
+    border: 2px solid teal;
+    padding: 20px; 
+    width: 800px;
+    height: 300px;  
+}
 @media screen {
     .page {
         padding: 50px;

@@ -133,6 +133,23 @@
         </table>
         <h2 id="ticket-heading">Print your tickets</h2>
         <hr style="border: teal solid 2px;">
+        <br>
+        <?php
+        $ticketcnt = 1;
+        foreach($_SESSION['cart']['seats'] as $type => $qty){
+            if ($qty > 0){
+                for ($i = 1; $i <= $qty; $i++){
+                    echo "<div class='ticket'>";
+                    echo "<img src='media/cinemax_logo.png'alt='Cinemax logo'><p style='font-weight:bold; text-align: right;'> Ticket No. ".$ticketcnt."</p><hr>";
+                    echo "<p style='font-size: 20px; font-weight:bold'> Movie: ".$movieID[$_SESSION['cart']['movie']['id']]."</p>";
+                    echo "<p style='font-size: 20px; font-weight:bold'> Movie time: ".$timeConvert[$_SESSION['cart']['movie']['hour']]."</p>";
+                    echo "<p style='font-size: 20px; font-weight:bold'>Seat type: ".$seatTypes[$type]." - ".$type."</p>";
+                    echo "</div><br>";
+                    $ticketcnt++;
+                }
+            }
+        }
+        ?>
         <h3 style="color: teal; text-align: right;">Thank you for your business!</h3>
     </div>
     <?php preShow($bookingCells); ?>
