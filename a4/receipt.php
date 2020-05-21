@@ -13,7 +13,8 @@
         header("Location: index.php");
     }
 
-    $now = date('d/m/yy h:i');
+    date_default_timezone_set('Asia/Ho_Chi_Minh');
+    $now = date('d/m/Y H:i');
     $bookingCells = array_merge(
         [$now],
         $_SESSION['cart']['cust'],
@@ -111,7 +112,7 @@
                     <b>Total Price: </b>
                 </td>
                 <td class="gst-calc">
-                    $<?php echo calcTotalSession(); ?>
+                    $<?php echo number_format((float)calcTotalSession(), 2); ?>
                 </td>
             </tr>
             <tr style="border-bottom: teal 3px solid;">
@@ -119,7 +120,7 @@
                     <b>GST: </b>
                 </td>
                 <td class="gst-calc">
-                    $<?php echo calcTotalSession()*0.1; ?>
+                    $<?php echo number_format((float)calcTotalSession()*0.1, 2); ?>
                 </td>
             </tr>
             <tr>
@@ -127,12 +128,12 @@
                     <b>Grand Total: </b>
                 </td>
                 <td class="gst-calc">
-                    $<?php echo calcTotalSession()*1.1; ?>
+                    $<?php echo number_format((float)calcTotalSession()*1.1, 2); ?>
                 </td>
             </tr>
         </table>
         <h2 id="ticket-heading">Print your tickets</h2>
-        <hr style="border: teal solid 2px;">
+        <hr style="border: teal dashed 2px;">
         <br>
         <?php
         $ticketcnt = 1;
@@ -141,17 +142,17 @@
                 for ($i = 1; $i <= $qty; $i++){
                     echo "<div class='ticket'>";
                     echo "<img src='media/cinemax_logo.png'alt='Cinemax logo'><p style='font-weight:bold; text-align: right;'> Ticket No. ".$ticketcnt."</p><hr>";
-                    echo "<p style='font-size: 20px; font-weight:bold'> Movie: ".$movieID[$_SESSION['cart']['movie']['id']]."</p>";
-                    echo "<p style='font-size: 20px; font-weight:bold'> Movie time: ".$days[$_SESSION['cart']['movie']['day']]." - ".$timeConvert[$_SESSION['cart']['movie']['hour']]."</p>";
-                    echo "<p style='font-size: 20px; font-weight:bold'>Seat type: ".$seatTypes[$type]." - ".$type." - ".$i."</p>";
+                    echo "<p class='ticket-info'> Movie: ".$movieID[$_SESSION['cart']['movie']['id']]."</p>";
+                    echo "<p class='ticket-info'> Movie time: ".$days[$_SESSION['cart']['movie']['day']]." - ".$timeConvert[$_SESSION['cart']['movie']['hour']]."</p>";
+                    echo "<p class='ticket-info'>Seat type: ".$seatTypes[$type]." - ".$type." - ".$i."</p>";
                     echo "</div><br>";
                     $ticketcnt++;
                 }
             }
         }
         ?>
+        <hr style="border: teal solid 2px;">
         <h3 style="color: teal; text-align: right;">Thank you for your business!</h3>
     </div>
-    <?php preShow($bookingCells); ?>
 </body>
 </html>

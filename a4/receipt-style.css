@@ -102,6 +102,10 @@ table, th, td {
     width: 800px;
     height: 300px;  
 }
+.ticket-info {
+    font-size: 20px;
+    font-weight: bold;
+}
 @media screen {
     .page {
         padding: 50px;
