@@ -142,7 +142,7 @@
                     echo "<div class='ticket'>";
                     echo "<img src='media/cinemax_logo.png'alt='Cinemax logo'><p style='font-weight:bold; text-align: right;'> Ticket No. ".$ticketcnt."</p><hr>";
                     echo "<p style='font-size: 20px; font-weight:bold'> Movie: ".$movieID[$_SESSION['cart']['movie']['id']]."</p>";
-                    echo "<p style='font-size: 20px; font-weight:bold'> Movie time: ".$timeConvert[$_SESSION['cart']['movie']['hour']]."</p>";
+                    echo "<p style='font-size: 20px; font-weight:bold'> Movie time: ".$days[$_SESSION['cart']['movie']['day']]." - ".$timeConvert[$_SESSION['cart']['movie']['hour']]."</p>";
                     echo "<p style='font-size: 20px; font-weight:bold'>Seat type: ".$seatTypes[$type]." - ".$type." - ".$i."</p>";
                     echo "</div><br>";
                     $ticketcnt++;
