@@ -18,7 +18,10 @@
     $now = date('d/m/Y H:i');
     $bookingCells = array_merge(
         [$now],
-        $_SESSION['cart']['cust'],
+        [$_SESSION['cart']['cust']['name']],
+        [$_SESSION['cart']['cust']['email']],
+        [$_SESSION['cart']['cust']['mobile']], //Customer's credit card and expiry date information are omitted because the text file as given by Mr.Long didn't have them
+        //we also think those sensitive information shouldn't be stored in plain text/spreadsheet either.
         $_SESSION['cart']['movie'],
         $_SESSION['cart']['seats'],
         [number_format((float)calcTotalSession(),2)]

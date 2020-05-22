@@ -62,6 +62,8 @@ body {
     background-size: contain;
     height: 20px;
     opacity: 0.8;
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
 }
 .seats-table {
     border-collapse: collapse;

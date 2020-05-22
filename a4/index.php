@@ -1275,15 +1275,20 @@
           style="position: absolute; right: 0px; bottom: 0px; background-color: rgba(255, 255, 255, 0.2);">
       </div>
       <hr style="border: grey solid 1px;" size="10px">
+      <div id="debug-area">
       <?php echo '<h5>Debugging Area</h5>';
-        echo '<br>';
+        echo "<button style><a href='#page-end'>Jump to end of debug area - page end.</a></button>";
         echo '<p>$_POST array:</p>';
         preShow($_POST);
         echo '<p>$_SESSION array:</p>';
         preShow($_SESSION);
+        echo '<p>Page code:</p>';
+        printMyCode();
+        echo "<button style><a href='#debug-area'>Jump to start of debug area.</a></button>";
       ?>
+      </div>
       <hr style="border: grey solid 1px;" size="10px">
-      <div>&copy;
+      <div id="page-end">&copy;
         <script>
           document.write(new Date().getFullYear());
         </script> - Assignment by Group 7: <br> Vo An Huy (s3804220 - <a
