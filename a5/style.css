@@ -1,0 +1,22 @@
+#TopBtn {
+    position: fixed;
+    bottom: 0px;
+    float: right;
+    right: 0px;
+    left: 90%;
+}
+@media screen and (min-width: 901px) {
+    #TopBtn {
+        width: 70px;
+    }
+}
+@media screen and (max-width: 900px) and (min-width: 601px) {
+    #TopBtn {
+        width: 60px;
+    }
+}
+@media screen and (max-width: 600px) {
+    #TopBtn {
+        width: 50px;
+    }
+}
