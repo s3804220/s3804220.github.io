@@ -2,21 +2,15 @@ html {
     scroll-behavior: smooth;
 }
 body {
-    background-image: url(media/body-background.jpg);
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-}
-.container {
     font-family: Montserrat, sans-serif;
-    background-color: #3C6478;
-    color: #fff;
 }
 .jumbotron {
     background-image: url(media/jumbotron-background.jpg);
-    background-size: 100%;
+    background-size: cover;
     background-position:  0 5%;
     box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
+    min-height: 400px;
+    text-align: center;
 }
 .logo{
     color: white;
@@ -24,23 +18,19 @@ body {
     font-size: 30px;
 }
 .navbar {
-    background-color: #093145;
+    background-color: white;
+    
 }
 .nav-item > .btn.btn-primary {
     font-family: "Roboto Slab";
-    color: #fff;
+    color: black;
     background-color: transparent;
     border-color: transparent;
     margin: 10px;
 }
 .nav-item > .btn.btn-primary:hover {
     font-family: "Roboto Slab";
-    font-weight: bold;
-    color: rgb(151, 3, 3);
-    border: 2px;
-    border-style: dashed;
-    border-color: black;
-    background-color: #E0E0E0;
+    color: #5d96d2;
 
 }
 .nav-item > .btn.btn-primary:active, .nav-item > .btn.btn-primary:focus, .nav-item > .btn.btn-primary:active:focus {
