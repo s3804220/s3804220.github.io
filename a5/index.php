@@ -159,7 +159,22 @@
             <div class="carousel-item active">
 
               <div class="row">
-                <div class="col-md-4">
+              <?php
+                  $productselect = "SELECT id, productname, price, product_type, main_image FROM Products WHERE id ='PD003' OR id ='PD007' OR id='PD006'";
+                  $result = mysqli_query($conn, $productselect) or die(mysqli_error());
+                  $productarray = array();
+                  while($row = mysqli_fetch_assoc($result)) {
+                    $productarray[] = $row;
+                  }
+                  foreach ($productarray as $num => $info){
+                    echo "<div class='col-md-4'><div class='card product-box mb-2'><a href='product-detail.php?id={$info['id']}'><img class='card-img-top' src=";
+                    echo "'media/product/".$info['main_image']."' alt='Product image'></a>";
+                    echo "<div class='card-body'><a href='product-detail.php?id={$info['id']}' class='title'>".$info['productname']."</a><br>";
+                    echo "<a href='".str_replace(' ','-',strtolower($info['product_type'])).".php' class='category'>".$info['product_type']."</a>";
+                    echo "<p class='price'>$".$info['price']."</p></div></div></div>";
+                  }
+                ?>
+                <!-- <div class="col-md-4">
                   <div class="card product-box mb-2">
                     <a href="product_detail.html"><img class="card-img-top" src="media/product/1.jpg"
                         alt="Product image"></a>
@@ -191,50 +206,30 @@
                       <p class="price">$17.25</p>
                     </div>
                   </div>
-                </div>
+                </div> -->
 
               </div>
 
             </div>
 
             <div class="carousel-item">
-
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="card product-box mb-2">
-                    <a href="product_detail.html"><img class="card-img-top" src="media/product/1.jpg"
-                        alt="Product image"></a>
-                    <div class="card-body">
-                      <a href="product_detail.html" class="title">Ut wisi enim ad</a><br />
-                      <a href="products.html" class="category">Commodo consequat</a>
-                      <p class="price">$17.25</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="card product-box mb-2">
-                    <a href="product_detail.html"><img class="card-img-top" src="media/product/1.jpg"
-                        alt="Product image"></a>
-                    <div class="card-body">
-                      <a href="product_detail.html" class="title">Ut wisi enim ad</a><br />
-                      <a href="products.html" class="category">Commodo consequat</a>
-                      <p class="price">$17.25</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="card product-box mb-2">
-                    <a href="product_detail.html"><img class="card-img-top" src="media/product/1.jpg"
-                        alt="Product image"></a>
-                    <div class="card-body">
-                      <a href="product_detail.html" class="title">Ut wisi enim ad</a><br />
-                      <a href="products.html" class="category">Commodo consequat</a>
-                      <p class="price">$17.25</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div class="row">
+            <?php
+            $productselect = "SELECT id, productname, price, product_type, main_image FROM Products WHERE id ='PD005' OR id ='PD001' OR id='PD008'";
+            $result = mysqli_query($conn, $productselect) or die(mysqli_error());
+            $productarray = array();
+            while($row = mysqli_fetch_assoc($result)) {
+              $productarray[] = $row;
+            }
+            foreach ($productarray as $num => $info){
+              echo "<div class='col-md-4'><div class='card product-box mb-2'><a href='product-detail.php?id={$info['id']}'><img class='card-img-top' src=";
+              echo "'media/product/".$info['main_image']."' alt='Product image'></a>";
+              echo "<div class='card-body'><a href='product-detail.php?id={$info['id']}' class='title'>".$info['productname']."</a><br>";
+              echo "<a href='".str_replace(' ','-',strtolower($info['product_type'])).".php' class='category'>".$info['product_type']."</a>";
+              echo "<p class='price'>$".$info['price']."</p></div></div></div>";
+            }
+            ?>
+            <!-- </div> -->
           </div>
         </div>
       </div>

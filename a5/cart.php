@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Product Detail</title>
+  <title>Cart</title>
 
   <!-- Keep wireframe.css for debugging, add your css to style.css -->
   <link id='wireframecss' type="text/css" rel="stylesheet" href="../wireframe.css" disabled>
@@ -31,7 +31,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 
-   <!-- Link to web icon-->
+    <!-- Link to web icon-->
   <!-- Creative Commons image sourced from https://www.freelogodesign.org and used for educational purposes only -->
   <link rel="icon" href="media/theme/icon.png">
   <script src='../wireframe.js'></script>
@@ -46,7 +46,7 @@
 </head>
 
 <body>
-  <?php
+<?php
       $servername = "localhost";
       $username = "root";
       $password = "root";
@@ -60,7 +60,7 @@
       <a class="navbar-brand" href="index.php"><img src="media/theme/logo.png" alt="Shop logo"></a>
       <ul class="nav nav-pills ml-auto user-menu">
         <li class="nav-item">
-          <a class="nav-link btn btn-primary" href="index.php">Home</a>
+          <a class="nav-link btn btn-primary" href="index.php">Homes</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -76,54 +76,23 @@
         <li class="nav-item">
           <a class="nav-link btn btn-primary" href="#">Cart</a>
         </li>
+        <?php
+            if(empty($_SESSION['admin'])){
+              echo "<li class='nav-item'><a class='nav-link btn btn-primary' href='login.php'>Login</a></li>";
+            }
+            else {
+              echo "<li class='nav-item'><a class='nav-link btn btn-primary' href='controlpanel.php'>Control panel</a></li>";
+              echo "<li class='nav-item'><a class='nav-link btn btn-primary' href='logout.php'>Logout</a></li>"; 
+            }
+          ?>
       </ul>
     </nav>
     <img class="img-fluid" src="media/theme/mask-banner.jpg" alt="Mask banner">
     <div id="wrapper">
-    <div class="container my-4">
-        <h4 class="title">
-          <span class="text"><span class="line"><b>Product </b> <strong>Details</strong></span></span>
-        </h4>
-        <div class="row">
-          <?php
-            mysqli_real_escape_string($_GET['id']);
-            $id = $_GET['id'];
-            $productselect = "SELECT id, productname, price, descript, product_type, main_image FROM Products WHERE id = '$id'";
-            $result = mysqli_query($conn, $productselect) or die($productselect);
-            //$result = mysqli_query($conn, $productselect);
-            if($result){
-                if(mysqli_num_rows($result) > 0){
-                    while($row = mysqli_fetch_array($result)){;
-                        // echo "<div class='col-sm'>";
-                        // <div class='card product-box mb-2'>
-                        echo "<div class='col-md-4' id='detail'><a href='product-detail.php?id={$row['id']}'><img class='card-img-top' src=";
-                        echo "'media/product/".$row['main_image']."' alt='Product image'></a></div>";
-                        echo "<div class='col-md-8'><h2><b>".$row['productname']."</b></h2>";
-                        echo "<p style='font-size: 18px;'><a href='".str_replace(' ','-',strtolower($row['product_type'])).".php' class='category'>".$row['product_type']."</a></p>";
-                        echo "<p style='font-size: 18px;'>Description: ".$row['descript']."</p>";
-                        echo "<p style='font-size: 18px;'>Price: $".$row['price']."</p>";
-
-                        echo "<form action='cart.php' method='post'>";
-                        echo "<p style='font-size: 18px;'>Quantity: <button type=button onclick='minus()'>-</button>";
-                        echo "<input style='text-align: center; font-size: 14px;' type=text id='counter' value='0' name='".$row['id']."' onblur='updateQuantity()'>";
-                        echo "<button type='button' onclick='plus();'>+</button></p>";
-                        echo "<input type='submit' name='Add to Cart' value='Add to Cart' id='Add to Cart'><form>";
-                    }
-                    // Free result set
-                    // mysqli_free_result($result);
-                } else{
-                    echo "No records matching your query were found.";
-                }
-             } 
-            else{
-                echo "ERROR: Could not able to execute $result. " . mysqli_error($conn);
-            }
-          ?>
-        </div>
-      </div>
+      <?php
+        echo $_SESSION;
+      ?>
     </div>
-    <head>
-    </head>
     <footer>
       <a href="#top-bar"><img id="TopBtn" src="media/theme/gotop.png" alt="Back to Top"></a>
       <section id="footer-bar">
