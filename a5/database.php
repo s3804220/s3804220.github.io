@@ -86,12 +86,12 @@
         $id = $_POST['product']['id'];
         $name = $_POST['product']['name'];
         $description = $_POST['product']['des'];
-        $brand = $_POST['product']['brand'];
+        // $brand = $_POST['product']['brand'];
         $type = $_POST['product']['type'];
         $price = $_POST['product']['price'];
 
         $sql = "INSERT INTO Products
-        VALUES ('$id', '$name', '$brand', $price, '$description', '$type', '$image')";
+        VALUES ('$id', '$name', $price, '$description', '$type', '$image')"; //, '$brand'
         mysqli_query($conn, $sql);
         /*if (mysqli_query($conn, $sql)) {
             echo "New record created successfully";

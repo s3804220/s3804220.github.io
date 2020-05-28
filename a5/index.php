@@ -33,7 +33,7 @@
 
   <!-- Link to web icon-->
   <!-- Creative Commons image sourced from https://www.freelogodesign.org/preview?lang=en&name=&logo=3cb08b7e-706d-4539-a663-82c8ea221204 and used for educational purposes only -->
-  <link rel="icon" href="media/icon.png">
+  <link rel="icon" href="media/theme/icon.png">
   <script src='../wireframe.js'></script>
 
   <!-- Link to script.js -->
@@ -61,7 +61,7 @@
       <a class="navbar-brand" href="index.php"><img src="media/theme/logo.png" alt="Shop logo"></a>
       <ul class="nav nav-pills ml-auto user-menu">
         <li class="nav-item">
-          <a class="nav-link btn btn-primary" href="#about-us">About us</a>
+          <a class="nav-link btn btn-primary" href="index.php">Home</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -69,9 +69,9 @@
             Products
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="bandana.html">Bandana</a>
-            <a class="dropdown-item" href="medical-mask.html">Medical mask</a>
-            <a class="dropdown-item" href="dust-mask.html">Dust mask</a>
+            <a class="dropdown-item" href="bandana.php">Bandana</a>
+            <a class="dropdown-item" href="medical-mask.php">Medical mask</a>
+            <a class="dropdown-item" href="dust-mask.php">Dust mask</a>
           </div>
         </li>
         <li class="nav-item">
@@ -255,7 +255,7 @@
             echo "<div class='col-md-4'><div class='card product-box mb-2'><a href='product_detail.html'><img class='card-img-top' src=";
             echo "'media/product/".$info['main_image']."' alt='Product image'></a>";
             echo "<div class='card-body'><a href='product_detail.html' class='title'>".$info['productname']."</a><br>";
-            echo "<a href='".str_replace(' ','-',strtolower($info['product_type'])).".html' class='category'>".$info['product_type']."</a>";
+            echo "<a href='".str_replace(' ','-',strtolower($info['product_type'])).".php' class='category'>".$info['product_type']."</a>";
             echo "<p class='price'>$".$info['price']."</p></div></div></div>";
           }
           ?>
@@ -294,8 +294,10 @@
           <div class="col-md-3">
             <h4>Navigation</h4>
             <ul>
-              <li><a href="index.php">Homepage</a></li>
-              <li><a href="#about-us">About Us</a></li>
+              <li><a href="index.php">Home</a></li>
+              <li><a href="bandana.php">Bandanas</a></li>
+              <li><a href="medical-mask.php">Medical Mask</a></li>
+              <li><a href="dust-mask.php">Dust Mask</a></li>
             </ul>
           </div>
           <div class="col-md-4">

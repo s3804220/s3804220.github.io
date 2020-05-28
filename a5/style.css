@@ -327,3 +327,8 @@ section#copyright{
 		border-bottom:1px solid #eee;
 	}
 }
+
+.card-img-top {
+	width: 100%;
+	height: 300px;
+}
