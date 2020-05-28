@@ -229,7 +229,6 @@
               echo "<p class='price'>$".$info['price']."</p></div></div></div>";
             }
             ?>
-            <!-- </div> -->
           </div>
         </div>
       </div>
