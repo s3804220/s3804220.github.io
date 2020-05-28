@@ -254,7 +254,7 @@
           foreach ($productarray as $num => $info){
             echo "<div class='col-md-4'><div class='card product-box mb-2'><a href='product-detail.php?id={$info['id']}'><img class='card-img-top' src=";
             echo "'media/product/".$info['main_image']."' alt='Product image'></a>";
-            echo "<div class='card-body'><a href='product-detail.php?nid={$info['id']}' class='title'>".$info['productname']."</a><br>";
+            echo "<div class='card-body'><a href='product-detail.php?id={$info['id']}' class='title'>".$info['productname']."</a><br>";
             echo "<a href='".str_replace(' ','-',strtolower($info['product_type'])).".php' class='category'>".$info['product_type']."</a>";
             echo "<p class='price'>$".$info['price']."</p></div></div></div>";
           }

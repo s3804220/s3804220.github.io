@@ -2,19 +2,6 @@
 <html lang='en'>
 
 <head>
-  <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "root";
-    $dbname = "shopDatabase";
-
-    // Create connection
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
-
-    mysqli_real_escape_string($_GET['id']);
-    $id = $_GET['id'];
-    echo '<p>'.$id.'</p>';
-  ?>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?php echo $name;?></title>
@@ -59,6 +46,15 @@
 </head>
 
 <body>
+  <?php
+      $servername = "localhost";
+      $username = "root";
+      $password = "root";
+      $dbname = "shopDatabase";
+
+      // Create connection
+      $conn = mysqli_connect($servername, $username, $password, $dbname);
+    ?>
   <div class="container">
     <nav id="top-bar" class="navbar navbar-expand-sm shadow">
       <a class="navbar-brand" href="index.php"><img src="media/theme/logo.png" alt="Shop logo"></a>
@@ -86,11 +82,41 @@
     <div id="wrapper">
     <div class="container my-4">
         <h4 class="title">
-          <span class="text"><span class="line"><b>All</b> <strong>Products</strong></span></span>
+          <span class="text"><span class="line"><b>Product </b> <strong>Details</strong></span></span>
         </h4>
         <div class="row">
-          
-        
+          <?php
+            mysqli_real_escape_string($_GET['id']);
+            $id = $_GET['id'];
+            $productselect = "SELECT id, productname, price, descript, product_type, main_image FROM Products WHERE id = '$id'";
+            $result = mysqli_query($conn, $productselect) or die($productselect);
+            //$result = mysqli_query($conn, $productselect);
+            if($result){
+                if(mysqli_num_rows($result) > 0){
+                    while($row = mysqli_fetch_array($result)){;
+                        // echo "<div class='col-sm'>";
+                        // <div class='card product-box mb-2'>
+                        echo "<div class='col-md-4'><a href='product-detail.php?id={$row['id']}'><img class='card-img-top' src=";
+                        echo "'media/product/".$row['main_image']."' alt='Product image'></a></div>";
+                        echo "<div class='col-md-8'><h2><b>".$row['productname']."</b></h2>";
+                        echo "<p style='font-size: 18px;'><a href='".str_replace(' ','-',strtolower($row['product_type'])).".php' class='category'>".$row['product_type']."</a></p>";
+                        echo "<p style='font-size: 18px;'>Description: ".$row['descript']."</p>";
+                        echo "<p style='font-size: 18px;'>Price: $".$row['price']."</p>";
+
+                        echo "<p style='font-size: 18px;'>Quantity: <button type=button onclick='minus()'>-</button>";
+                        echo "<input style='text-align: center; font-size: 14px;' type=text id='counter' value='0' name='P1' onblur='updateQuantity()'>";
+                        echo "<button type='button' onclick='plus();'>+</button></p>";
+                    }
+                    // Free result set
+                    // mysqli_free_result($result);
+                } else{
+                    echo "No records matching your query were found.";
+                }
+             } 
+            else{
+                echo "ERROR: Could not able to execute $result. " . mysqli_error($conn);
+            }
+          ?>
         </div>
       </div>
     </div>
