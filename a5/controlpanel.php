@@ -20,6 +20,10 @@
     crossorigin="anonymous"></script>
 
 
+  <!-- Link to web icon-->
+  <!-- Creative Commons image sourced from https://www.freelogodesign.org and used for educational purposes only -->
+  <link rel="icon" href="media/theme/icon.png">
+
   <!-- Link to style.css -->
   <link id='stylecss' type="text/css" rel="stylesheet" href="style.css">
 
