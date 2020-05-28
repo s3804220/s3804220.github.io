@@ -75,7 +75,7 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link btn btn-primary" href="#">Cart</a>
+          <a class="nav-link btn btn-primary" href="cart.php">Cart</a>
         </li>
           <?php
             if(empty($_SESSION['admin'])){

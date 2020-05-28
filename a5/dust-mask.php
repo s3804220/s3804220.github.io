@@ -74,8 +74,17 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link btn btn-primary" href="#">Cart</a>
+          <a class="nav-link btn btn-primary" href="cart.php">Cart</a>
         </li>
+        <?php
+            if(empty($_SESSION['admin'])){
+              echo "<li class='nav-item'><a class='nav-link btn btn-primary' href='login.php'>Login</a></li>";
+            }
+            else {
+              echo "<li class='nav-item'><a class='nav-link btn btn-primary' href='controlpanel.php'>Control panel</a></li>";
+              echo "<li class='nav-item'><a class='nav-link btn btn-primary' href='logout.php'>Logout</a></li>"; 
+            }
+          ?>
       </ul>
     </nav>
     <img class="img-fluid" src="media/theme/mask-banner.jpg" alt="Mask banner">

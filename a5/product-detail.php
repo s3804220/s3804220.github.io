@@ -31,7 +31,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 
-   <!-- Link to web icon-->
+     <!-- Link to web icon-->
   <!-- Creative Commons image sourced from https://www.freelogodesign.org and used for educational purposes only -->
   <link rel="icon" href="media/theme/icon.png">
   <script src='../wireframe.js'></script>
@@ -74,8 +74,17 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link btn btn-primary" href="#">Cart</a>
+          <a class="nav-link btn btn-primary" href="cart.php">Cart</a>
         </li>
+        <?php
+            if(empty($_SESSION['admin'])){
+              echo "<li class='nav-item'><a class='nav-link btn btn-primary' href='login.php'>Login</a></li>";
+            }
+            else {
+              echo "<li class='nav-item'><a class='nav-link btn btn-primary' href='controlpanel.php'>Control panel</a></li>";
+              echo "<li class='nav-item'><a class='nav-link btn btn-primary' href='logout.php'>Logout</a></li>"; 
+            }
+          ?>
       </ul>
     </nav>
     <img class="img-fluid" src="media/theme/mask-banner.jpg" alt="Mask banner">
