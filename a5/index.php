@@ -245,16 +245,16 @@
         </h4>
         <div class="row">
           <?php
-            $productselect = "SELECT productname, price, product_type, main_image FROM Products";
+            $productselect = "SELECT id, productname, price, product_type, main_image FROM Products";
             $result = mysqli_query($conn, $productselect) or die(mysqli_error());
             $productarray = array();
             while($row = mysqli_fetch_assoc($result)) {
               $productarray[] = $row;
             }
           foreach ($productarray as $num => $info){
-            echo "<div class='col-md-4'><div class='card product-box mb-2'><a href='product_detail.html'><img class='card-img-top' src=";
+            echo "<div class='col-md-4'><div class='card product-box mb-2'><a href='product-detail.php?id={$info['id']}'><img class='card-img-top' src=";
             echo "'media/product/".$info['main_image']."' alt='Product image'></a>";
-            echo "<div class='card-body'><a href='product_detail.html' class='title'>".$info['productname']."</a><br>";
+            echo "<div class='card-body'><a href='product-detail.php?nid={$info['id']}' class='title'>".$info['productname']."</a><br>";
             echo "<a href='".str_replace(' ','-',strtolower($info['product_type'])).".php' class='category'>".$info['product_type']."</a>";
             echo "<p class='price'>$".$info['price']."</p></div></div></div>";
           }

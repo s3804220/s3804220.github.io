@@ -2,9 +2,22 @@
 <html lang='en'>
 
 <head>
+  <?php
+    $servername = "localhost";
+    $username = "root";
+    $password = "root";
+    $dbname = "shopDatabase";
+
+    // Create connection
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+    mysqli_real_escape_string($_GET['id']);
+    $id = $_GET['id'];
+    echo '<p>'.$id.'</p>';
+  ?>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Login</title>
+  <title><?php echo $name;?></title>
 
   <!-- Keep wireframe.css for debugging, add your css to style.css -->
   <link id='wireframecss' type="text/css" rel="stylesheet" href="../wireframe.css" disabled>
@@ -46,17 +59,12 @@
 </head>
 
 <body>
-  <?php
-    if(!empty($_SESSION['admin'])){
-      header('Location: index.php');
-    }
-  ?>
   <div class="container">
     <nav id="top-bar" class="navbar navbar-expand-sm shadow">
       <a class="navbar-brand" href="index.php"><img src="media/theme/logo.png" alt="Shop logo"></a>
       <ul class="nav nav-pills ml-auto user-menu">
         <li class="nav-item">
-          <a class="nav-link btn btn-primary" href="index.php">Homes</a>
+          <a class="nav-link btn btn-primary" href="index.php">Home</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -72,40 +80,19 @@
         <li class="nav-item">
           <a class="nav-link btn btn-primary" href="#">Cart</a>
         </li>
-        <?php
-            if(empty($_SESSION['admin'])){
-              echo "<li class='nav-item'><a class='nav-link btn btn-primary' href='login.php'>Login</a></li>";
-            }
-            else {
-              echo "<li class='nav-item'><a class='nav-link btn btn-primary' href='controlpanel.php'>Control panel</a></li>";
-              echo "<li class='nav-item'><a class='nav-link btn btn-primary' href='logout.php'>Logout</a></li>"; 
-            }
-          ?>
       </ul>
     </nav>
     <img class="img-fluid" src="media/theme/mask-banner.jpg" alt="Mask banner">
     <div id="wrapper">
-      <section class="header_text sub">
-        <h4><span>Login</span></h4>
-      </section>
-      <h4 class="title"><span class="text"><strong>Login</strong> Form</span></h4>
-      <form action="#" method="POST" id="login-form">
-        <fieldset>
-          <div class="form-group">
-            <label for="userid">Username</label>
-            <input type="text" placeholder="Enter your user ID" id="userid" name="userid">
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" placeholder="Enter your password" id="password" name="password">
-          </div>
-          <?php echo $loginmsg ?>
-          <div class="form-group">
-            <input class="btn btn-primary btn-dark" type="submit" value="Sign into your account" id="login-btn" name="login">
-          </div>
-        </fieldset>
-      </form>
-      <hr>
+    <div class="container my-4">
+        <h4 class="title">
+          <span class="text"><span class="line"><b>All</b> <strong>Products</strong></span></span>
+        </h4>
+        <div class="row">
+          
+        
+        </div>
+      </div>
     </div>
     <footer>
       <a href="#top-bar"><img id="TopBtn" src="media/theme/gotop.png" alt="Back to Top"></a>

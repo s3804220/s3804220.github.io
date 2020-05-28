@@ -51,7 +51,7 @@
       <a class="navbar-brand" href="index.php"><img src="media/theme/logo.png" alt="Shop logo"></a>
       <ul class="nav nav-pills ml-auto user-menu">
         <li class="nav-item">
-          <a class="nav-link btn btn-primary" href="#about-us">About us</a>
+          <a class="nav-link btn btn-primary" href="index.php">Home</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -59,9 +59,9 @@
             Products
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="bandana.html">Bandana</a>
-            <a class="dropdown-item" href="medical-mask.html">Medical mask</a>
-            <a class="dropdown-item" href="dust-mask.html">Dust mask</a>
+            <a class="dropdown-item" href="bandana.php">Bandana</a>
+            <a class="dropdown-item" href="medical-mask.php">Medical mask</a>
+            <a class="dropdown-item" href="dust-mask.php">Dust mask</a>
           </div>
         </li>
         <li class="nav-item">
@@ -99,8 +99,10 @@
           <div class="col-md-3">
             <h4>Navigation</h4>
             <ul>
-              <li><a href="index.php">Homepage</a></li>
-              <li><a href="#about-us">About Us</a></li>
+              <li><a href="index.php">Home</a></li>
+              <li><a href="bandana.php">Bandanas</a></li>
+              <li><a href="medical-mask.php">Medical Mask</a></li>
+              <li><a href="dust-mask.php">Dust Mask</a></li>
             </ul>
           </div>
           <div class="col-md-4">
