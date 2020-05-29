@@ -37,4 +37,47 @@ if (isset($_POST['home-return'])) {
   header('Location: index.php');
 }
 
+// Loop to add options for select input
+function addOptions($id){
+  echo "<option value=''";
+  if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    if ($_POST[$id] == ''){
+      echo "selected='selected'";
+    }
+  }
+  echo ">Please Select</option>";
+  for ($i = 1; $i<=10; $i++){
+    echo "<option value=";
+    echo "'".$i."'";
+    if ($_SERVER["REQUEST_METHOD"] == "POST"){
+      if( $i == $_POST[$id]){
+        echo "selected='selected'";
+      }
+    }
+    echo ">".$i."</option>";
+  }
+}
+
+// A 'reset the session' submit button
+if (isset($_POST['session-reset'])) {
+  unset($_SESSION['cart']);
+}
+
+$total = 0;
+function calcTotal($price, $qty){
+  $total = $total + ($price * $qty);
+  return $total;
+}
+function showTotal(){
+  return $total;
+}
+function calcTotalSession(){
+  if(!empty($_SESSION['cart']['products'])){
+    $bookingTotal = 0;
+    foreach($_SESSION['cart']['products'] as $products => $product){
+      $bookingTotal = $bookingTotal + $product['price'] * $product['quantity'];
+    }
+    return $bookingTotal;
+  }
+}
 ?>
