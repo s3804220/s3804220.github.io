@@ -137,9 +137,20 @@
       <h4 class="title">
       <span class="text"><span class="line"><b>Checkout</b> <strong>Information</strong></span></span>
       </h4>
-      <form>
-      
-      </form>
+      <div class="form-group">
+        <label for="cust-name" style="text-align: left;">Name <span class="require">*</span></label>
+        <input type="name" name="cust[name]" id="name" style="width: 100%;" required oninput="checkCustInfo()">
+      </div>
+      <div class="form-group">
+        <label for="cust-mobile" style="text-align: left;">Mobile <span class="require">*</span></label>
+        <input type="tel" name="cust[mobile]" id="mobile" style="width: 100%;" required oninput="checkCustInfo()">
+      </div>
+      <div class="form-group">
+        <label for="cust-address" style="text-align: left;">Address <span class="require">*</span></label>
+        <input type="text" name="cust[address]" id="address" style="width: 100%;" required oninput="checkCustInfo()">
+      </div>
+      <input type="button" name="order" value="Order" id="order" onclick="displayThank()" disabled>
+
 
     </div>
     <footer>

@@ -1,27 +1,16 @@
-function plus() {
-    console.log('plus button click');
-    var whichQty = document.getElementById('counter');
-    whichQty.value = Number(whichQty.value) + 1;
-    console.log(whichQty.name + ' quantity is: ' + whichQty.value);
-}
+function checkCustInfo(){
+  var submitButton = document.getElementById('order');
+  var nameInput = document.getElementById('name');
+  var mobileInput = document.getElementById('mobile')
+  var addressInput =  document.getElementById('address');
 
-function minus() {
-    console.log('minus button click');
-    var whichQty = document.getElementById('counter');
-    if (whichQty.value > 0) {
-        whichQty.value = Number(whichQty.value) - 1;
-    }
-    console.log(whichQty.name + ' quantity is: ' + whichQty.value);
-}
+  var namePattern = /^[a-zA-Z\'\.\-]+[\s]?([a-zA-Z\'\.\-]+[\s]?)+$/;
+  var mobilePattern = /^(\(04\)|04|\+61[\s]?4)[\s]?(\d[\s]?){8}$/;
 
-function updateQuantity() {
-    console.log('Update Quantity Function');
-    var whichQty = document.getElementById('counter');
-    var re = new RegExp("^[0-9]+$");
-    if (!re.test(whichQty.value)) {
-        alert('wrong quantity');
-        return;
-    }
-    var price = whichQty.value * prices[whichID];
-    console.log(whichQty.name + 'quantity is: ' + whichQty.value);
+  if (namePattern.test(nameInput.value) && mobilePattern.test(mobileInput.value) && addressInput.value != ''){
+    submitButton.disabled = false;
+  }
+}
+function displayThank(){
+  alert('Thank you for shopping with us!');
 }
