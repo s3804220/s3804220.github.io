@@ -90,6 +90,10 @@
     <img class="img-fluid" src="media/theme/mask-banner.jpg" alt="Mask banner">
     <div id="wrapper">
     <h4 class="title">
+      <?php
+        preshow($_SESSION);
+        preShow($_POST);
+      ?>
       <span class="text"><span class="line"><b>Your</b> <strong>Cart</strong></span></span>
     </h4>
     <?php
@@ -116,7 +120,6 @@
                   echo "<td style='text-align: center;'>".$row['product_type']."</td>";
                   echo "<td style='text-align: center;'>".$row['price']."</td>";
                   echo "<td style='text-align: center;'>".$product['quantity']."</td>";
-                  echo "<td style='text-align: center;'></td></tr>";
                   calcTotal((float)$row['price'], (float)$product['qty']);
                 }
             }

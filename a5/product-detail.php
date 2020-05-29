@@ -105,12 +105,18 @@
             
             if($result){
                 if(mysqli_num_rows($result) > 0){
-                    while($row = mysqli_fetch_array($result)){
-                    if (isset($_POST['add'])){
-                      $_SESSION['cart']['products'][$row['id']] = $_POST;
-                      header("Location: cart.php");
-                    }
-                
+                    while($row = mysqli_fetch_array($result)){     
+                      if (isset($_POST['add'])){
+                        //$_SESSION['cart']['products'][$row['id']] = $_POST;
+  
+                        /*$_SESSION['cart']['products'] = $_POST;*/
+      
+                        $_SESSION['cart']['products'][$row['id']]['id'] = test_input($_POST['id']);
+                        $_SESSION['cart']['products'][$row['id']]['price'] = test_input($_POST['price']);
+                        $_SESSION['cart']['products'][$row['id']]['quantity'] = test_input($_POST['quantity']);
+      
+                        header("Location: cart.php");
+                      }          
                     echo "<div class='col-md-4' id='detail'><a href='product-detail.php?id={$row['id']}'><img class='card-img-top' src=";
                     echo "'media/product/".$row['main_image']."' alt='Product image'></a></div>";
                     echo "<div class='col-md-8'><h2><b>".$row['productname']."</b></h2>";
@@ -121,13 +127,12 @@
                     echo "<form action='' method='post'>";
                     echo "<input type='hidden' name='id' value='".$row['id']."'>";
                     echo "<input type='hidden' name='price' value='".$row['price']."'>";
-                    echo "<p style='font-size: 18px;'><b>Quantity: </b><select name='quantity' id='product-'".$row['id'].">";
-                    addOptions($row['id']);
-                    echo "</select><br>";
-                    echo "<input type='submit' name='add' value='Add to Cart' id='Add to Cart'>";
-                    echo "<input type='submit' name='session-reset' value='Reset the session' id='session-reset'><form>";
+                    echo "<button type=button onclick='minus()'>-</button>";
+                    echo "<input style='text-align: center;' type=text id='quantity' value='0' name='quantity' onblur='updateQuantity()'>";
+                    echo "<button type=button onclick='plus()'>+</button><br><br>";
+                    echo "<input type='submit' name='session-reset' value='Reset the session' id='session-reset'>";
+                    echo "<input type='submit' name='add' value='Add to Cart' id='Add to Cart'></form>";        
                 }
-            
                     // Free result set
                     // mysqli_free_result($result);
                 } else{
