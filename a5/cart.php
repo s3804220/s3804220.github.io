@@ -137,6 +137,7 @@
       <h4 class="title">
       <span class="text"><span class="line"><b>Checkout</b> <strong>Information</strong></span></span>
       </h4>
+      <h6 style = "color: red;"> * Please Enter Your Name, Australian Phone Number and Address</h6>
       <div class="form-group">
         <label for="cust-name" style="text-align: left;">Name <span class="require">*</span></label>
         <input type="name" name="cust[name]" id="name" style="width: 100%;" required oninput="checkCustInfo()">
