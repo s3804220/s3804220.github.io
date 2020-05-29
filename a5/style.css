@@ -135,18 +135,18 @@ label {
     width: 140px;
     text-align: right;
 }
-#login-form, #add-form, #logout-form {
+#login-form, #add-form, #logout-form, #admin-activity, #add-adform {
     padding: 10px;
-    border: double 2px #eee;
+    border: double 2px rgb(216, 216, 216);
     border-radius: 20px;
 }
-#login-form fieldset div.form-group, #logout-form div.form-group, #logout-form p {
+#login-form fieldset div.form-group, #logout-form div.form-group, #logout-form p, #admin-activity, #add-adform {
     text-align: center;
 }
 #logout-form p {
 	font-size: 14px;
 }
-#login-form label {
+#login-form label, #add-adform label {
     font-size: 14px;
 }
 #addproduct {
@@ -154,6 +154,12 @@ label {
 }
 section.header_text.sub{
 	font-size:14px;
+}
+.error {
+	color: red;
+}
+.success {
+	color: green;
 }
 section.header_text.sub h4{
     padding: 20px;

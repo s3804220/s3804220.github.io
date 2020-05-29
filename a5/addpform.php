@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Control Panel</title>
-
-  <!-- Keep wireframe.css for debugging, add your css to style.css -->
-  <link id='wireframecss' type="text/css" rel="stylesheet" href="../wireframe.css" disabled>
 
   <!-- Add bootstrap-->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -23,25 +20,16 @@
     crossorigin="anonymous"></script>
 
 
-  <!-- Link to style.css -->
-  <link id='stylecss' type="text/css" rel="stylesheet" href="style.css">
-
-  <!-- Link to web font-->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-
-    <!-- Link to web icon-->
+  <!-- Link to web icon-->
   <!-- Creative Commons image sourced from https://www.freelogodesign.org and used for educational purposes only -->
   <link rel="icon" href="media/theme/icon.png">
 
-  <!-- Link to script.js -->
-  <script defer src="script.js"></script>
+  <!-- Link to style.css -->
+  <link id='stylecss' type="text/css" rel="stylesheet" href="style.css">
 
-  <!-- Link to tools.php -->
-  <?php include 'tools.php';?>
+  <!-- Link to other php files -->
   <?php include 'database.php';?>
-
+  <?php include 'tools.php';?>
 </head>
 
 <body>
@@ -78,17 +66,42 @@
     <img class="img-fluid" src="media/theme/mask-banner.jpg" alt="Mask banner">
     <div id="wrapper">
       <section class="header_text sub">
-        <h4><span>Control Panel</span></h4>
+        <h4><span>Control panel</span></h4>
       </section>
-      <div id="admin-activity">
-        <p style="font-size: 16px;">Hello <em>admin,</em>
-        <br>
-        what would you like to do?</p>
-        <a href="manageacc.php"><button type="button" class="btn btn-secondary">Manage admin users</button></a><br><br>
-        <a href="managecate.php"><button type="button" class="btn btn-secondary">Manage product categories</button></a><br><br>
-        <a href="manageproduct.php"><button type="button" class="btn btn-secondary">Manage products</button></a>
-      </div>
-      <hr>
+
+      <form action="" method="POST" id="add-form" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="product-id">Product ID</label>
+          <input type="text" name="product[id]" id="product-id">
+        </div>
+        <div class="form-group">
+          <label for="product-name">Name</label>
+          <input type="text" name="product[name]" id="product-name">
+        </div>
+        <div class="form-group">
+          <label for="product-des">Description</label>
+          <textarea rows="5" cols="50" name="product[des]" form="add-form" id="product-des"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="product-type">Product Type</label>
+          <select name="product[type]" id="product-type">
+            <option value='Bandana'>Bandana</option>
+            <option value='Medical mask'>Medical Mask</option>
+            <option value='Dust mask'>Dust Mask</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="product-name">Price</label>
+          <input type="text" name="product[price]" id="product-price">
+        </div>
+        <div class="form-group">
+          <label for="product-img">Upload images</label>
+          <input type="file" name="image1" id="product-img" accept="image/*">
+        </div>
+        <div class="form-group">
+          <input class="btn btn-primary btn-dark" type="submit" name="addproduct" value="Add Product" id="addproduct">
+        </div>
+      </form>
     </div>
     <footer>
       <a href="#top-bar"><img id="TopBtn" src="media/theme/gotop.png" alt="Back to Top"></a>
@@ -97,10 +110,10 @@
           <div class="col-md-3">
             <h4>Navigation</h4>
             <ul>
-              <li><a href="index.php">Home</a></li>
-              <li><a href="bandana.php">Bandanas</a></li>
-              <li><a href="medical-mask.php">Medical Mask</a></li>
-              <li><a href="dust-mask.php">Dust Mask</a></li>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="bandana.php">Bandanas</a></li>
+            <li><a href="medical-mask.php">Medical Mask</a></li>
+            <li><a href="dust-mask.php">Dust Mask</a></li>
             </ul>
           </div>
           <div class="col-md-4">

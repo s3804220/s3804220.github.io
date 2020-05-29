@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Control Panel</title>
-
-  <!-- Keep wireframe.css for debugging, add your css to style.css -->
-  <link id='wireframecss' type="text/css" rel="stylesheet" href="../wireframe.css" disabled>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Management</title>
 
   <!-- Add bootstrap-->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -23,25 +20,16 @@
     crossorigin="anonymous"></script>
 
 
-  <!-- Link to style.css -->
-  <link id='stylecss' type="text/css" rel="stylesheet" href="style.css">
-
-  <!-- Link to web font-->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-
-    <!-- Link to web icon-->
+  <!-- Link to web icon-->
   <!-- Creative Commons image sourced from https://www.freelogodesign.org and used for educational purposes only -->
   <link rel="icon" href="media/theme/icon.png">
 
-  <!-- Link to script.js -->
-  <script defer src="script.js"></script>
+  <!-- Link to style.css -->
+  <link id='stylecss' type="text/css" rel="stylesheet" href="style.css">
 
-  <!-- Link to tools.php -->
-  <?php include 'tools.php';?>
+  <!-- Link to other php files -->
   <?php include 'database.php';?>
-
+  <?php include 'tools.php';?>
 </head>
 
 <body>
@@ -63,9 +51,11 @@
             Products
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="bandana.php">Bandana</a>
-            <a class="dropdown-item" href="medical-mask.php">Medical mask</a>
-            <a class="dropdown-item" href="dust-mask.php">Dust mask</a>
+          <?php
+            foreach($categoryarray as $num => $cate){
+              echo "<a class='dropdown-item' href='".str_replace(' ','-',strtolower($cate['product_type'])).".php'>".$cate['product_type']."</a>";
+            }
+          ?>
           </div>
         </li>
         <li class="nav-item">
@@ -78,17 +68,29 @@
     <img class="img-fluid" src="media/theme/mask-banner.jpg" alt="Mask banner">
     <div id="wrapper">
       <section class="header_text sub">
-        <h4><span>Control Panel</span></h4>
+        <h4><span>Add admin user</span></h4>
       </section>
-      <div id="admin-activity">
-        <p style="font-size: 16px;">Hello <em>admin,</em>
-        <br>
-        what would you like to do?</p>
-        <a href="manageacc.php"><button type="button" class="btn btn-secondary">Manage admin users</button></a><br><br>
-        <a href="managecate.php"><button type="button" class="btn btn-secondary">Manage product categories</button></a><br><br>
-        <a href="manageproduct.php"><button type="button" class="btn btn-secondary">Manage products</button></a>
-      </div>
-      <hr>
+
+      <form action="" method="POST" id="add-adform">
+        <div class="form-group">
+          <label for="product-id">Admin ID</label>
+          <input type="text" name="newad[id]" value ="<?php echo isset($_POST['newad']['id']) ? $_POST['newad']['id'] : ''; ?>">
+          <?php echo $adminiderr ?>
+        </div>
+        <div class="form-group">
+          <label for="product-name">Password</label>
+          <input type="password" name="newad[pass]">
+          <?php echo $adminpasserr ?>
+        </div>
+        <div class="form-group">
+          <label for="product-name">Retype Password</label>
+          <input type="password" name="newad[pass2]">
+          <?php echo $adminpass2err ?>
+        </div>
+        <div class="form-group">
+          <input class="btn btn-primary btn-dark" type="submit" name="addadmin" value="Add Admin User">
+        </div>
+      </form>
     </div>
     <footer>
       <a href="#top-bar"><img id="TopBtn" src="media/theme/gotop.png" alt="Back to Top"></a>
@@ -97,10 +99,10 @@
           <div class="col-md-3">
             <h4>Navigation</h4>
             <ul>
-              <li><a href="index.php">Home</a></li>
-              <li><a href="bandana.php">Bandanas</a></li>
-              <li><a href="medical-mask.php">Medical Mask</a></li>
-              <li><a href="dust-mask.php">Dust Mask</a></li>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="bandana.php">Bandanas</a></li>
+            <li><a href="medical-mask.php">Medical Mask</a></li>
+            <li><a href="dust-mask.php">Dust Mask</a></li>
             </ul>
           </div>
           <div class="col-md-4">

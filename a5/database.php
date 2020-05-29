@@ -79,6 +79,14 @@
     VALUES ('ADM002','PasS002');";
     mysqli_multi_query($conn, $sql);
 
+    //Sanitize input
+    function test_input($data){
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+    }
+
     //When admin uploads, add product into database
     if(isset($_POST['addproduct'])) {
         $target = "media/product/".basename($_FILES['image1']['name']);
@@ -86,12 +94,11 @@
         $id = $_POST['product']['id'];
         $name = $_POST['product']['name'];
         $description = $_POST['product']['des'];
-        // $brand = $_POST['product']['brand'];
         $type = $_POST['product']['type'];
         $price = $_POST['product']['price'];
 
         $sql = "INSERT INTO Products
-        VALUES ('$id', '$name', $price, '$description', '$type', '$image')"; //, '$brand'
+        VALUES ('$id', '$name', $price, '$description', '$type', '$image')";
         mysqli_query($conn, $sql);
         /*if (mysqli_query($conn, $sql)) {
             echo "New record created successfully";
@@ -101,7 +108,7 @@
         move_uploaded_file($_FILES['image1']['tmp_name'], $target);
     }
 
-    //When admin uploads, add product into database
+    //When admin logins, validates account in database
     if(isset($_POST['login'])) {
         $loginmsg = '';
         $userid = $_POST['userid'];
@@ -115,6 +122,73 @@
         else {
             $_SESSION['admin']=[$_POST['userid'], $_POST['password']];
             $loginmsg = "<p style='color: green; text-align: center;'>Login successfully!</p>";
+        }
+    }
+
+    $allCategory = "SELECT distinct product_type FROM Products";
+    $getCategory = mysqli_query($conn, $allCategory) or die(mysqli_error());
+    $categoryarray = array();
+    while($row = mysqli_fetch_assoc($getCategory)) {
+        $categoryarray[] = $row;
+    }
+
+    $allAdmins = "SELECT distinct id FROM AdminUsers";
+    $getAdmins = mysqli_query($conn, $allAdmins) or die(mysqli_error());
+    $adminarray = array();
+    while($row = mysqli_fetch_assoc($getAdmins)) {
+        $adminarray[] = $row['id'];
+    }
+
+    //When admin add another admin user, add account into database
+    if(isset($_POST['addadmin'])) {
+        $adminiderr = '';
+        $adminpasserr = '';
+        $adminpass2err = '';
+
+        $adminerrnum = 0;
+        if(empty($_POST['newad']['id'])){
+            $adminiderr = "<p class='error'>ID field cannot be empty</p>";
+            $adminerrnum++;
+        }
+        else {
+            $adminid = test_input($_POST['newad']['id']);
+            if (!preg_match("/^(ADM)\d+$/", $adminid)){
+                $adminiderr = "<p class='error'>ID must be 'ADM' followed by at least 1 number</p>";
+                $adminerrnum++;
+            }
+            else if (in_array($adminid, $adminarray)){
+                $adminiderr = "<p class='error'>Admin ID already exists!</p>";
+                $adminerrnum++;
+            }
+        }
+        if(empty($_POST['newad']['pass'])){
+            $adminpasserr = "<p class='error'>Password cannot be empty</p>";
+            $adminerrnum++;
+        }
+        else {
+            $adminpass = test_input($_POST['newad']['pass']);
+            if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/", $adminpass)){
+                $adminpasserr = "<p class='error'>Password must be at least 6 characters,<br>contains 1 upper case, 1 lower case and 1 number</p>";
+                $adminerrnum++;
+            }
+        }
+        if(empty($_POST['newad']['pass2'])){
+            $adminpass2err = "<p class='error'>Password cannot be empty</p>";
+            $adminerrnum++;
+        }
+        else {
+            $adminpass2 = test_input($_POST['newad']['pass2']);
+            if ($adminpass!==$adminpass2){
+                $adminpass2err = "<p class='error'>Two passwords do not match!</p>";
+                $adminerrnum++;
+            }
+        }
+        if ($adminerrnum == 0){
+            $insertadmin = "INSERT INTO AdminUsers
+            VALUES ('$adminid','$adminpass')";
+            mysqli_query($conn, $insertadmin);
+            $adminpass2err = "<p class='success'>Create new admin successfully!</p>";
+            unset($_POST['newad']['id']);
         }
     }
 

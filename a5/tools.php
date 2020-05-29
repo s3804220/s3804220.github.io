@@ -1,5 +1,4 @@
 <?php
-  include 'database.php';
   session_start();
 
 // "preShow()" function prints data and shape/structure of data:
@@ -36,14 +35,6 @@ if (isset($_POST['logout'])) {
 }
 if (isset($_POST['home-return'])) {
   header('Location: index.php');
-}
-
-//Sanitize input
-function test_input($data){
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
 }
 
 ?>

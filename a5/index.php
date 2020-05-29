@@ -69,9 +69,11 @@
             Products
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="bandana.php">Bandana</a>
-            <a class="dropdown-item" href="medical-mask.php">Medical mask</a>
-            <a class="dropdown-item" href="dust-mask.php">Dust mask</a>
+          <?php
+            foreach($categoryarray as $num => $cate){
+              echo "<a class='dropdown-item' href='".str_replace(' ','-',strtolower($cate['product_type'])).".php'>".$cate['product_type']."</a>";
+            }
+          ?>
           </div>
         </li>
         <li class="nav-item">
@@ -157,7 +159,6 @@
           </ol>
           <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">
-
               <div class="row">
               <?php
                   $productselect = "SELECT id, productname, price, product_type, main_image FROM Products WHERE id ='PD003' OR id ='PD007' OR id='PD006'";
