@@ -1,4 +1,5 @@
 var qty = document.getElementById("quantity");
+var addToCart = document.getElementById("Add to Cart");
 function plus() {
   console.log('plus button click');
   qty.value = Number(qty.value) + 1;
@@ -15,7 +16,11 @@ function updateQuantity() {
   var re = new RegExp("^[0-9]+$");
   if (!re.test(qty.value)) {
       alert('wrong quantity');
+      addToCart.disabled = true;
       return;
+  }
+  else{
+    addToCart.disabled = false;
   }
 }
 
