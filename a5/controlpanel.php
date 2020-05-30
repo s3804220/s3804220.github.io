@@ -106,15 +106,15 @@
           <div class="col-md-4">
             <h4>User</h4>
             <ul>
-              <li><a href="#">Login</a></li>
-              <li><a href="#">Cart</a></li>
+              <li><a href="login.php">Login</a></li>
+              <li><a href="cart.php">Cart</a></li>
             </ul>
           </div>
           <div class="col-md-5">
             <p><img src="media/theme/logo.png" class="site_logo" alt=""></p>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. the Lorem Ipsum has been the
-              industry's standard dummy text ever since the you.</p>
-            <br />
+            - Assignment by Group 17: <br> 
+            Vo An Huy (s3804220 - <a href="https://github.com/s3804220/s3804220.github.io" class="git-link" target="_blank">GithubRepo</a>),
+            <br>Doan Nguyen My Hanh (s3639869 - <a href="https://github.com/s3639869/wp" class="git-linktarget="_blank">Github Repo</a>)
           </div>
         </div>
       </section>
