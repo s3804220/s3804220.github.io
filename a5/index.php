@@ -70,8 +70,8 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <?php
-            foreach($categoryarray as $num => $cate){
-              echo "<a class='dropdown-item' href='".str_replace(' ','-',strtolower($cate['product_type'])).".php'>".$cate['product_type']."</a>";
+            foreach($categoryarray as $cate){
+              echo "<a class='dropdown-item' href='".str_replace(' ','-',strtolower($cate)).".php'>".$cate."</a>";
             }
           ?>
           </div>
@@ -175,40 +175,6 @@
                     echo "<p class='price'>$".$info['price']."</p></div></div></div>";
                   }
                 ?>
-                <!-- <div class="col-md-4">
-                  <div class="card product-box mb-2">
-                    <a href="product_detail.html"><img class="card-img-top" src="media/product/1.jpg"
-                        alt="Product image"></a>
-                    <div class="card-body">
-                      <a href="product_detail.html" class="title">Ut wisi enim ad</a><br />
-                      <a href="products.html" class="category">Commodo consequat</a>
-                      <p class="price">$17.25</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="card product-box mb-2">
-                    <a href="product_detail.html"><img class="card-img-top" src="media/product/1.jpg"
-                        alt="Product image"></a>
-                    <div class="card-body">
-                      <a href="product_detail.html" class="title">Ut wisi enim ad</a><br />
-                      <a href="products.html" class="category">Commodo consequat</a>
-                      <p class="price">$17.25</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="card product-box mb-2">
-                    <a href="product_detail.html"><img class="card-img-top" src="media/product/1.jpg"
-                        alt="Product image"></a>
-                    <div class="card-body">
-                      <a href="product_detail.html" class="title">Ut wisi enim ad</a><br />
-                      <a href="products.html" class="category">Commodo consequat</a>
-                      <p class="price">$17.25</p>
-                    </div>
-                  </div>
-                </div> -->
-
               </div>
 
             </div>
@@ -223,8 +189,9 @@
               $productarray[] = $row;
             }
             foreach ($productarray as $num => $info){
+              $imgarray = explode("|",$info['main_image']);
               echo "<div class='col-md-4'><div class='card product-box mb-2'><a href='product-detail.php?id={$info['id']}'><img class='card-img-top' src=";
-              echo "'media/product/".$info['main_image']."' alt='Product image'></a>";
+              echo "'media/product/".$imgarray[0]."' alt='Product image'></a>";
               echo "<div class='card-body'><a href='product-detail.php?id={$info['id']}' class='title'>".$info['productname']."</a><br>";
               echo "<a href='".str_replace(' ','-',strtolower($info['product_type'])).".php' class='category'>".$info['product_type']."</a>";
               echo "<p class='price'>$".$info['price']."</p></div></div></div>";

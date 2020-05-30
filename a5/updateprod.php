@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Account Management</title>
+  <title>Product Management</title>
 
   <!-- Add bootstrap-->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -51,11 +51,9 @@
             Products
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <?php
-            foreach($categoryarray as $num => $cate){
-              echo "<a class='dropdown-item' href='".str_replace(' ','-',strtolower($cate['product_type'])).".php'>".$cate['product_type']."</a>";
-            }
-          ?>
+            <a class="dropdown-item" href="bandana.php">Bandana</a>
+            <a class="dropdown-item" href="medical-mask.php">Medical mask</a>
+            <a class="dropdown-item" href="dust-mask.php">Dust mask</a>
           </div>
         </li>
         <li class="nav-item">
@@ -68,27 +66,95 @@
     <img class="img-fluid" src="media/theme/mask-banner.jpg" alt="Mask banner">
     <div id="wrapper">
       <section class="header_text sub">
-        <h4><span>Add admin user</span></h4>
+        <h4><span>Update a product</span></h4>
       </section>
-
-      <form action="" method="POST" id="add-adform">
+      
+      <form action="" method="POST" id="prodsearch">
+        <p>Which product do you want to update? Please enter a product's ID</p>
+        <input type="text" name="searchprod" value ="<?php echo isset($_POST['searchprod']) ? $_POST['searchprod'] : ''; ?>"><br><br>
+        <?php echo $searcherr ?>
+        <input class="btn btn-primary btn-dark" type="submit" name="findproduct" value="Find Product">
+      </form>
+      <form action="" method="POST" id="update-pform" enctype="multipart/form-data">
+        <?php echo $formstyle ?>
+        <p style="padding: 25px;">Please update all information below</p>
         <div class="form-group">
-          <label for="product-id">Admin ID</label>
-          <input type="text" name="newad[id]" value ="<?php echo isset($_POST['newad']['id']) ? $_POST['newad']['id'] : ''; ?>">
-          <?php echo $adminiderr ?>
+          <label for="updatep-id">Product ID</label>
+          <input type="text" name="updatep[id]" id="updatep-id" value ="<?php
+          if($searchid!=''){
+            echo $searchid;
+          }
+          else{
+            echo isset($_POST['updatep']['id']) ? $_POST['updatep']['id'] : '';
+          }
+           ?>" readonly>
         </div>
         <div class="form-group">
-          <label for="product-name">Password</label>
-          <input type="password" name="newad[pass]">
-          <?php echo $adminpasserr ?>
+          <label for="updatep-name">Name</label>
+          <input type="text" name="updatep[name]" id="updatep-name" value ="<?php
+          if($searchname!=''){
+            echo $searchname;
+          }
+          else{
+            echo isset($_POST['updatep']['name']) ? $_POST['updatep']['name'] : '';
+          }
+           ?>">
+          <?php echo $updatepnameerr ?>
         </div>
         <div class="form-group">
-          <label for="product-name">Retype Password</label>
-          <input type="password" name="newad[pass2]">
-          <?php echo $adminpass2err ?>
+          <label for="updatep-des">Description</label>
+          <textarea rows="5" cols="50" name="updatep[des]" form="update-pform" id="updatep-des"><?php
+          if($searchdes!=''){
+            echo $searchdes;
+          }
+          else{
+            echo isset($_POST['updatep']['des']) ? $_POST['updatep']['des'] : '';
+          }
+           ?></textarea>
+          <?php echo $updatepdeserr ?>
         </div>
         <div class="form-group">
-          <input class="btn btn-primary btn-dark" type="submit" name="addadmin" value="Add Admin User">
+          <label for="updatep-type">Product Category</label>
+          <select name="updatep[type]" id="updatep-type">
+          <?php
+            foreach($categoryarray as $cate){
+              echo "<option value='".$cate."'";
+              if($searchtype!=''){
+                if ($cate == $searchtype){
+                  echo "selected='selected'";
+                }
+              }
+              else {
+                if (isset($_POST['updatep']['type'])){
+                  if ($cate == $_POST['updatep']['type']){
+                    echo "selected='selected'";
+                  }
+                }
+              }   
+              echo ">".$cate."</option>";
+            }
+          ?>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="updatep-price">Price</label>
+          <input type="text" name="updatep[price]" id="updatep-price" value ="<?php
+          if($searchprice!=''){
+            echo $searchprice;
+          }
+          else {
+            echo isset($_POST['updatep']['price']) ? $_POST['updatep']['price'] : '';
+          }
+           ?>">
+          <?php echo $updatepriceerr ?>
+        </div>
+        <div class="form-group">
+          <label for="updatep-img">Upload images</label>
+          <input type="file" name="updateimg[]" id="updatep-img" accept="image/*" multiple>
+          <?php echo $updateimgerr ?>
+        </div>
+        <div class="form-group" style="text-align: center;">
+          <input class="btn btn-primary btn-dark" type="submit" name="updateproduct" value="Update Product">
         </div>
       </form>
     </div>

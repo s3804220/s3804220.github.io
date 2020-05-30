@@ -36,7 +36,6 @@ if (isset($_POST['logout'])) {
 if (isset($_POST['home-return'])) {
   header('Location: index.php');
 }
-
 // Loop to add options for select input
 function addOptions($id){
   echo "<option value=''";

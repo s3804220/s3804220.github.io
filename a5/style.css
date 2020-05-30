@@ -135,19 +135,35 @@ label {
     width: 140px;
     text-align: right;
 }
-#login-form, #add-form, #logout-form, #admin-activity, #add-adform {
+#login-form, #add-form, #logout-form, #admin-activity, #add-adform, #prodsearch, #update-pform, #del-pform {
     padding: 10px;
     border: double 2px rgb(216, 216, 216);
     border-radius: 20px;
 }
-#login-form fieldset div.form-group, #logout-form div.form-group, #logout-form p, #admin-activity, #add-adform {
+#login-form fieldset div.form-group, #logout-form div.form-group, #logout-form p, #admin-activity, #add-adform, #prodsearch, #del-pform {
     text-align: center;
 }
-#logout-form p {
+#logout-form p, #add-form p, #update-pform, #update-pform label {
 	font-size: 14px;
 }
-#login-form label, #add-adform label {
+#login-form label, #add-adform label, #add-form label, #del-pform label {
     font-size: 14px;
+}
+.del-table {
+	border: 1px solid #eb4800;
+	border-collapse: collapse;
+	padding: 10px;
+	font-size: 14px;
+}
+.del-img {
+	height: 100%;
+	width: 100%;
+	padding: 5px;
+}
+.del-img:hover {
+	padding: 5px;
+	border-color: #eb4800;
+	border: dotted 2px;
 }
 #addproduct {
 	margin: 20px;
@@ -160,6 +176,15 @@ section.header_text.sub{
 }
 .success {
 	color: green;
+}
+#update-pform, #delete-pform {
+	display: none;
+}
+#delete-pform {
+	padding: 20px;
+}
+#updatep-id {
+	font-weight: bold;
 }
 section.header_text.sub h4{
     padding: 20px;
@@ -307,8 +332,6 @@ section#copyright{
 	font-size:10px;
 	text-transform:uppercase;	
 }
-/* Responsive
------------------------------------------------------------------------------ */
 @media (max-width: 767px){	
 	.product-box{
 		padding-top:10px;
@@ -333,12 +356,10 @@ section#copyright{
 		border-bottom:1px solid #eee;
 	}
 }
-
 .card-img-top {
 	width: 100%;
 	height: 300px;
 }
-
 table{
 	border-collapse: collapse;
 }

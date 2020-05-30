@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Account Management</title>
+  <title>Product Management</title>
 
   <!-- Add bootstrap-->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -68,27 +68,59 @@
     <img class="img-fluid" src="media/theme/mask-banner.jpg" alt="Mask banner">
     <div id="wrapper">
       <section class="header_text sub">
-        <h4><span>Add admin user</span></h4>
+        <h4><span>Delete a product</span></h4>
       </section>
 
-      <form action="" method="POST" id="add-adform">
+      <form action="" method="POST" id="del-pform">
+      <p style="font-size: 14px;">Which product do you want to delete? Please enter a product's ID</p>
         <div class="form-group">
-          <label for="product-id">Admin ID</label>
-          <input type="text" name="newad[id]" value ="<?php echo isset($_POST['newad']['id']) ? $_POST['newad']['id'] : ''; ?>">
-          <?php echo $adminiderr ?>
+          <label for="delp-id">Product ID</label>
+          <input type="text" name="delp[id]" value ="<?php echo isset($_POST['delp']['id']) ? $_POST['delp']['id'] : ''; ?>">
+          <?php echo $deleteperr ?>
         </div>
         <div class="form-group">
-          <label for="product-name">Password</label>
-          <input type="password" name="newad[pass]">
-          <?php echo $adminpasserr ?>
+          <input class="btn btn-primary btn-dark" type="submit" name="searchdelp" value="Find Product">
         </div>
-        <div class="form-group">
-          <label for="product-name">Retype Password</label>
-          <input type="password" name="newad[pass2]">
-          <?php echo $adminpass2err ?>
+        <?php echo $successmsg ?>
+      </form>
+      <form action="" method="POST" id="delete-pform">
+        <input type="hidden" name="delhid" value="<?php if($delpid!=''){ echo $delpid; } else {if(isset($_POST['delhid'])){echo $_POST['delhid'];}}?>">
+        <div class="row">
+          <div class="col-md-4 del-table"><h6>Product ID</h6></div>
+          <div class="col-md-8 del-table"><p><?php if($delpid!=''){ echo $delpid; }?></p></div>
         </div>
-        <div class="form-group">
-          <input class="btn btn-primary btn-dark" type="submit" name="addadmin" value="Add Admin User">
+        <div class="row">
+          <div class="col-md-4 del-table"><h6>Product Name</h6></div>
+          <div class="col-md-8 del-table"><p><?php if($delpname!=''){ echo $delpname; }?></p></div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 del-table"><h6>Product Description</h6></div>
+          <div class="col-md-8 del-table"><p><?php if($delpdes!=''){ echo $delpdes; }?></p></div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 del-table"><h6>Product Category</h6></div>
+          <div class="col-md-8 del-table"><p><?php if($delptype!=''){ echo $delptype; }?></p></div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 del-table"><h6>Product Price</h6></div>
+          <div class="col-md-8 del-table"><p><?php if($delprice!=''){ echo "$".$delprice; }?></p></div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 del-table"><h6>Product Images</h6></div>
+          <div class="col-md-8 del-table">
+            <div class="row"><?php if(!empty($delimg)){
+              foreach($delimg as $key => $img){
+                echo "<div class='col-md-3'><a role='button' data-toggle='modal' data-target='#del-img-".$key."'><img class='del-img' src='media/product/".$img."'></a></div>";
+                echo "<div id='del-img-".$key."' class='modal fade' tabindex='-1' role='dialog' aria-hidden='true'>";
+                echo "<div class='modal-dialog modal-dialog-centered modal-lg' role='document'><div class='modal-content'><div class='modal-body'>";
+                echo "<img src='media/product/".$img."' alt='Product Image' class='img-fluid'>";
+                echo "</div><div class='modal-footer'><button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button></div></div></div></div>";
+              } 
+            }?></div>
+          </div>
+        </div>
+        <div class="form-group" style="text-align: center;">
+          <input class="btn btn-primary btn-dark" type="submit" name="deleteproduct" value="Delete Product" style="margin: 10px;">
         </div>
       </form>
     </div>

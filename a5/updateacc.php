@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Login</title>
-
-  <!-- Keep wireframe.css for debugging, add your css to style.css -->
-  <link id='wireframecss' type="text/css" rel="stylesheet" href="../wireframe.css" disabled>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Management</title>
 
   <!-- Add bootstrap-->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -23,40 +20,30 @@
     crossorigin="anonymous"></script>
 
 
+  <!-- Link to web icon-->
+  <!-- Creative Commons image sourced from https://www.freelogodesign.org and used for educational purposes only -->
+  <link rel="icon" href="media/theme/icon.png">
+
   <!-- Link to style.css -->
   <link id='stylecss' type="text/css" rel="stylesheet" href="style.css">
 
-  <!-- Link to web font-->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-
-    <!-- Link to web icon-->
-  <!-- Creative Commons image sourced from https://www.freelogodesign.org and used for educational purposes only -->
-  <link rel="icon" href="media/theme/icon.png">
-  <script src='../wireframe.js'></script>
-
-  <!-- Link to script.js -->
-  <script defer src="script.js"></script>
-
-  <!-- Link to tools.php -->
-  <?php include 'tools.php';?>
+  <!-- Link to other php files -->
   <?php include 'database.php';?>
-
+  <?php include 'tools.php';?>
 </head>
 
 <body>
   <?php
-    if(!empty($_SESSION['admin'])){
-      header('Location: controlpanel.php');
-    }
+    if(empty($_SESSION['admin'])){
+      header('Location: index.php');
+  }
   ?>
   <div class="container">
     <nav id="top-bar" class="navbar navbar-expand-sm shadow">
       <a class="navbar-brand" href="index.php"><img src="media/theme/logo.png" alt="Shop logo"></a>
       <ul class="nav nav-pills ml-auto user-menu">
         <li class="nav-item">
-          <a class="nav-link btn btn-primary" href="index.php">Homes</a>
+          <a class="nav-link btn btn-primary" href="index.php">Home</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -64,48 +51,52 @@
             Products
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="bandana.php">Bandana</a>
-            <a class="dropdown-item" href="medical-mask.php">Medical mask</a>
-            <a class="dropdown-item" href="dust-mask.php">Dust mask</a>
+          <?php
+            foreach($categoryarray as $num => $cate){
+              echo "<a class='dropdown-item' href='".str_replace(' ','-',strtolower($cate['product_type'])).".php'>".$cate['product_type']."</a>";
+            }
+          ?>
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link btn btn-primary" href="cart">Cart</a>
+          <a class="nav-link btn btn-primary" href="cart.php">Cart</a>
         </li>
-        <?php
-            if(empty($_SESSION['admin'])){
-              echo "<li class='nav-item'><a class='nav-link btn btn-primary' href='login.php'>Login</a></li>";
-            }
-            else {
-              echo "<li class='nav-item'><a class='nav-link btn btn-primary' href='controlpanel.php'>Control panel</a></li>";
-              echo "<li class='nav-item'><a class='nav-link btn btn-primary' href='logout.php'>Logout</a></li>"; 
-            }
-          ?>
+        <li class='nav-item'><a class='nav-link btn btn-primary' href='controlpanel.php'>Control panel</a></li>
+        <li class='nav-item'><a class='nav-link btn btn-primary' href='logout.php'>Logout</a></li>
       </ul>
     </nav>
     <img class="img-fluid" src="media/theme/mask-banner.jpg" alt="Mask banner">
     <div id="wrapper">
       <section class="header_text sub">
-        <h4><span>Login</span></h4>
+        <h4><span>Update admin account</span></h4>
       </section>
-      <h4 class="title"><span class="text"><strong>Login</strong> Form</span></h4>
-      <form action="#" method="POST" id="login-form">
-        <fieldset>
-          <div class="form-group">
-            <label for="userid">Username</label>
-            <input type="text" placeholder="Enter your user ID" id="userid" name="userid">
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" placeholder="Enter your password" id="password" name="password">
-          </div>
-          <?php echo $loginmsg ?>
-          <div class="form-group">
-            <input class="btn btn-primary btn-dark" type="submit" value="Sign into your account" id="login-btn" name="login">
-          </div>
-        </fieldset>
+
+      <form action="" method="POST" id="add-adform">
+      <p style="font-size: 14px;">Please type in an admin's ID to update their password</p>
+        <div class="form-group">
+          <label for="product-id">Admin ID</label>
+          <input type="text" name="oldad[id]" value ="<?php echo isset($_POST['oldad']['id']) ? $_POST['oldad']['id'] : ''; ?>">
+          <?php echo $oldiderr ?>
+        </div>
+        <div class="form-group">
+          <label for="product-name">Current Password</label>
+          <input type="password" name="oldad[pass]">
+          <?php echo $oldpasserr ?>
+        </div>
+        <div class="form-group">
+          <label for="product-name">New Password</label>
+          <input type="password" name="oldad[newpass]">
+          <?php echo $newpasserr ?>
+        </div>
+        <div class="form-group">
+          <label for="product-name">Retype Password</label>
+          <input type="password" name="oldad[newpass2]">
+          <?php echo $newpass2err ?>
+        </div>
+        <div class="form-group">
+          <input class="btn btn-primary btn-dark" type="submit" name="updateadmin" value="Update Password">
+        </div>
       </form>
-      <hr>
     </div>
     <footer>
       <a href="#top-bar"><img id="TopBtn" src="media/theme/gotop.png" alt="Back to Top"></a>

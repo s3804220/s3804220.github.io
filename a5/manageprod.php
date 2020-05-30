@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Medical Masks</title>
+  <title>Product management</title>
 
   <!-- Keep wireframe.css for debugging, add your css to style.css -->
   <link id='wireframecss' type="text/css" rel="stylesheet" href="../wireframe.css" disabled>
@@ -31,10 +31,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 
-   <!-- Link to web icon-->
+    <!-- Link to web icon-->
   <!-- Creative Commons image sourced from https://www.freelogodesign.org and used for educational purposes only -->
   <link rel="icon" href="media/theme/icon.png">
-  <script src='../wireframe.js'></script>
 
   <!-- Link to script.js -->
   <script defer src="script.js"></script>
@@ -47,13 +46,9 @@
 
 <body>
   <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "root";
-    $dbname = "shopDatabase";
-
-    // Create connection
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
+    if(empty($_SESSION['admin'])){
+      header('Location: index.php');
+  }
   ?>
   <div class="container">
     <nav id="top-bar" class="navbar navbar-expand-sm shadow">
@@ -76,41 +71,25 @@
         <li class="nav-item">
           <a class="nav-link btn btn-primary" href="cart.php">Cart</a>
         </li>
-        <?php
-            if(empty($_SESSION['admin'])){
-              echo "<li class='nav-item'><a class='nav-link btn btn-primary' href='login.php'>Login</a></li>";
-            }
-            else {
-              echo "<li class='nav-item'><a class='nav-link btn btn-primary' href='controlpanel.php'>Control panel</a></li>";
-              echo "<li class='nav-item'><a class='nav-link btn btn-primary' href='logout.php'>Logout</a></li>"; 
-            }
-          ?>
+        <li class='nav-item'><a class='nav-link btn btn-primary' href='controlpanel.php'>Control panel</a></li>
+        <li class='nav-item'><a class='nav-link btn btn-primary' href='logout.php'>Logout</a></li>
       </ul>
     </nav>
     <img class="img-fluid" src="media/theme/mask-banner.jpg" alt="Mask banner">
     <div id="wrapper">
-      <div class="container my-4">
-            <h4 class="title">
-            <span class="text"><span class="line"><strong>Medical Masks</strong></span></span>
-            </h4>
-            <div class="row">
-            <?php
-              $productselect = "SELECT id, productname, price, product_type, main_image FROM Products WHERE product_type = 'medical mask'";
-              $result = mysqli_query($conn, $productselect) or die(mysqli_error());
-              $productarray = array();
-              while($row = mysqli_fetch_assoc($result)) {
-                $productarray[] = $row;
-              }
-            foreach ($productarray as $num => $info){
-              echo "<div class='col-md-4'><div class='card product-box mb-2'><a href='product-detail.php?id={$info['id']}'><img class='card-img-top' src=";
-              echo "'media/product/".$info['main_image']."' alt='Product image'></a>";
-              echo "<div class='card-body'><a href='product-detail.php?id={$info['id']}' class='title'>".$info['productname']."</a><br>";
-              echo "<a href='".str_replace(' ','-',strtolower($info['product_type'])).".php' class='category'>".$info['product_type']."</a>";
-              echo "<p class='price'>$".$info['price']."</p></div></div></div>";
-            }
-            ?>
-        </div>
+      <section class="header_text sub">
+        <h4><span>Manage your products</span></h4>
+      </section>
+      <div id="admin-activity">
+        <p style="font-size: 16px;">Hello <em>admin,</em>
+        <br>
+        you can add, update or delete information on your products here.
+        <br>What would you like to do?</p>
+        <a href="addprod.php"><button type="button" class="btn btn-success">Add new product</button></a><br><br>
+        <a href="updateprod.php"><button type="button" class="btn btn-warning">Update a product</button></a><br><br>
+        <a href="deleteprod.php"><button type="button" class="btn btn-danger">Delete a product</button></a>
       </div>
+      <hr>
     </div>
     <footer>
       <a href="#top-bar"><img id="TopBtn" src="media/theme/gotop.png" alt="Back to Top"></a>
