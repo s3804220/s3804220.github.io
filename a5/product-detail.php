@@ -117,9 +117,32 @@
       
                         header("Location: cart.php");
                       }          
-                    echo "<div class='col-md-4' id='detail'><a href='product-detail.php?id={$row['id']}'><img class='card-img-top' src=";
-                    echo "'media/product/".$row['main_image']."' alt='Product image'></a></div>";
-                    echo "<div class='col-md-8'><h2><b>".$row['productname']."</b></h2>";
+                    // echo "<div class='col-md-4 carousel slide' data-ride='carousel' id='detail'>";
+                    //echo "<a href='product-detail.php?id={$row['id']}'><img class='card-img-top' src=";
+                    echo "<div class='col-md-4'>";
+                    $imgarray = explode("|",$row['main_image']);
+                    for($index = 0; $index <count($imgarray); $index++){
+                      if ($index == 0){
+                        // echo "<div class='col-md-4'><img style ='height: 250px; width: 300px;'src=";
+                        // echo "'media/product/".$imgarray[$index]."' alt='Product image'><div class='row'>";
+                        echo "<div class='col-md-4'><a role='button' data-toggle='modal' data-target='#del-img-".$index."'><img  style ='height: 250px; width: 300px;' class='del-img' src='media/product/".$imgarray[$index]."'></a></div>";
+                        echo "<div id='del-img-".$index."' class='modal fade' tabindex='-1' role='dialog' aria-hidden='true'>";
+                        echo "<div class='modal-dialog modal-dialog-centered modal-lg' role='document'><div class='modal-content'><div class='modal-body' style='position: relative; height: 400px;'>";
+                        echo "<img src='media/product/".$imgarray[$index]."' alt='Product Image' class='img-fluid' style='width:400px; height: 400px; position:absolute; left:50%; top:50%; margin-top:-200px; margin-left:-200px;'>";
+                        echo "</div><div class='modal-footer'><button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button></div></div></div></div>";
+                        echo "<div class='row'>";
+                      }
+                      else{
+                        echo "<div class='col-md-4'><a role='button' data-toggle='modal' data-target='#del-img-".$index."'><img  style ='height: 70px; width: 100px;' class='del-img' src='media/product/".$imgarray[$index]."'></a></div>";
+                        echo "<div id='del-img-".$index."' class='modal fade' tabindex='-1' role='dialog' aria-hidden='true'>";
+                        echo "<div class='modal-dialog modal-dialog-centered modal-lg' role='document'><div class='modal-content'><div class='modal-body' style='position: relative; height: 400px;'>";
+                        echo "<img src='media/product/".$imgarray[$index]."' alt='Product Image' class='img-fluid' style='width:400px; height: 400px; position:absolute; left:50%; top:50%; margin-top:-200px; margin-left:-200px;'>";
+                        echo "</div><div class='modal-footer'><button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button></div></div></div></div>";
+                      }
+                    }
+                    echo "</div></div>";
+                    // echo "'media/product/".$row['main_image']."' alt='Product image'></a></div>";
+                    echo "<div class='col-md-8'><i>Click on image for a better view.<i><h2><b>".$row['productname']."</b></h2>";
                     echo "<p style='font-size: 18px;'><a href='".str_replace(' ','-',strtolower($row['product_type'])).".php' class='category'>".$row['product_type']."</a></p>";
                     echo "<p style='font-size: 18px;'><b>Description: </b>".$row['descript']."</p>";
                     echo "<p style='font-size: 18px;'><b>Price: </b>$".$row['price']."</p>";

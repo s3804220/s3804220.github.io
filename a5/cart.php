@@ -114,8 +114,9 @@
           if($resultCart){
             if(mysqli_num_rows($resultCart) > 0){
                 while($row = mysqli_fetch_array($resultCart)){
+                  $imgarray = explode("|",$row['main_image']);
                   echo "<tr><td style='text-align: center;'><img style='width:110px; height:90px;' src=";
-                  echo "'media/product/".$row['main_image']."' alt='Product image'></td>";
+                  echo "'media/product/".$imgarray[0]."' alt='Product image'></td>";
                   echo "<td style='text-align: center;'>".$row['productname']."</td>";
                   echo "<td style='text-align: center;'>".$row['product_type']."</td>";
                   echo "<td style='text-align: center;'>".$row['price']."</td>";

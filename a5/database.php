@@ -49,21 +49,21 @@
 
     //insert products into database
     $sql = "INSERT INTO Products
-    VALUES ('PD001', 'Bandana Black', 17.25, 'Placeholder text for Bandana Black', 'Bandana', 'bandana-black.jpg');";
+    VALUES ('PD001', 'Bandana Black', 17.25, 'Placeholder text for Bandana Black', 'Bandana', 'bandana-black.jpg|bandana-black2.jpg|bandana-black3.jpg');";
     $sql .= "INSERT INTO Products
-    VALUES ('PD002', 'Bandana Blue', 17.25, 'Placeholder text for Bandana Blue', 'Bandana', 'bandana-blue.jpg');";
+    VALUES ('PD002', 'Bandana Blue', 17.25, 'Placeholder text for Bandana Blue', 'Bandana', 'bandana-blue.jpg|bandana-blue2.jpg|bandana-blue3.jpg');";
     $sql .= "INSERT INTO Products
-    VALUES ('PD003', 'Bandana Skull', 25.60, 'Placeholder text for Bandana Skull', 'Bandana', 'bandana-skull.jpg');";
+    VALUES ('PD003', 'Bandana Skull', 25.60, 'Placeholder text for Bandana Skull', 'Bandana', 'bandana-skull.jpg|bandana-skull2.jpg|bandana-skull3.jpg');";
     $sql .= "INSERT INTO Products
-    VALUES ('PD004', 'Medical Mask White', 27, 'Placeholder text for Medical Mask White', 'Medical Mask', 'medical-mask-white.jpg');";
+    VALUES ('PD004', 'Medical Mask White', 27, 'Placeholder text for Medical Mask White', 'Medical Mask', 'medical-mask-white.jpg|medical-mask-white2.jpg|medical-mask-white3.jpg');";
     $sql .= "INSERT INTO Products
-    VALUES ('PD005', 'Medical Mask Blue', 20, 'Placeholder text for Medical Mask Blue', 'Medical Mask', 'medical-mask-blue.jpg');";
+    VALUES ('PD005', 'Medical Mask Blue', 20, 'Placeholder text for Medical Mask Blue', 'Medical Mask', 'medical-mask-blue.jpg|medical-mask-blue2.jpg|medical-mask-blue3.jpg');";
     $sql .= "INSERT INTO Products
-    VALUES ('PD006', 'Medical Mask Black', 17.55, 'Placeholder text for Medical Mask Black', 'Medical Mask', 'medical-mask-black.jpg');";
+    VALUES ('PD006', 'Medical Mask Black', 17.55, 'Placeholder text for Medical Mask Black', 'Medical Mask', 'medical-mask-black.jpg|medical-mask-black2.jpg|medical-mask-black3.jpg');";
     $sql .= "INSERT INTO Products
-    VALUES ('PD007', 'Dust Mask Black With Filter', 25.30, 'Placeholder text for Dust Mask Black With Filter', 'Dust Mask', 'dusk-mask-black-filter.jpg');";
+    VALUES ('PD007', 'Dust Mask Black With Filter', 25.30, 'Placeholder text for Dust Mask Black With Filter', 'Dust Mask', 'dust-mask-black-filter.jpg|dust-mask-black-filter2.jpg|dust-mask-black-filter3.jpg');";
     $sql .= "INSERT INTO Products
-    VALUES ('PD008', 'Dust Mask M3', 31.45, 'Placeholder text for Dust Mask M3', 'Dust Mask', 'dust-mask.jpg');";
+    VALUES ('PD008', 'Dust Mask M3', 31.45, 'Placeholder text for Dust Mask M3', 'Dust Mask', 'dust-mask.jpg|dust-mask2.jpg|dust-mask3.jpg');";
 
     mysqli_multi_query($conn, $sql);
     /*if (mysqli_multi_query($conn, $sql)) {
