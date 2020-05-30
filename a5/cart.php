@@ -90,9 +90,9 @@
     <img class="img-fluid" src="media/theme/mask-banner.jpg" alt="Mask banner">
     <div id="wrapper">
     <h4 class="title">
-      <?php
-        preshow($_SESSION);
-        preShow($_POST);
+     <?php
+        // preshow($_SESSION);
+        // preShow($_POST);
       ?>
       <span class="text"><span class="line"><b>Your</b> <strong>Cart</strong></span></span>
     </h4>
