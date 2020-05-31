@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Product management</title>
-
-  <!-- Keep wireframe.css for debugging, add your css to style.css -->
-  <link id='wireframecss' type="text/css" rel="stylesheet" href="../wireframe.css" disabled>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Management</title>
 
   <!-- Add bootstrap-->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -23,25 +20,16 @@
     crossorigin="anonymous"></script>
 
 
-  <!-- Link to style.css -->
-  <link id='stylecss' type="text/css" rel="stylesheet" href="style.css">
-
-  <!-- Link to web font-->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-
-    <!-- Link to web icon-->
+  <!-- Link to web icon-->
   <!-- Creative Commons image sourced from https://www.freelogodesign.org and used for educational purposes only -->
   <link rel="icon" href="media/theme/icon.png">
 
-  <!-- Link to script.js -->
-  <script defer src="script.js"></script>
+  <!-- Link to style.css -->
+  <link id='stylecss' type="text/css" rel="stylesheet" href="style.css">
 
-  <!-- Link to tools.php -->
-  <?php include 'tools.php';?>
+  <!-- Link to other php files -->
   <?php include 'database.php';?>
-
+  <?php include 'tools.php';?>
 </head>
 
 <body>
@@ -87,19 +75,60 @@
     <img class="img-fluid" src="media/theme/mask-banner.jpg" alt="Mask banner">
     <div id="wrapper">
       <section class="header_text sub">
-        <h4><span>Manage your products</span></h4>
+        <h4><span>View product details</span></h4>
       </section>
-      <div id="admin-activity">
-        <p style="font-size: 16px;">Hello <em>admin,</em>
+
+      <form action="" method="POST" id="del-pform">
+      <p style="font-size: 14px;">Which product do you want to view? Please enter a product's ID</p>
+        <div class="form-group">
+          <label for="delp-id">Product ID</label>
+          <input type="text" name="delp[id]" value ="<?php echo isset($_POST['delp']['id']) ? $_POST['delp']['id'] : ''; ?>">
+          <?php echo $deleteperr ?>
+        </div>
+        <div class="form-group">
+          <input class="btn btn-primary btn-dark" type="submit" name="searchdelp" value="Find Product">
+        </div>
+        <?php echo $successmsg ?>
+      </form>
+      <form action="" method="POST" id="delete-pform">
+        <input type="hidden" name="delhid" value="<?php if($delpid!=''){ echo $delpid; } else {if(isset($_POST['delhid'])){echo $_POST['delhid'];}}?>">
+        <div class="row">
+          <div class="col-md-4 del-table"><h6>Product ID</h6></div>
+          <div class="col-md-8 del-table"><p><?php if($delpid!=''){ echo $delpid; }?></p></div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 del-table"><h6>Product Name</h6></div>
+          <div class="col-md-8 del-table"><p><?php if($delpname!=''){ echo $delpname; }?></p></div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 del-table"><h6>Product Description</h6></div>
+          <div class="col-md-8 del-table"><p><?php if($delpdes!=''){ echo $delpdes; }?></p></div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 del-table"><h6>Product Category</h6></div>
+          <div class="col-md-8 del-table"><p><?php if($delptype!=''){ echo $delptype; }?></p></div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 del-table"><h6>Product Price</h6></div>
+          <div class="col-md-8 del-table"><p><?php if($delprice!=''){ echo "$".$delprice; }?></p></div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 del-table"><h6>Product Images</h6></div>
+          <div class="col-md-8 del-table">
+            <div class="row"><?php if(!empty($delimg)){
+              foreach($delimg as $key => $img){
+                echo "<div class='col-md-3'><a role='button' data-toggle='modal' data-target='#del-img-".$key."'><img class='del-img' src='media/product/".$img."'></a></div>";
+                echo "<div id='del-img-".$key."' class='modal fade' tabindex='-1' role='dialog' aria-hidden='true'>";
+                echo "<div class='modal-dialog modal-dialog-centered modal-lg' role='document'><div class='modal-content'><div class='modal-body'>";
+                echo "<img src='media/product/".$img."' alt='Product Image' class='img-fluid'>";
+                echo "</div><div class='modal-footer'><button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button></div></div></div></div>";
+              } 
+            }?></div>
+          </div>
+        </div>
         <br>
-        you can add, update or delete information on your products here.
-        <br>What would you like to do?</p>
-        <a href="viewprod.php"><button type="button" class="btn btn-secondary">View product details</button></a><br><br>
-        <a href="addprod.php"><button type="button" class="btn btn-success">Add new product</button></a><br><br>
-        <a href="updateprod.php"><button type="button" class="btn btn-warning">Update a product</button></a><br><br>
-        <a href="deleteprod.php"><button type="button" class="btn btn-danger">Delete a product</button></a>
-      </div>
-      <hr>
+        <a href="manageprod.php"><button type="button" class="btn btn-secondary">Return</button></a><br>
+      </form>
     </div>
     <footer>
       <a href="#top-bar"><img id="TopBtn" src="media/theme/gotop.png" alt="Back to Top"></a>

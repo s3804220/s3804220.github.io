@@ -59,7 +59,7 @@
 
     ?>
   <div class="container">
-    <nav id="top-bar" class="navbar navbar-expand-sm shadow">
+  <nav id="top-bar" class="navbar navbar-expand-sm shadow">
       <a class="navbar-brand" href="index.php"><img src="media/theme/logo.png" alt="Shop logo"></a>
       <ul class="nav nav-pills ml-auto user-menu">
         <li class="nav-item">
@@ -71,9 +71,11 @@
             Products
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="bandana.php">Bandana</a>
-            <a class="dropdown-item" href="medical-mask.php">Medical mask</a>
-            <a class="dropdown-item" href="dust-mask.php">Dust mask</a>
+            <?php
+            foreach($categoryarray as $cate){
+              echo "<a class='dropdown-item' href='category.php?cg=".str_replace(' ','-',strtolower($cate))."'>".$cate."</a>";
+            }
+          ?>
           </div>
         </li>
         <li class="nav-item">
@@ -107,9 +109,6 @@
                 if(mysqli_num_rows($result) > 0){
                     while($row = mysqli_fetch_array($result)){     
                       if (isset($_POST['add'])){
-                        //$_SESSION['cart']['products'][$row['id']] = $_POST;
-  
-                        /*$_SESSION['cart']['products'] = $_POST;*/
       
                         $_SESSION['cart']['products'][$row['id']]['id'] = test_input($_POST['id']);
                         $_SESSION['cart']['products'][$row['id']]['price'] = test_input($_POST['price']);
@@ -117,14 +116,11 @@
       
                         header("Location: cart.php");
                       }          
-                    // echo "<div class='col-md-4 carousel slide' data-ride='carousel' id='detail'>";
-                    //echo "<a href='product-detail.php?id={$row['id']}'><img class='card-img-top' src=";
+
                     echo "<div class='col-md-4'>";
                     $imgarray = explode("|",$row['main_image']);
                     for($index = 0; $index <count($imgarray); $index++){
                       if ($index == 0){
-                        // echo "<div class='col-md-4'><img style ='height: 250px; width: 300px;'src=";
-                        // echo "'media/product/".$imgarray[$index]."' alt='Product image'><div class='row'>";
                         echo "<div class='col-md-4'><a role='button' data-toggle='modal' data-target='#del-img-".$index."'><img  style ='height: 250px; width: 300px;' class='del-img' src='media/product/".$imgarray[$index]."'></a></div>";
                         echo "<div id='del-img-".$index."' class='modal fade' tabindex='-1' role='dialog' aria-hidden='true'>";
                         echo "<div class='modal-dialog modal-dialog-centered modal-lg' role='document'><div class='modal-content'><div class='modal-body' style='position: relative; height: 400px;'>";
@@ -141,7 +137,6 @@
                       }
                     }
                     echo "</div></div>";
-                    // echo "'media/product/".$row['main_image']."' alt='Product image'></a></div>";
                     echo "<div class='col-md-8'><i>Click on image for a better view.<i><h2><b>".$row['productname']."</b></h2>";
                     echo "<p style='font-size: 18px;'><a href='".str_replace(' ','-',strtolower($row['product_type'])).".php' class='category'>".$row['product_type']."</a></p>";
                     echo "<p style='font-size: 18px;'><b>Description: </b>".$row['descript']."</p>";
@@ -169,8 +164,8 @@
         </div>
       </div>
     </div>
-    <head>
-    </head>
+          </div>
+
     <footer>
       <a href="#top-bar"><img id="TopBtn" src="media/theme/gotop.png" alt="Back to Top"></a>
       <section id="footer-bar">
@@ -178,24 +173,35 @@
           <div class="col-md-3">
             <h4>Navigation</h4>
             <ul>
-            <li><a href="index.php">Home</a></li>
-            <li><a href="bandana.php">Bandanas</a></li>
-            <li><a href="medical-mask.php">Medical Mask</a></li>
-            <li><a href="dust-mask.php">Dust Mask</a></li>
+              <li><a href="index.php">Home</a></li>
+              <?php
+            foreach($categoryarray as $cate){
+              echo "<li><a href='category.php?cg=".str_replace(' ','-',strtolower($cate))."'>".$cate."</a></li>";
+            }
+          ?>
             </ul>
           </div>
           <div class="col-md-4">
             <h4>User</h4>
             <ul>
-              <li><a href="login.php">Login</a></li>
+            <?php
+            if(empty($_SESSION['admin'])){
+              echo "<li><a href='login.php'>Login</a></li>";
+            }
+            else {
+              echo "<li><a href='logout.php'>Logout</a></li>"; 
+            }
+          ?>
               <li><a href="cart.php">Cart</a></li>
             </ul>
           </div>
           <div class="col-md-5">
             <p><img src="media/theme/logo.png" class="site_logo" alt=""></p>
-            - Assignment by Group 17: <br> 
-            Vo An Huy (s3804220 - <a href="https://github.com/s3804220/s3804220.github.io" class="git-link" target="_blank">GithubRepo</a>),
-            <br>Doan Nguyen My Hanh (s3639869 - <a href="https://github.com/s3639869/wp" class="git-linktarget="_blank">Github Repo</a>)
+            - Assignment by Group 17: <br>
+            Vo An Huy (s3804220 - <a href="https://github.com/s3804220/s3804220.github.io" class="git-link"
+              target="_blank">GithubRepo</a>),
+            <br>Doan Nguyen My Hanh (s3639869 - <a href="https://github.com/s3639869/wp" class="git-link" target="
+              _blank">Github Repo</a>)
           </div>
         </div>
       </section>

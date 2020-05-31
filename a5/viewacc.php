@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Product management</title>
-
-  <!-- Keep wireframe.css for debugging, add your css to style.css -->
-  <link id='wireframecss' type="text/css" rel="stylesheet" href="../wireframe.css" disabled>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Management</title>
 
   <!-- Add bootstrap-->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -23,25 +20,16 @@
     crossorigin="anonymous"></script>
 
 
-  <!-- Link to style.css -->
-  <link id='stylecss' type="text/css" rel="stylesheet" href="style.css">
-
-  <!-- Link to web font-->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-
-    <!-- Link to web icon-->
+  <!-- Link to web icon-->
   <!-- Creative Commons image sourced from https://www.freelogodesign.org and used for educational purposes only -->
   <link rel="icon" href="media/theme/icon.png">
 
-  <!-- Link to script.js -->
-  <script defer src="script.js"></script>
+  <!-- Link to style.css -->
+  <link id='stylecss' type="text/css" rel="stylesheet" href="style.css">
 
-  <!-- Link to tools.php -->
-  <?php include 'tools.php';?>
+  <!-- Link to other php files -->
   <?php include 'database.php';?>
-
+  <?php include 'tools.php';?>
 </head>
 
 <body>
@@ -87,19 +75,23 @@
     <img class="img-fluid" src="media/theme/mask-banner.jpg" alt="Mask banner">
     <div id="wrapper">
       <section class="header_text sub">
-        <h4><span>Manage your products</span></h4>
+        <h4><span>Admin user list</span></h4>
       </section>
-      <div id="admin-activity">
-        <p style="font-size: 16px;">Hello <em>admin,</em>
-        <br>
-        you can add, update or delete information on your products here.
-        <br>What would you like to do?</p>
-        <a href="viewprod.php"><button type="button" class="btn btn-secondary">View product details</button></a><br><br>
-        <a href="addprod.php"><button type="button" class="btn btn-success">Add new product</button></a><br><br>
-        <a href="updateprod.php"><button type="button" class="btn btn-warning">Update a product</button></a><br><br>
-        <a href="deleteprod.php"><button type="button" class="btn btn-danger">Delete a product</button></a>
-      </div>
-      <hr>
+      <div class="view-wrapper">
+      <table class="view-wrapper">
+        <tr>
+          <th></th>
+          <th>Admin ID</th>
+        </tr>
+      <?php 
+          foreach ($adminarray as $user){
+            echo "<tr><td><img class='admin-avt' src='media/theme/admin.png' alt='admin avatar'></td>";
+            echo "<td style='padding: 20px;'><p>".$user."</p></td></tr>";
+          } ?>
+          </table>
+          <br>
+          <a href="manageacc.php"><button type="button" class="btn btn-secondary">Return</button></a><br>
+          </div>
     </div>
     <footer>
       <a href="#top-bar"><img id="TopBtn" src="media/theme/gotop.png" alt="Back to Top"></a>

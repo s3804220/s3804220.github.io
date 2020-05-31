@@ -14,6 +14,8 @@
     $dbname = "shopDatabase";
 
     // Create connection
+    //Note: if you're running the website for the first time, please delete the two $dbname here (one above and one below), run the index.php
+    //Refresh the page to let it create the database, then eiter ctrl+Z or manually add back the two $dbname in here. Thank you
     $conn = mysqli_connect($servername, $username, $password, $dbname);
 
     // Create database
@@ -35,11 +37,12 @@
         main_image VARCHAR(255) NOT NULL
         )";
     mysqli_query($conn, $sql);
-    /*if (mysqli_query($conn, $sql)) {
-      echo "<p>Table Products created successfully</p>";
-    } else {
-      echo "Error creating table: " . mysqli_error($conn);
-    }*/
+    
+    $sql = "CREATE TABLE IF NOT EXISTS Category (
+        id VARCHAR(10) PRIMARY KEY,
+        category VARCHAR(100) NOT NULL
+    )";
+    mysqli_query($conn, $sql);
 
     $sql = "CREATE TABLE IF NOT EXISTS AdminUsers (
         id VARCHAR(10) PRIMARY KEY,
@@ -66,11 +69,12 @@
     VALUES ('PD008', 'Dust Mask M3', 31.45, 'Placeholder text for Dust Mask M3', 'Dust Mask', 'dust-mask.jpg|dust-mask2.jpg|dust-mask3.jpg');";
 
     mysqli_multi_query($conn, $sql);
-    /*if (mysqli_multi_query($conn, $sql)) {
-        echo "<p>New records created successfully</p>";
-    } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-    }*/
+
+    //insert categories into database
+    $sql = "INSERT INTO Category VALUES('C001','Bandana');";
+    $sql .= "INSERT INTO Category VALUES('C002','Medical Mask');";
+    $sql .= "INSERT INTO Category VALUES('C003','Dust Mask');";
+    mysqli_multi_query($conn, $sql);
 
     //insert admin accounts into database
     $sql = "INSERT INTO AdminUsers
@@ -87,11 +91,18 @@
     return $data;
     }
 
-    $allCategory = "SELECT distinct product_type FROM Products";
+    $allCategory = "SELECT category FROM Category";
     $getCategory = mysqli_query($conn, $allCategory) or die(mysqli_error());
     $categoryarray = array();
     while($row = mysqli_fetch_assoc($getCategory)) {
-        $categoryarray[] = $row['product_type'];
+        $categoryarray[] = $row['category'];
+    }
+
+    $allcID = "SELECT id FROM Category";
+    $getcID = mysqli_query($conn, $allcID) or die(mysqli_error());
+    $cidarray = array();
+    while($row = mysqli_fetch_assoc($getcID)) {
+        $cidarray[] = $row['id'];
     }
 
     $allProduct = "SELECT id FROM Products";
@@ -108,6 +119,132 @@
         $adminarray[] = $row['id'];
     }
 
+    //Add new category
+    if(isset($_POST['addcate'])){
+        $newciderr='';
+        $newcerr ='';
+        $newcnum=0;
+        if(empty($_POST['newcid'])){
+            $newciderr = "<p class='error'>Please enter an ID for the category</p>";
+            $newcnum++;
+        }
+        else {
+            $newcid = mysqli_real_escape_string($conn, test_input($_POST['newcid']));
+            if(!preg_match("/^(C)\d+$/", $newcid)){
+                $newciderr = "<p class='error'>ID must be 'C' followed by at least 1 number</p>";
+                $newcnum++;
+            }
+            else if(in_array($newcid, $cidarray)){
+                $newciderr = "<p class='error'>Category ID already exists!</p>";
+                $newcnum++;
+            }
+        }
+        if(empty($_POST['newcname'])){
+            $newcerr = "<p class='error'>Please enter a name for the category</p>";
+            $newcnum++;
+        }
+        else {
+            $newcate = mysqli_real_escape_string($conn, test_input($_POST['newcname']));
+            if(!preg_match("/^[\w]+[\s]?([\w]+[\s]?)+$/", $newcate)){
+                $newcerr = "<p class='error'>Name can only contain alphabetical characters, numbers, _ and white space</p>";
+                $newcnum++;
+            }
+            else if(in_array(ucwords($newcate),$categoryarray)){
+                $newcerr = "<p class='error'>Category name already exists!</p>";
+                $newcnum++;
+            }
+        }
+        if($newcnum==0){
+            $newcate = ucwords($newcate);
+            $addcate = "INSERT INTO Category VALUES('$newcid','$newcate')";
+            mysqli_query($conn, $addcate);
+            $newcerr = "<p class='success'>New category added successfully!</p>";
+            unset($_POST['newcid']); unset($_POST['newcname']);
+        }
+    }
+
+    //Update category name
+    if(isset($_POST['updatecategory'])){
+        $oldcerr='';
+        $newcerr='';
+        $updcnum=0;
+        if(empty($_POST['oldc'])){
+            $oldcerr = "<p class='error'>Please enter a category name</p>";
+            $updcnum++;
+        }
+        else{
+            $oldc = ucwords(mysqli_real_escape_string($conn, test_input($_POST['oldc'])));
+            if(!in_array($oldc,$categoryarray)){
+                $oldcerr = "<p class='error'>Invalid category!</p>";
+                $updcnum++;
+            }
+        }
+        if(empty($_POST['newc'])){
+            $newcerr = "<p class='error'>New category name cannot be blank!</p>";
+            $updcnum++;
+        }
+        else{
+            $newc = ucwords(mysqli_real_escape_string($conn, test_input($_POST['newc'])));
+            if(!preg_match("/^[\w]+[\s]?([\w]+[\s]?)+$/", $newc)){
+                $newcerr = "<p class='error'>Name can only contain alphabetical characters, numbers, _ and white space</p>";
+                $updcnum++;
+            }
+        }
+        if($updcnum==0){
+            $updatecategory="UPDATE Category SET category='$newc' WHERE category='$oldc'";
+            mysqli_query($conn, $updatecategory);
+            $updatecategory="UPDATE Products SET product_type='$newc' WHERE product_type='$oldc'";
+            mysqli_query($conn, $updatecategory);
+            $newcerr = "<p class='success'>Category name updated successfully!</p>";
+            unset($_POST['oldc']); unset($_POST['newc']);
+        }
+    }
+
+    //Delete category
+    $delcaterr ='';
+    $delcatmsg ='';
+    $delcname='';
+    if(isset($_POST['delcategory'])){
+        if(empty($_POST['delc'])){
+            $delcaterr = "<p class='error'>Please enter a category ID or name!</p>";
+        }
+        else {
+            $delcate = mysqli_real_escape_string($conn, test_input($_POST['delc']));
+            if (in_array($delcate,$cidarray)){
+                $delcategory = "SELECT * FROM Products P, Category C WHERE P.product_type = C.category AND C.id ='$delcate'";
+                $delc = mysqli_query($conn, $delcategory);
+                $delnum = mysqli_num_rows($delc);
+                $getcname = "SELECT category FROM Category WHERE id ='$delcate'";
+                $delca = mysqli_query($conn, $getcname);
+                $row = mysqli_fetch_assoc($delca);
+                $delcname = $row['category'];
+                $delcatmsg = "<style>#del-cconfirm{display:block;}</style>";
+            }
+            else if(in_array(ucwords($delcate),$categoryarray)){
+                $delcate = ucwords($delcate);
+                $delcategory = "SELECT * FROM Products P WHERE P.product_type ='$delcate'";
+                $delc = mysqli_query($conn, $delcategory);
+                $delnum = mysqli_num_rows($delc);
+                $delcname = $delcate;
+                $delcatmsg = "<style>#del-cconfirm{display:block;}</style>";
+            }
+            else {
+                $delcaterr = "<p class='error'>Invalid category ID or name!</p>";
+            }
+        }
+    }
+    if(isset($_POST['delconfirm'])){
+        $catename = mysqli_real_escape_string($conn, test_input($_POST['delcname']));
+        $deletecategory = "DELETE FROM Category WHERE category='$catename'";
+        $rundelete = mysqli_query($conn, $deletecategory);
+        $deletecategory = "DELETE FROM Products WHERE product_type='$catename'";
+        $rundelete = mysqli_query($conn, $deletecategory);
+        $delcatmsg = "<p class='success'>Category deleted successfully!</p>";
+    }
+    if(isset($_POST['delcancel'])){
+        header('Location: deletecate.php');
+    }
+
     //When admin uploads, add product into database
     if(isset($_POST['addproduct'])) {
         $addpiderr = '';
@@ -117,7 +254,7 @@
         $addimgerr = '';
         $targetdir = "media/product/";
         $allowTypes = array('jpg','png','jpeg','gif');
-        $type = test_input($_POST['product']['type']);
+        $type = mysqli_real_escape_string($conn, test_input($_POST['product']['type']));
         $addproderr = 0;
 
         if(empty($_POST['product']['id'])){
@@ -125,7 +262,7 @@
             $addproderr++;
         }
         else {
-            $prodid = test_input($_POST['product']['id']);
+            $prodid = mysqli_real_escape_string($conn, test_input($_POST['product']['id']));
             if(!preg_match("/^(PD)\d+$/", $prodid)){
                 $addpiderr = "<p class='error'>ID must be 'PD' followed by at least 1 number</p>";
                 $addproderr++;
@@ -140,7 +277,7 @@
             $addproderr++;
         }
         else {
-            $prodname = test_input($_POST['product']['name']);
+            $prodname = mysqli_real_escape_string($conn, test_input($_POST['product']['name']));
             if(!preg_match("/^[\w\-]+[\s]?([\w\-]+[\s]?)+$/", $prodname)){
                 $addpnameerr = "<p class='error'>Name can only contain alphabetical characters, numbers, - _ and white space</p>";
                 $addproderr++;
@@ -151,14 +288,14 @@
             $addproderr++;
         }
         else {
-            $proddes = test_input($_POST['product']['des']);
+            $proddes = mysqli_real_escape_string($conn, test_input($_POST['product']['des']));
         }
         if(empty($_POST['product']['price'])){
             $addpriceerr = "<p class='error'>Please enter a price for the product!</p>";
             $addproderr++;
         }
         else {
-            $addprice = test_input($_POST['product']['price']);
+            $addprice = mysqli_real_escape_string($conn, test_input($_POST['product']['price']));
             if(!preg_match("/^(?:\d+|\d+\.\d+)$/", $addprice)){
                 $addpriceerr = "<p class='error'>Price can only be a positive float number!</p>";
                 $addproderr++;
@@ -212,8 +349,8 @@
     //When admin logins, validates account in database
     if(isset($_POST['login'])) {
         $loginmsg = '';
-        $userid = $_POST['userid'];
-        $pass = $_POST['password'];
+        $userid = mysqli_real_escape_string($conn, test_input($_POST['userid']));
+        $pass = mysqli_real_escape_string($conn, test_input($_POST['password']));
 
         $login = "SELECT * FROM AdminUsers WHERE id='$userid' AND pass='$pass'";
         $match = mysqli_query($conn, $login);
@@ -221,7 +358,7 @@
             $loginmsg = "<p style='color: red; text-align: center;'>Login failed. Incorrect user ID or password.</p>";
         }
         else {
-            $_SESSION['admin']=[$_POST['userid'], $_POST['password']];
+            $_SESSION['admin']=[$userid, $pass];
             $loginmsg = "<p style='color: green; text-align: center;'>Login successfully!</p>";
         }
     }
@@ -238,7 +375,7 @@
             $adminerrnum++;
         }
         else {
-            $adminid = test_input($_POST['newad']['id']);
+            $adminid = mysqli_real_escape_string($conn, test_input($_POST['newad']['id']));
             if (!preg_match("/^(ADM)\d+$/", $adminid)){
                 $adminiderr = "<p class='error'>ID must be 'ADM' followed by at least 1 number</p>";
                 $adminerrnum++;
@@ -253,7 +390,7 @@
             $adminerrnum++;
         }
         else {
-            $adminpass = test_input($_POST['newad']['pass']);
+            $adminpass = mysqli_real_escape_string($conn, test_input($_POST['newad']['pass']));
             if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/", $adminpass)){
                 $adminpasserr = "<p class='error'>Password must be at least 6 characters,<br>contains 1 upper case, 1 lower case and 1 number</p>";
                 $adminerrnum++;
@@ -264,7 +401,7 @@
             $adminerrnum++;
         }
         else {
-            $adminpass2 = test_input($_POST['newad']['pass2']);
+            $adminpass2 = mysqli_real_escape_string($conn, test_input($_POST['newad']['pass2']));
             if ($adminpass!==$adminpass2){
                 $adminpass2err = "<p class='error'>Two passwords do not match!</p>";
                 $adminerrnum++;
@@ -284,8 +421,8 @@
         $oldpasserr = '';
         $newpasserr = '';
         $newpass2err = '';
-        $adid = $_POST['oldad']['id'];
-        $pass = $_POST['oldad']['pass'];
+        $adid = mysqli_real_escape_string($conn, test_input($_POST['oldad']['id']));
+        $pass = mysqli_real_escape_string($conn, test_input($_POST['oldad']['pass']));
         $updateadnum = 0;
         $selectad = "SELECT * FROM AdminUsers WHERE id='$adid' AND pass='$pass'";
         $match = mysqli_query($conn, $selectad);
@@ -308,7 +445,7 @@
                 $updateadnum++;
             }
             else {
-                $newpass = test_input($_POST['oldad']['newpass']);
+                $newpass = mysqli_real_escape_string($conn, test_input($_POST['oldad']['newpass']));
                 if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/", $newpass)){
                     $newpasserr = "<p class='error'>Password must be at least 6 characters,<br>contains 1 upper case, 1 lower case and 1 number</p>";
                     $updateadnum++;
@@ -319,7 +456,7 @@
                 $updateadnum++;
             }
             else {
-                $newpass2 = test_input($_POST['oldad']['newpass2']);
+                $newpass2 = mysqli_real_escape_string($conn, test_input($_POST['oldad']['newpass2']));
                 if ($newpass!==$newpass2){
                     $newpass2err = "<p class='error'>Two passwords do not match!</p>";
                     $updateadnum++;
@@ -338,8 +475,8 @@
     if(isset($_POST['deladmin'])) {
         $deleteiderr = '';
         $deletepasserr = '';
-        $delid = test_input($_POST['delad']['id']);
-        $delpass = test_input($_POST['delad']['pass']);
+        $delid = mysqli_real_escape_string($conn, test_input($_POST['delad']['id']));
+        $delpass = mysqli_real_escape_string($conn, test_input($_POST['delad']['pass']));
         $selectad = "SELECT * FROM AdminUsers WHERE id='$delid' AND pass='$delpass'";
         $match = mysqli_query($conn, $selectad);
         $deleteadnum = 0;
@@ -375,7 +512,7 @@
           $searcherr = "<p class='error'>Please enter a product ID</p>";
         }
         else {
-            $searchp = test_input($_POST['searchprod']);
+            $searchp = mysqli_real_escape_string($conn, test_input($_POST['searchprod']));
             if(!in_array($searchp, $productarray)){
                 $searcherr = "<p class='error'>Product ID doesn't exist!</p>";
             }
@@ -397,6 +534,7 @@
             }
         }
     }
+    //Update product in database
     if(isset($_POST['updateproduct'])){
         $formstyle = "<style>#update-pform{display:block;}</style>";
         $updatepnameerr = '';
@@ -405,8 +543,8 @@
         $updateimgerr = '';
         $updatedir = "media/product/";
         $allowTypes = array('jpg','png','jpeg','gif');
-        $updateid = $_POST['updatep']['id'];
-        $updatetype = test_input($_POST['updatep']['type']);
+        $updateid = mysqli_real_escape_string($conn, test_input($_POST['updatep']['id']));
+        $updatetype = mysqli_real_escape_string($conn, test_input($_POST['updatep']['type']));
         $updateproderr = 0;
 
         if(empty($_POST['updatep']['name'])){
@@ -414,7 +552,7 @@
             $updateproderr++;
         }
         else {
-            $newpname = test_input($_POST['updatep']['name']);
+            $newpname = mysqli_real_escape_string($conn, test_input($_POST['updatep']['name']));
             if(!preg_match("/^[\w\-]+[\s]?([\w\-]+[\s]?)+$/", $newpname)){
                 $updatepnameerr = "<p class='error'>Name can only contain alphabetical characters, numbers, - _ and white space</p>";
                 $updateproderr++;
@@ -425,14 +563,14 @@
             $updateproderr++;
         }
         else {
-            $newpdes = test_input($_POST['updatep']['des']);
+            $newpdes = mysqli_real_escape_string($conn, test_input($_POST['updatep']['des']));
         }
         if(empty($_POST['updatep']['price'])){
             $updatepriceerr = "<p class='error'>Please enter a price for the product!</p>";
             $updateproderr++;
         }
         else {
-            $newprice = test_input($_POST['updatep']['price']);
+            $newprice = mysqli_real_escape_string($conn, test_input($_POST['updatep']['price']));
             if(!preg_match("/^(?:\d+|\d+\.\d+)$/", $newprice)){
                 $updatepriceerr = "<p class='error'>Price can only be a positive float number!</p>";
                 $updateproderr++;
@@ -496,7 +634,7 @@
             $deleteperr = "<p class='error'>Please enter a product ID</p>";
         }
         else {
-            $delp = test_input($_POST['delp']['id']);
+            $delp = mysqli_real_escape_string($conn, test_input($_POST['delp']['id']));
             if(!in_array($delp, $productarray)){
                 $deleteperr = "<p class='error'>Product ID doesn't exist!</p>";
             }
@@ -519,9 +657,10 @@
             }
         }
     }
+    //Delete product from database
     if(isset($_POST['deleteproduct'])){
         $successmsg ='';
-        $delid= $_POST['delhid'];
+        $delid= mysqli_real_escape_string($conn, test_input($_POST['delhid']));
         $deleteproduct = "DELETE FROM Products WHERE id='$delid'";
         mysqli_query($conn, $deleteproduct);
         $successmsg = "<p class='success'>Product deleted successfully!</p>";

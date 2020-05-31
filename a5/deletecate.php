@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Control Panel</title>
+  <title>Category Management</title>
 
   <!-- Add bootstrap-->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -39,7 +39,7 @@
   }
   ?>
   <div class="container">
-    <nav id="top-bar" class="navbar navbar-expand-sm shadow">
+  <nav id="top-bar" class="navbar navbar-expand-sm shadow">
       <a class="navbar-brand" href="index.php"><img src="media/theme/logo.png" alt="Shop logo"></a>
       <ul class="nav nav-pills ml-auto user-menu">
         <li class="nav-item">
@@ -51,55 +51,51 @@
             Products
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="bandana.php">Bandana</a>
-            <a class="dropdown-item" href="medical-mask.php">Medical mask</a>
-            <a class="dropdown-item" href="dust-mask.php">Dust mask</a>
+            <?php
+            foreach($categoryarray as $cate){
+              echo "<a class='dropdown-item' href='category.php?cg=".str_replace(' ','-',strtolower($cate))."'>".$cate."</a>";
+            }
+          ?>
           </div>
         </li>
         <li class="nav-item">
           <a class="nav-link btn btn-primary" href="cart.php">Cart</a>
         </li>
-        <li class='nav-item'><a class='nav-link btn btn-primary' href='controlpanel.php'>Control panel</a></li>
-        <li class='nav-item'><a class='nav-link btn btn-primary' href='logout.php'>Logout</a></li>
+        <?php
+            if(empty($_SESSION['admin'])){
+              echo "<li class='nav-item'><a class='nav-link btn btn-primary' href='login.php'>Login</a></li>";
+            }
+            else {
+              echo "<li class='nav-item'><a class='nav-link btn btn-primary' href='controlpanel.php'>Control panel</a></li>";
+              echo "<li class='nav-item'><a class='nav-link btn btn-primary' href='logout.php'>Logout</a></li>"; 
+            }
+          ?>
       </ul>
     </nav>
     <img class="img-fluid" src="media/theme/mask-banner.jpg" alt="Mask banner">
     <div id="wrapper">
       <section class="header_text sub">
-        <h4><span>Control panel</span></h4>
+        <h4><span>Delete a category</span></h4>
       </section>
 
-      <form action="" method="POST" id="add-form" enctype="multipart/form-data">
+      <form action="" method="POST" id="del-cform">
+      <p style="font-size: 14px;">Please enter a category ID or name to delete</p>
         <div class="form-group">
-          <label for="product-id">Product ID</label>
-          <input type="text" name="product[id]" id="product-id">
+          <label>Category</label>
+          <input type="text" name="delc" value ="<?php echo isset($_POST['delc']) ? $_POST['delc'] : ''; ?>">
+          <?php echo $delcaterr ?>
         </div>
         <div class="form-group">
-          <label for="product-name">Name</label>
-          <input type="text" name="product[name]" id="product-name">
+          <input class="btn btn-primary btn-dark" type="submit" name="delcategory" value="Find Category"><br>
+          <?php echo $delcatmsg ?>
         </div>
+      </form>
+      <form action="" method="POST" id="del-cconfirm">
+      <p style="font-size: 14px;">Are you sure to delete this category?<br><?php echo $delnum." product(s) will be affected."?></p>
+      <input type="hidden" name="delcname" value="<?php if($delcname!=''){echo $delcname;}?>">
         <div class="form-group">
-          <label for="product-des">Description</label>
-          <textarea rows="5" cols="50" name="product[des]" form="add-form" id="product-des"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="product-type">Product Type</label>
-          <select name="product[type]" id="product-type">
-            <option value='Bandana'>Bandana</option>
-            <option value='Medical mask'>Medical Mask</option>
-            <option value='Dust mask'>Dust Mask</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="product-name">Price</label>
-          <input type="text" name="product[price]" id="product-price">
-        </div>
-        <div class="form-group">
-          <label for="product-img">Upload images</label>
-          <input type="file" name="image1" id="product-img" accept="image/*">
-        </div>
-        <div class="form-group">
-          <input class="btn btn-primary btn-dark" type="submit" name="addproduct" value="Add Product" id="addproduct">
+          <input class="btn btn-primary btn-dark" type="submit" name="delconfirm" value="Delete Category">
+          <input class="btn btn-primary btn-dark" type="submit" name="delcancel" value="Nevermind">
         </div>
       </form>
     </div>
@@ -110,24 +106,35 @@
           <div class="col-md-3">
             <h4>Navigation</h4>
             <ul>
-            <li><a href="index.php">Home</a></li>
-            <li><a href="bandana.php">Bandanas</a></li>
-            <li><a href="medical-mask.php">Medical Mask</a></li>
-            <li><a href="dust-mask.php">Dust Mask</a></li>
+              <li><a href="index.php">Home</a></li>
+              <?php
+            foreach($categoryarray as $cate){
+              echo "<li><a href='category.php?cg=".str_replace(' ','-',strtolower($cate))."'>".$cate."</a></li>";
+            }
+          ?>
             </ul>
           </div>
           <div class="col-md-4">
             <h4>User</h4>
             <ul>
-              <li><a href="login.php">Login</a></li>
+            <?php
+            if(empty($_SESSION['admin'])){
+              echo "<li><a href='login.php'>Login</a></li>";
+            }
+            else {
+              echo "<li><a href='logout.php'>Logout</a></li>"; 
+            }
+          ?>
               <li><a href="cart.php">Cart</a></li>
             </ul>
           </div>
           <div class="col-md-5">
             <p><img src="media/theme/logo.png" class="site_logo" alt=""></p>
-            - Assignment by Group 17: <br> 
-            Vo An Huy (s3804220 - <a href="https://github.com/s3804220/s3804220.github.io" class="git-link" target="_blank">GithubRepo</a>),
-            <br>Doan Nguyen My Hanh (s3639869 - <a href="https://github.com/s3639869/wp" class="git-linktarget="_blank">Github Repo</a>)
+            - Assignment by Group 17: <br>
+            Vo An Huy (s3804220 - <a href="https://github.com/s3804220/s3804220.github.io" class="git-link"
+              target="_blank">GithubRepo</a>),
+            <br>Doan Nguyen My Hanh (s3639869 - <a href="https://github.com/s3639869/wp" class="git-link" target="
+              _blank">Github Repo</a>)
           </div>
         </div>
       </section>

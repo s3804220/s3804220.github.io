@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Product management</title>
+  <title>Category management</title>
 
   <!-- Keep wireframe.css for debugging, add your css to style.css -->
   <link id='wireframecss' type="text/css" rel="stylesheet" href="../wireframe.css" disabled>
@@ -87,17 +87,17 @@
     <img class="img-fluid" src="media/theme/mask-banner.jpg" alt="Mask banner">
     <div id="wrapper">
       <section class="header_text sub">
-        <h4><span>Manage your products</span></h4>
+        <h4><span>Manage product category</span></h4>
       </section>
       <div id="admin-activity">
         <p style="font-size: 16px;">Hello <em>admin,</em>
         <br>
-        you can add, update or delete information on your products here.
+        you can add, update or delete product categories here.
         <br>What would you like to do?</p>
-        <a href="viewprod.php"><button type="button" class="btn btn-secondary">View product details</button></a><br><br>
-        <a href="addprod.php"><button type="button" class="btn btn-success">Add new product</button></a><br><br>
-        <a href="updateprod.php"><button type="button" class="btn btn-warning">Update a product</button></a><br><br>
-        <a href="deleteprod.php"><button type="button" class="btn btn-danger">Delete a product</button></a>
+        <a href="viewcate.php"><button type="button" class="btn btn-secondary">View all categories</button></a><br><br>
+        <a href="addcate.php"><button type="button" class="btn btn-success">Add new category</button></a><br><br>
+        <a href="updatecate.php"><button type="button" class="btn btn-warning">Update a category</button></a><br><br>
+        <a href="deletecate.php"><button type="button" class="btn btn-danger">Delete a category</button></a>
       </div>
       <hr>
     </div>

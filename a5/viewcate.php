@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dust Masks</title>
-
-  <!-- Keep wireframe.css for debugging, add your css to style.css -->
-  <link id='wireframecss' type="text/css" rel="stylesheet" href="../wireframe.css" disabled>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Category Management</title>
 
   <!-- Add bootstrap-->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -23,40 +20,36 @@
     crossorigin="anonymous"></script>
 
 
-  <!-- Link to style.css -->
-  <link id='stylecss' type="text/css" rel="stylesheet" href="style.css">
-
-  <!-- Link to web font-->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-
   <!-- Link to web icon-->
   <!-- Creative Commons image sourced from https://www.freelogodesign.org and used for educational purposes only -->
   <link rel="icon" href="media/theme/icon.png">
-  <script src='../wireframe.js'></script>
 
-  <!-- Link to script.js -->
-  <script defer src="script.js"></script>
+  <!-- Link to style.css -->
+  <link id='stylecss' type="text/css" rel="stylesheet" href="style.css">
 
-  <!-- Link to tools.php -->
-  <?php include 'tools.php';?>
+  <!-- Link to other php files -->
   <?php include 'database.php';?>
+  <?php include 'tools.php';?>
+  <?php
+  
+  $servername = "localhost";
+  $username = "root";
+  $password = "root";
+  $dbname = "shopDatabase";
 
+  // Create connection
+  $conn = mysqli_connect($servername, $username, $password, $dbname);
+  ?>
 </head>
 
 <body>
   <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "root";
-    $dbname = "shopDatabase";
-
-    // Create connection
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
+    if(empty($_SESSION['admin'])){
+      header('Location: index.php');
+  }
   ?>
   <div class="container">
-    <nav id="top-bar" class="navbar navbar-expand-sm shadow">
+  <nav id="top-bar" class="navbar navbar-expand-sm shadow">
       <a class="navbar-brand" href="index.php"><img src="media/theme/logo.png" alt="Shop logo"></a>
       <ul class="nav nav-pills ml-auto user-menu">
         <li class="nav-item">
@@ -68,9 +61,11 @@
             Products
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="bandana.php">Bandana</a>
-            <a class="dropdown-item" href="medical-mask.php">Medical mask</a>
-            <a class="dropdown-item" href="dust-mask.php">Dust mask</a>
+            <?php
+            foreach($categoryarray as $cate){
+              echo "<a class='dropdown-item' href='category.php?cg=".str_replace(' ','-',strtolower($cate))."'>".$cate."</a>";
+            }
+          ?>
           </div>
         </li>
         <li class="nav-item">
@@ -89,29 +84,28 @@
     </nav>
     <img class="img-fluid" src="media/theme/mask-banner.jpg" alt="Mask banner">
     <div id="wrapper">
-      <div class="container my-4">
-          <h4 class="title">
-          <span class="text"><span class="line"><strong>Dust Masks</strong></span></span>
-          </h4>
-          <div class="row">
-          <?php
-            $productselect = "SELECT id, productname, price, product_type, main_image FROM Products WHERE product_type = 'dust mask'";
-            $result = mysqli_query($conn, $productselect) or die(mysqli_error());
-            $productarray = array();
-            while($row = mysqli_fetch_assoc($result)) {
-              $productarray[] = $row;
-            }
-          foreach ($productarray as $num => $info){
-            $imgarray = explode("|",$info['main_image']);
-            echo "<div class='col-md-4'><div class='card product-box mb-2'><a href='product-detail.php?id={$info['id']}'><img class='card-img-top' src=";
-            echo "'media/product/".$imgarray[0]."' alt='Product image'></a>";
-            echo "<div class='card-body'><a href='product-detail.php?id={$info['id']}' class='title'>".$info['productname']."</a><br>";
-            echo "<a href='".str_replace(' ','-',strtolower($info['product_type'])).".php' class='category'>".$info['product_type']."</a>";
-            echo "<p class='price'>$".$info['price']."</p></div></div></div>";
+      <section class="header_text sub">
+        <h4><span>Category list</span></h4>
+      </section>
+      <div class="view-wrapper">
+      <table class="view-wrapper" style="font-size: 14px; padding: 20px;">
+        <tr>
+          <th>Category</th>
+          <th>Number of products</th>
+        </tr>
+      <?php
+          foreach ($categoryarray as $cate){
+            echo "<tr><td><p>".$cate."</p></td>";
+            $prodselect = "SELECT * FROM Products WHERE product_type='$cate'";
+            $result = mysqli_query($conn, $prodselect) or die(mysqli_error());
+            $prodnum = mysqli_num_rows($result);
+            echo "<td><p>".$prodnum."</p></td></tr>";
           }
           ?>
+          </table>
+          <br>
+          <a href="managecate.php"><button type="button" class="btn btn-secondary">Return</button></a><br>
           </div>
-        </div>
     </div>
     <footer>
       <a href="#top-bar"><img id="TopBtn" src="media/theme/gotop.png" alt="Back to Top"></a>
@@ -121,23 +115,34 @@
             <h4>Navigation</h4>
             <ul>
               <li><a href="index.php">Home</a></li>
-              <li><a href="bandana.php">Bandanas</a></li>
-              <li><a href="medical-mask.php">Medical Mask</a></li>
-              <li><a href="dust-mask.php">Dust Mask</a></li>
+              <?php
+            foreach($categoryarray as $cate){
+              echo "<li><a href='category.php?cg=".str_replace(' ','-',strtolower($cate))."'>".$cate."</a></li>";
+            }
+          ?>
             </ul>
           </div>
           <div class="col-md-4">
             <h4>User</h4>
             <ul>
-              <li><a href="#">Login</a></li>
-              <li><a href="#">Cart</a></li>
+            <?php
+            if(empty($_SESSION['admin'])){
+              echo "<li><a href='login.php'>Login</a></li>";
+            }
+            else {
+              echo "<li><a href='logout.php'>Logout</a></li>"; 
+            }
+          ?>
+              <li><a href="cart.php">Cart</a></li>
             </ul>
           </div>
           <div class="col-md-5">
             <p><img src="media/theme/logo.png" class="site_logo" alt=""></p>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. the Lorem Ipsum has been the
-              industry's standard dummy text ever since the you.</p>
-            <br />
+            - Assignment by Group 17: <br>
+            Vo An Huy (s3804220 - <a href="https://github.com/s3804220/s3804220.github.io" class="git-link"
+              target="_blank">GithubRepo</a>),
+            <br>Doan Nguyen My Hanh (s3639869 - <a href="https://github.com/s3639869/wp" class="git-link" target="
+              _blank">Github Repo</a>)
           </div>
         </div>
       </section>

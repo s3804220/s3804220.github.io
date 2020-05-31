@@ -39,7 +39,7 @@
   }
   ?>
   <div class="container">
-    <nav id="top-bar" class="navbar navbar-expand-sm shadow">
+  <nav id="top-bar" class="navbar navbar-expand-sm shadow">
       <a class="navbar-brand" href="index.php"><img src="media/theme/logo.png" alt="Shop logo"></a>
       <ul class="nav nav-pills ml-auto user-menu">
         <li class="nav-item">
@@ -51,16 +51,25 @@
             Products
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="bandana.php">Bandana</a>
-            <a class="dropdown-item" href="medical-mask.php">Medical mask</a>
-            <a class="dropdown-item" href="dust-mask.php">Dust mask</a>
+            <?php
+            foreach($categoryarray as $cate){
+              echo "<a class='dropdown-item' href='category.php?cg=".str_replace(' ','-',strtolower($cate))."'>".$cate."</a>";
+            }
+          ?>
           </div>
         </li>
         <li class="nav-item">
           <a class="nav-link btn btn-primary" href="cart.php">Cart</a>
         </li>
-        <li class='nav-item'><a class='nav-link btn btn-primary' href='controlpanel.php'>Control panel</a></li>
-        <li class='nav-item'><a class='nav-link btn btn-primary' href='logout.php'>Logout</a></li>
+        <?php
+            if(empty($_SESSION['admin'])){
+              echo "<li class='nav-item'><a class='nav-link btn btn-primary' href='login.php'>Login</a></li>";
+            }
+            else {
+              echo "<li class='nav-item'><a class='nav-link btn btn-primary' href='controlpanel.php'>Control panel</a></li>";
+              echo "<li class='nav-item'><a class='nav-link btn btn-primary' href='logout.php'>Logout</a></li>"; 
+            }
+          ?>
       </ul>
     </nav>
     <img class="img-fluid" src="media/theme/mask-banner.jpg" alt="Mask banner">
@@ -165,24 +174,35 @@
           <div class="col-md-3">
             <h4>Navigation</h4>
             <ul>
-            <li><a href="index.php">Home</a></li>
-            <li><a href="bandana.php">Bandanas</a></li>
-            <li><a href="medical-mask.php">Medical Mask</a></li>
-            <li><a href="dust-mask.php">Dust Mask</a></li>
+              <li><a href="index.php">Home</a></li>
+              <?php
+            foreach($categoryarray as $cate){
+              echo "<li><a href='category.php?cg=".str_replace(' ','-',strtolower($cate))."'>".$cate."</a></li>";
+            }
+          ?>
             </ul>
           </div>
           <div class="col-md-4">
             <h4>User</h4>
             <ul>
-              <li><a href="#">Login</a></li>
-              <li><a href="#">Cart</a></li>
+            <?php
+            if(empty($_SESSION['admin'])){
+              echo "<li><a href='login.php'>Login</a></li>";
+            }
+            else {
+              echo "<li><a href='logout.php'>Logout</a></li>"; 
+            }
+          ?>
+              <li><a href="cart.php">Cart</a></li>
             </ul>
           </div>
           <div class="col-md-5">
             <p><img src="media/theme/logo.png" class="site_logo" alt=""></p>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. the Lorem Ipsum has been the
-              industry's standard dummy text ever since the you.</p>
-            <br />
+            - Assignment by Group 17: <br>
+            Vo An Huy (s3804220 - <a href="https://github.com/s3804220/s3804220.github.io" class="git-link"
+              target="_blank">GithubRepo</a>),
+            <br>Doan Nguyen My Hanh (s3639869 - <a href="https://github.com/s3639869/wp" class="git-link" target="
+              _blank">Github Repo</a>)
           </div>
         </div>
       </section>
