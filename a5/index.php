@@ -94,19 +94,7 @@
     <div id="wrapper">
       <section id="about-us">
         <h3 id="about-heading">About us</h3>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut diam turpis. Nunc sodales metus vitae elit
-        sollicitudin convallis sed eu metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu congue
-        felis, non consequat ipsum. Donec eget gravida odio. Etiam malesuada scelerisque interdum. Vivamus aliquet ac
-        risus sit amet congue. Fusce id lectus sed eros maximus ornare id at velit. Aenean laoreet mauris ex, eu
-        pretium
-        ipsum ultricies eget.
-
-        Cras rhoncus, est eget ultricies efficitur, magna lorem ullamcorper lectus, quis maximus justo ante at tortor.
-        Praesent sed nunc ac odio congue commodo. Vivamus dignissim libero ut luctus dignissim. Mauris scelerisque
-        odio
-        non augue pulvinar feugiat. Morbi blandit magna vitae tincidunt fermentum. Nam in volutpat nisi. Phasellus
-        vitae
-        justo neque. Curabitur ut mollis metus. Morbi aliquam iaculis felis id dictum.
+        <p style="font-size: 16px;"> Started in 2020 in Vietnam, with the mission statement of preserving people's health through quality mask products. Especially during the COVID-19 pandemic, we ensure you that we have everything in stock at all times and our quality as not been compromised. Due to that please feel free to shop as much as you need to protect yourself. your family's and community's health.<div style="color: red; font-size: 18px; text-align: center;"> **NOTE: THIS IS NOT A REAL WEBSITE. THIS IS AN ASSIGNMENT FOR WEB PROGRAMMING FROM RMIT VIETNAM**</div></p>
       </section>
       <br>
       <div class="row feature_box">
