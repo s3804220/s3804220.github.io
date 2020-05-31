@@ -138,8 +138,31 @@
       echo "<tr><td colspan='4' style='text-align: center;'><b>Grand Total: </b></td>";
       echo "<td style='text-align: center;'><b>$ ".calcTotalSession()."<b></tr>";
       echo "</table>";
+      $grandtotal = calcTotalSession();
+      if ($grandtotal > 0){
+        echo "
+        <br><br><br>
+        <h4 class='title'>
+        <span class='text'><span class='line'><b>Checkout</b> <strong>Information</strong></span></span>
+        </h4>
+        <p style='font-size: 15px;' class='require'> * Please Enter Your Name, Australian Phone Number and Address</p>
+        <div class='form-group'>
+          <label for='cust-name' style='text-align: left;'>Name <span class='require'>*</span></label>
+          <input type='name' name='cust[name]' id='name' style='width: 100%;' required oninput='checkCustInfo()'>
+        </div>
+        <div class='form-group'>
+          <label for='cust-mobile' style='text-align: left;'>Mobile <span class='require'>*</span></label>
+          <input type='tel' name='cust[mobile]' id='mobile' style='width: 100%;' required oninput='checkCustInfo()'>
+        </div>
+        <div class='form-group'>
+          <label for='cust-address' style='text-align: left'>Address <span class='require';*</span></label>
+          <input type='text' name='cust[address]' id='address' style='width: 100%;' required oninput='checkCustInfo()'>
+        </div>
+        <input type='button' name='order' value='Order' id='order' onclick='displayThank()' disabled>
+        ";
+      }
       ?>
-      <br><br><br>
+      <!-- <br><br><br>
       <h4 class="title">
       <span class="text"><span class="line"><b>Checkout</b> <strong>Information</strong></span></span>
       </h4>
@@ -156,7 +179,7 @@
         <label for="cust-address" style="text-align: left;">Address <span class="require">*</span></label>
         <input type="text" name="cust[address]" id="address" style="width: 100%;" required oninput="checkCustInfo()">
       </div>
-      <input type="button" name="order" value="Order" id="order" onclick="displayThank()" disabled>
+      <input type="button" name="order" value="Order" id="order" onclick="displayThank()" disabled> -->
 
 
     </div>
