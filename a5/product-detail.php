@@ -138,7 +138,7 @@
                     }
                     echo "</div></div>";
                     echo "<div class='col-md-8'><i>Click on image for a better view.<i><h2><b>".$row['productname']."</b></h2>";
-                    echo "<p style='font-size: 18px;'><a href='".str_replace(' ','-',strtolower($row['product_type'])).".php' class='category'>".$row['product_type']."</a></p>";
+                    echo "<p style='font-size: 18px;'><a href='category.php?cg=".str_replace(' ','-',strtolower($row['product_type']))."' class='category'>".$row['product_type']."</a></p>";
                     echo "<p style='font-size: 18px;'><b>Description: </b>".$row['descript']."</p>";
                     echo "<p style='font-size: 18px;'><b>Price: </b>$".$row['price']."</p>";
                 

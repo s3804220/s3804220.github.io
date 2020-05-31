@@ -103,7 +103,6 @@
             <div class="responsive">
               <img src="media/theme/feature_img_2.png" alt="Feature image" />
               <h5>MODERN <strong>DESIGN</strong></h5>
-              <p>Lorem Ipsum is simply dummy text of the printing and printing industry unknown printer.</p>
             </div>
           </div>
         </div>
@@ -112,7 +111,6 @@
             <div class="customize">
               <img src="media/theme/feature_img_1.png" alt="Feature image" />
               <h5>FREE <strong>SHIPPING</strong></h5>
-              <p>Lorem Ipsum is simply dummy text of the printing and printing industry unknown printer.</p>
             </div>
           </div>
         </div>
@@ -121,7 +119,6 @@
             <div class="support">
               <img src="media/theme/feature_img_3.png" alt="Feature image" />
               <h5>24/7 LIVE <strong>SUPPORT</strong></h5>
-              <p>Lorem Ipsum is simply dummy text of the printing and printing industry unknown printer.</p>
             </div>
           </div>
         </div>
@@ -160,7 +157,7 @@
                     echo "<div class='col-md-4'><div class='card product-box mb-2'><a href='product-detail.php?id={$info['id']}'><img class='card-img-top' src=";
                     echo "'media/product/".$imgarray[0]."' alt='Product image'></a>";
                     echo "<div class='card-body'><a href='product-detail.php?id={$info['id']}' class='title'>".$info['productname']."</a><br>";
-                    echo "<a href='".str_replace(' ','-',strtolower($info['product_type'])).".php' class='category'>".$info['product_type']."</a>";
+                    echo "<a href='category.php?cg=".str_replace(' ','-',strtolower($info['product_type']))."' class='category'>".$info['product_type']."</a>";
                     echo "<p class='price'>$".$info['price']."</p></div></div></div>";
                   }
                 ?>
@@ -209,7 +206,7 @@
             echo "<div class='col-md-4'><div class='card product-box mb-2'><a href='product-detail.php?id={$info['id']}'><img class='card-img-top' src=";
             echo "'media/product/".$imgarray[0]."' alt='Product image'></a>";
             echo "<div class='card-body'><a href='product-detail.php?id={$info['id']}' class='title'>".$info['productname']."</a><br>";
-            echo "<a href='".str_replace(' ','-',strtolower($info['product_type'])).".php' class='category'>".$info['product_type']."</a>";
+            echo "<a href='category.php?cg=".str_replace(' ','-',strtolower($info['product_type']))."' class='category'>".$info['product_type']."</a>";
             echo "<p class='price'>$".$info['price']."</p></div></div></div>";
           }
           ?>

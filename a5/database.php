@@ -14,7 +14,7 @@
     $dbname = "shopDatabase";
 
     // Create connection
-    //Note: if you're running the website for the first time, please delete the two $dbname here (one above and one below), run the index.php
+    //Note: if you're running the website for the first time(on local host), please delete the two $dbname here (one above and one below), run the index.php
     //Refresh the page to let it create the database, then eiter ctrl+Z or manually add back the two $dbname in here. Thank you
     $conn = mysqli_connect($servername, $username, $password, $dbname);
 
@@ -52,21 +52,21 @@
 
     //insert products into database
     $sql = "INSERT INTO Products
-    VALUES ('PD001', 'Bandana Black', 17.25, 'Placeholder text for Bandana Black', 'Bandana', 'bandana-black.jpg|bandana-black2.jpg|bandana-black3.jpg');";
+    VALUES ('PD001', 'Bandana Black', 17.25, 'A black bandana made from 100% cotton. Double-side printed. You can wear it in different ways (as a headband, around your neck, at your wrist, or as a cow-boy) and pair it with everything. From men to women, children or dogs, rock your bandana your own way!', 'Bandana', 'bandana-black.jpg|bandana-black2.jpg|bandana-black3.jpg');";
     $sql .= "INSERT INTO Products
-    VALUES ('PD002', 'Bandana Blue', 17.25, 'Placeholder text for Bandana Blue', 'Bandana', 'bandana-blue.jpg|bandana-blue2.jpg|bandana-blue3.jpg');";
+    VALUES ('PD002', 'Bandana Blue', 17.25, 'A blue bandana made from 100% cotton. Double-side printed. You can wear it in different ways (as a headband, around your neck, at your wrist, or as a cow-boy) and pair it with everything. From men to women, children or dogs, rock your bandana your own way!', 'Bandana', 'bandana-blue.jpg|bandana-blue2.jpg|bandana-blue3.jpg');";
     $sql .= "INSERT INTO Products
-    VALUES ('PD003', 'Bandana Skull', 25.60, 'Placeholder text for Bandana Skull', 'Bandana', 'bandana-skull.jpg|bandana-skull2.jpg|bandana-skull3.jpg');";
+    VALUES ('PD003', 'Bandana Skull', 25.60, 'A bandana with vivid skull design. Keeps you warm in winter and brings cool in summer; provide a frightening visual impact for your costume party or outdoor activity. This mask is made of microfiber polyester, absorption moisture, windproof, sweat wicking, anti-UV; suitable for cycling, hiking, camping, skiing, climbing, fishing, hunting, jogging, motorcycling and other outdoor activities.', 'Bandana', 'bandana-skull.jpg|bandana-skull2.jpg|bandana-skull3.jpg');";
     $sql .= "INSERT INTO Products
-    VALUES ('PD004', 'Medical Mask White', 27, 'Placeholder text for Medical Mask White', 'Medical Mask', 'medical-mask-white.jpg|medical-mask-white2.jpg|medical-mask-white3.jpg');";
+    VALUES ('PD004', 'Medical Mask White', 27, 'Medical masks are a type of personal protective equipment used to prevent the spread of respiratory infections. These masks cover the mouth and nose of the wearer and, if worn properly, may be effective at helping prevent transmission of respiratory viruses and bacteria. This one comes in white color.', 'Medical Mask', 'medical-mask-white.jpg|medical-mask-white2.jpg|medical-mask-white3.jpg');";
     $sql .= "INSERT INTO Products
-    VALUES ('PD005', 'Medical Mask Blue', 20, 'Placeholder text for Medical Mask Blue', 'Medical Mask', 'medical-mask-blue.jpg|medical-mask-blue2.jpg|medical-mask-blue3.jpg');";
+    VALUES ('PD005', 'Medical Mask Blue', 20, 'Medical masks are a type of personal protective equipment used to prevent the spread of respiratory infections. These masks cover the mouth and nose of the wearer and, if worn properly, may be effective at helping prevent transmission of respiratory viruses and bacteria. This one comes in blue color.', 'Medical Mask', 'medical-mask-blue.jpg|medical-mask-blue2.jpg|medical-mask-blue3.jpg');";
     $sql .= "INSERT INTO Products
-    VALUES ('PD006', 'Medical Mask Black', 17.55, 'Placeholder text for Medical Mask Black', 'Medical Mask', 'medical-mask-black.jpg|medical-mask-black2.jpg|medical-mask-black3.jpg');";
+    VALUES ('PD006', 'Medical Mask Black', 17.55, 'Medical masks are a type of personal protective equipment used to prevent the spread of respiratory infections. These masks cover the mouth and nose of the wearer and, if worn properly, may be effective at helping prevent transmission of respiratory viruses and bacteria. This one comes in black color.', 'Medical Mask', 'medical-mask-black.jpg|medical-mask-black2.jpg|medical-mask-black3.jpg');";
     $sql .= "INSERT INTO Products
-    VALUES ('PD007', 'Dust Mask Black With Filter', 25.30, 'Placeholder text for Dust Mask Black With Filter', 'Dust Mask', 'dust-mask-black-filter.jpg|dust-mask-black-filter2.jpg|dust-mask-black-filter3.jpg');";
+    VALUES ('PD007', 'Dust Mask Black With Filter', 25.30, 'PA good protector during COVID-19 while also giving a cool visual impact. Equipped with a filter to make breathing easier, provide anti-haze, anti-pollen and dust removal - with a dust barrier rate of 99%. Comes with a polyester sponge layer for high resilience and provides good comfort to the wearer.', 'Dust Mask', 'dust-mask-black-filter.jpg|dust-mask-black-filter2.jpg|dust-mask-black-filter3.jpg');";
     $sql .= "INSERT INTO Products
-    VALUES ('PD008', 'Dust Mask M3', 31.45, 'Placeholder text for Dust Mask M3', 'Dust Mask', 'dust-mask.jpg|dust-mask2.jpg|dust-mask3.jpg');";
+    VALUES ('PD008', 'Dust Mask M3', 31.45, 'A good protector during COVID-19. Emergency Use Authorization for Healthcare Professionals. Two-strap design with welded dual point attachment helps provide a secure seal. Comes with a cushioning nose foam.', 'Dust Mask', 'dust-mask.jpg|dust-mask2.jpg|dust-mask3.jpg');";
 
     mysqli_multi_query($conn, $sql);
 
